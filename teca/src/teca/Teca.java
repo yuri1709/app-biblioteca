@@ -16,8 +16,10 @@ public class Teca {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        JFrame telaMenu = new JFrame();
-        JFrame telaLogin = new JFrame();
+       // JFrame telaMenu = new JFrame();;
+       // JFrame telaLogin = new JFrame();
+       
+       System.out.println("Hello World");
                        
     }
     
