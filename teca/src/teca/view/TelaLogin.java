@@ -1,5 +1,8 @@
 package teca.view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 /*
@@ -72,23 +75,47 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogarActionPerformed
-        
-        if(Login.getText().equals("pablo")&& Senha.getText().equals("123")){
-            
-                //TelaMenu TL = new TelaMenu();
-
-                
+               
+                 TelaCadastrarADM TCA = new TelaCadastrarADM(); 
+                 
+        if ( (Login.getText().equals("")) || (Senha.getPassword().equals("")) ){
+                         
+             
             JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
                                                 "Você irá para a Tela de Cadastro de Dados de Empregados !!!");
-            setVisible(true);
+            
+                                     
+            TCA.setVisible(true);
             
             Login.setText("");
             Senha.setText("");
         }else{
             
+            String url = "jdbc:mysql://localhost/bdusuario";
+	    String sql = "SELECT * FROM usuario WHERE cadastrarnome='"+Login.getText()+"',cadastrarsenha='"+Senha.getPassword()+"'";
+            
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 
             Login.setText("");
-            Senha.setText("");   
+            Senha.setText("");  
+            
+             try 
+	   {
+
+	     Connection conexao = DriverManager.getConnection(url,"root","");
+
+	     PreparedStatement atualizar = conexao.prepareStatement(sql);
+
+	     atualizar.executeUpdate();
+
+	     JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
+    
+	   }
+	  
+	   catch(Exception erro){ 
+           
+              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
+               
+           }      
         }
     }//GEN-LAST:event_LogarActionPerformed
 

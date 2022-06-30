@@ -84,7 +84,7 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarsenhaActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-         if ( (cadastrarnome.getText().equals("")) || (cadastrarsenha.getText().equals("")) ) {
+         if ( (cadastrarnome.getText().equals("")) || (cadastrarsenha.getPassword().equals("")) ) {
              
              JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
                                                  "PREENCHA TODOS ELES !!!!");
@@ -96,7 +96,7 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
         else{
              
             String url = "jdbc:mysql://localhost/bdusuario";
-	    String sql = "INSERT INTO usuario(cadastrarnome,cadastrarsenha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getText()+"')";
+	    String sql = "INSERT INTO usuario (cadastrarnome,cadastrarsenha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getPassword()+"')";
             
             try 
 	   {
