@@ -75,11 +75,11 @@ public class TelaLogin extends javax.swing.JFrame {
         
         if(Login.getText().equals("pablo")&& Senha.getText().equals("123")){
             
-                TelaMenu TL = new TelaMenu();
+                //TelaMenu TL = new TelaMenu();
                 
             JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
                                                 "Você irá para a Tela de Cadastro de Dados de Empregados !!!");
-            TL.setVisible(true);
+            setVisible(true);
             
             Login.setText("");
             Senha.setText("");
