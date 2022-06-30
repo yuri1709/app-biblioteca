@@ -5,6 +5,8 @@
  */
 package teca.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 36127512021.2
@@ -31,12 +33,15 @@ public class TelaMenu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        cadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel1.setText("Menu do ADM");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(130, 57, 132, 24);
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton1.setText("Pesquisar");
@@ -45,45 +50,28 @@ public class TelaMenu extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(130, 115, 138, 23);
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setText("Editar");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(130, 156, 138, 23);
 
         jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton3.setText("Excluir");
+        getContentPane().add(jButton3);
+        jButton3.setBounds(130, 197, 138, 23);
 
-        jButton4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton4.setText("Cadastrar");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(132, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
+        cadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        cadastrar.setText("Cadastrar");
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastrar);
+        cadastrar.setBounds(130, 231, 138, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -91,6 +79,15 @@ public class TelaMenu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+        TelaCadastrarADM TD = new TelaCadastrarADM();
+        
+        JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
+                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");              
+        
+      TD.setVisible(true);
+    }//GEN-LAST:event_cadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,10 +126,10 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cadastrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
