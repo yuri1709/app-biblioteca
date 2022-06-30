@@ -84,14 +84,16 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarsenhaActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-         if ( (cadastrarnome.getText().equals("")) || (cadastrarsenha.getPassword().equals("")) ) {
+        TelaLogin TLO = new TelaLogin(); 
+        
+        if ( (cadastrarnome.getText().equals("")) || (cadastrarsenha.getPassword().equals("")) ) {
              
              JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
                                                  "PREENCHA TODOS ELES !!!!");
         cadastrarnome.setText("");
         cadastrarsenha.setText("");
         
-         setVisible(true);
+         TLO.setVisible(true);
         }
         else{
              

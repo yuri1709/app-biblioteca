@@ -16,6 +16,8 @@ public class MenuLogin extends javax.swing.JFrame {
      */
     public MenuLogin() {
         initComponents();
+        //Nome do usuario logado
+        user_.setText("");
     }
 
     /**
@@ -27,21 +29,99 @@ public class MenuLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Op3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        Op1 = new javax.swing.JButton();
+        Op2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        user_ = new javax.swing.JLabel();
+        Sair_ = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        Op3.setText("3");
+        Op3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Op3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Op3);
+        Op3.setBounds(100, 210, 40, 30);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel2.setText("Clientes");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(160, 210, 70, 20);
+
+        Op1.setText("1");
+        Op1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Op1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Op1);
+        Op1.setBounds(100, 110, 40, 30);
+
+        Op2.setText("2");
+        Op2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Op2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Op2);
+        Op2.setBounds(100, 160, 40, 30);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setText("Administrador");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(160, 110, 100, 20);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setText("Livro");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(160, 160, 50, 20);
+
+        user_.setText("null");
+        getContentPane().add(user_);
+        user_.setBounds(310, 14, 70, 20);
+
+        Sair_.setText("Sair");
+        Sair_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Sair_ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Sair_);
+        Sair_.setBounds(310, 40, 70, 23);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLabel5.setText("Menu Principal");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(110, 0, 190, 60);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void Op3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op3ActionPerformed
+        // TODO add your handling code here:        
+    }//GEN-LAST:event_Op3ActionPerformed
+
+    private void Op1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op1ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_Op1ActionPerformed
+
+    private void Op2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Op2ActionPerformed
+
+    private void Sair_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sair_ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_Sair_ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +159,14 @@ public class MenuLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Op1;
+    private javax.swing.JButton Op2;
+    private javax.swing.JButton Op3;
+    private javax.swing.JButton Sair_;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel user_;
     // End of variables declaration//GEN-END:variables
 }

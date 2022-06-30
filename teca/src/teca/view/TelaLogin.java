@@ -3,6 +3,7 @@ package teca.view;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /*
@@ -75,47 +76,45 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogarActionPerformed
-               
-                 TelaCadastrarADM TCA = new TelaCadastrarADM(); 
+       String loginDB = "";
+       String senhaDB = "";
+       String url = "jdbc:mysql://localhost/bdusuario";
+       String sql = "SELECT * FROM usuario WHERE cadastrarnome='"+Login.getText()+"'";  
+     
+       try 
+	   {
+
+	     Connection conexao = DriverManager.getConnection(url, "root","");
+
+	     PreparedStatement pesquisa = conexao.prepareStatement(sql);	     
+             
+	     ResultSet resultado = pesquisa.executeQuery();
+             
+	     while (resultado.next()) {               
+		 loginDB  = resultado.getString("cadastrarnome");
+		 senhaDB = resultado.getString("cadastrarsenha");
                  
-        if ( (Login.getText().equals("")) || (Senha.getPassword().equals("")) ){
+	   }
+	  
+           } catch(Exception erro){ 
+           
+              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
+           }      
+       
+       if ( (Login.getText().equals(loginDB)) || (Senha.getPassword().equals(senhaDB)) ){
                          
              
             JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
                                                 "Você irá para a Tela de Cadastro de Dados de Empregados !!!");
+                                                 
             
-                                     
-            TCA.setVisible(true);
-            
-            Login.setText("");
-            Senha.setText("");
-        }else{
-            
-            String url = "jdbc:mysql://localhost/bdusuario";
-	    String sql = "SELECT * FROM usuario WHERE cadastrarnome='"+Login.getText()+"',cadastrarsenha='"+Senha.getPassword()+"'";
-            
+                       
+        }else{                                   
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 
             Login.setText("");
             Senha.setText("");  
             
-             try 
-	   {
-
-	     Connection conexao = DriverManager.getConnection(url,"root","");
-
-	     PreparedStatement atualizar = conexao.prepareStatement(sql);
-
-	     atualizar.executeUpdate();
-
-	     JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
-    
-	   }
-	  
-	   catch(Exception erro){ 
            
-              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
-               
-           }      
         }
     }//GEN-LAST:event_LogarActionPerformed
 
