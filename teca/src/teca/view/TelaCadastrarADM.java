@@ -5,6 +5,11 @@
  */
 package teca.view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 36127512021.2
@@ -27,21 +32,93 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cadastrarsenha = new javax.swing.JPasswordField();
+        cadastrarnome = new javax.swing.JTextField();
+        cadastrar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLabel1.setText("Tela - Cadastrar");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(90, 30, 150, 30);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setText("Nome:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(40, 95, 50, 50);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Senha:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(40, 160, 50, 20);
+
+        cadastrarsenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarsenhaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastrarsenha);
+        cadastrarsenha.setBounds(100, 160, 200, 20);
+        getContentPane().add(cadastrarnome);
+        cadastrarnome.setBounds(100, 110, 200, 20);
+
+        cadastrar.setText("Cadastrar");
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastrar);
+        cadastrar.setBounds(130, 220, 80, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cadastrarsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarsenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cadastrarsenhaActionPerformed
+
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+         if ( (cadastrarnome.getText().equals("")) || (cadastrarsenha.getText().equals("")) ) {
+             
+             JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
+                                                 "PREENCHA TODOS ELES !!!!");
+        cadastrarnome.setText("");
+        cadastrarsenha.setText("");
+        
+         setVisible(true);
+        }
+        else{
+             
+            String url = "jdbc:mysql://localhost/bdusuario";
+	    String sql = "INSERT INTO usuario(cadastrarnome,cadastrarsenha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getText()+"')";
+            
+            try 
+	   {
+
+	     Connection conexao = DriverManager.getConnection(url,"root","");
+
+	     PreparedStatement atualizar = conexao.prepareStatement(sql);
+
+	     atualizar.executeUpdate();
+
+	     JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
+    
+	   }
+	  
+	   catch(Exception erro){ 
+           
+              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
+               
+           }
+        
+         }
+    }//GEN-LAST:event_cadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +156,11 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cadastrar;
+    private javax.swing.JTextField cadastrarnome;
+    private javax.swing.JPasswordField cadastrarsenha;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
