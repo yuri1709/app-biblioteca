@@ -1,5 +1,7 @@
 package teca.view;
 
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -28,21 +30,66 @@ public class TelaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Login = new javax.swing.JTextField();
+        Senha = new javax.swing.JPasswordField();
+        Logar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLabel1.setText("Login - Administrador");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(100, 20, 190, 40);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setText("Nome:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(40, 84, 60, 30);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Senha:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(40, 144, 50, 30);
+        getContentPane().add(Login);
+        Login.setBounds(100, 90, 200, 20);
+        getContentPane().add(Senha);
+        Senha.setBounds(100, 150, 200, 20);
+
+        Logar.setText("Logar");
+        Logar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Logar);
+        Logar.setBounds(130, 210, 100, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogarActionPerformed
+        
+        if(Login.getText().equals("pablo")&& Senha.getText().equals("123")){
+            
+                //TelaMenu TL = new TelaMenu();
+                
+            JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
+                                                "Você irá para a Tela de Cadastro de Dados de Empregados !!!");
+            setVisible(true);
+            
+            Login.setText("");
+            Senha.setText("");
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "Acesso Negado"); 
+            Login.setText("");
+            Senha.setText("");   
+        }
+    }//GEN-LAST:event_LogarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +127,11 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Logar;
+    private javax.swing.JTextField Login;
+    private javax.swing.JPasswordField Senha;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

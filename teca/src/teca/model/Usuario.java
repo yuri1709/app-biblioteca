@@ -10,5 +10,5 @@ package teca.model;
  * @author 36127512021.2
  */
 public class Usuario {
-    
+    String user;
 }
