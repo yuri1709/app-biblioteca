@@ -64,6 +64,12 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
         });
         getContentPane().add(cadastrarsenha);
         cadastrarsenha.setBounds(100, 160, 200, 20);
+
+        cadastrarnome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarnomeActionPerformed(evt);
+            }
+        });
         getContentPane().add(cadastrarnome);
         cadastrarnome.setBounds(100, 110, 200, 20);
 
@@ -121,6 +127,10 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
         
          }
     }//GEN-LAST:event_cadastrarActionPerformed
+
+    private void cadastrarnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cadastrarnomeActionPerformed
 
     /**
      * @param args the command line arguments
