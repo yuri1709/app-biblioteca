@@ -78,8 +78,8 @@ public class TelaLogin extends javax.swing.JFrame {
     private void LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogarActionPerformed
        String loginDB = "";
        String senhaDB = "";
-       String url = "jdbc:mysql://localhost/bdusuario";
-       String sql = "SELECT * FROM usuario WHERE cadastrarnome='"+Login.getText()+"'";  
+       String url = "jdbc:mysql://localhost/tecadb";
+       String sql = "SELECT * FROM usuario WHERE login='"+Login.getText()+"'";  
      
        try 
 	   {
@@ -91,10 +91,10 @@ public class TelaLogin extends javax.swing.JFrame {
 	     ResultSet resultado = pesquisa.executeQuery();
              
 	     while (resultado.next()) {               
-		 loginDB  = resultado.getString("cadastrarnome");
-		 senhaDB = resultado.getString("cadastrarsenha");
+		 loginDB  = resultado.getString("login");
+		 senhaDB = resultado.getString("senha");
                  
-	   }
+            }
 	  
            } catch(Exception erro){ 
            
@@ -102,13 +102,10 @@ public class TelaLogin extends javax.swing.JFrame {
            }      
        
        if ( (Login.getText().equals(loginDB)) || (Senha.getPassword().equals(senhaDB)) ){
-                         
-             
+                                      
             JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
                                                 "Você irá para a Tela de Cadastro de Dados de Empregados !!!");
-                                                 
-            
-                       
+                                                                                    
         }else{                                   
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 
             Login.setText("");

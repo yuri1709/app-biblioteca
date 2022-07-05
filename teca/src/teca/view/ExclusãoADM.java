@@ -82,8 +82,8 @@ public class ExclusãoADM extends javax.swing.JFrame {
            
         }else{
             
-            String url = "jdbc:mysql://localhost/bdusuario";
-            String sql = "DELETE FROM usuario WHERE cadastrarnome='"+EXCLUIRnome.getText()+"'";
+            String url = "jdbc:mysql://localhost/tecadb";
+            String sql = "DELETE FROM usuario WHERE login='"+EXCLUIRnome.getText()+"'";
             try 
 	   {
 
@@ -93,7 +93,7 @@ public class ExclusãoADM extends javax.swing.JFrame {
 
 	     atualizar.executeUpdate();
 
-	     JOptionPane.showMessageDialog(null,"Excluido com sucesso!");
+	     JOptionPane.showMessageDialog(null,"O usuário "+EXCLUIRnome.getText()+" foi excluído com sucesso!");
     
 	   }
 	  

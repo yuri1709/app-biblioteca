@@ -103,8 +103,8 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
         }
         else{
              
-            String url = "jdbc:mysql://localhost/bdusuario";
-	    String sql = "INSERT INTO usuario (cadastrarnome,cadastrarsenha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getPassword()+"')";
+            String url = "jdbc:mysql://localhost/tecadb";
+	    String sql = "INSERT INTO usuario (login,senha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getPassword()+"')";
             
             try 
 	   {
@@ -115,7 +115,7 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
 
 	     atualizar.executeUpdate();
 
-	     JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
+	     JOptionPane.showMessageDialog(null,"Administrador cadastrado com sucesso!");
     
 	   }
 	  
