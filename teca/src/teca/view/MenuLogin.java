@@ -18,9 +18,8 @@ public class MenuLogin extends javax.swing.JFrame {
      */
     public MenuLogin() {
         initComponents();
-        //Nome do usuario logado
-        TelaLogin LG = new TelaLogin();
-        user_.setText(LG.loginDB);
+        //Nome do usuario logado        
+        user_.setText();
     }
 
     /**

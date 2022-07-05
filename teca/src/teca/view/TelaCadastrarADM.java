@@ -104,7 +104,9 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
         else{
              
             String url = "jdbc:mysql://localhost/tecadb";
-	    String sql = "INSERT INTO usuario (login,senha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getPassword()+"')";
+	    //condicao de cadastro diferente
+            String sql2 = "SELECT * FROM usuario WHERE login='"+cadastrarnome.getText()+"'";  
+            String sql = "INSERT INTO usuario (login,senha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getPassword()+"')";
             
             try 
 	   {
