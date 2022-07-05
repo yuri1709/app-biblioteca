@@ -65,7 +65,7 @@ public class ExclusãoADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(excluir);
-        excluir.setBounds(130, 200, 73, 23);
+        excluir.setBounds(140, 190, 73, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

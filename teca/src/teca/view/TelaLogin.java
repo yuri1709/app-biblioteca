@@ -18,10 +18,11 @@ import teca.model.Usuario;
  * @author 36127512021.2
  */
 public class TelaLogin extends javax.swing.JFrame {
-
     /**
      * Creates new form TelaLogin
      */
+    String loginDB = "";
+    String senhaDB = "";
     public TelaLogin() {
         initComponents();
     }
@@ -59,8 +60,20 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel3.setText("Senha:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(40, 144, 50, 30);
+
+        Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginActionPerformed(evt);
+            }
+        });
         getContentPane().add(Login);
         Login.setBounds(100, 90, 200, 20);
+
+        Senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SenhaActionPerformed(evt);
+            }
+        });
         getContentPane().add(Senha);
         Senha.setBounds(100, 150, 200, 20);
 
@@ -80,8 +93,7 @@ public class TelaLogin extends javax.swing.JFrame {
        //istanciando a classe Usuario
        Usuario user = new Usuario();
        
-       String loginDB = "";
-       String senhaDB = "";
+       
        String url = "jdbc:mysql://localhost/tecadb";
        String sql = "SELECT * FROM usuario WHERE login='"+Login.getText()+"'";  
        
@@ -122,6 +134,14 @@ public class TelaLogin extends javax.swing.JFrame {
            
         }
     }//GEN-LAST:event_LogarActionPerformed
+
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginActionPerformed
+
+    private void SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SenhaActionPerformed
 
     /**
      * @param args the command line arguments

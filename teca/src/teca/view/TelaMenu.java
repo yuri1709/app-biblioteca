@@ -5,6 +5,11 @@
  */
 package teca.view;
 
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,8 +36,8 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        editar = new javax.swing.JButton();
+        excluir = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,15 +58,29 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(130, 115, 138, 23);
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setText("Editar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(130, 156, 138, 23);
+        editar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        editar.setText("Editar");
+        editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(editar);
+        editar.setBounds(130, 156, 138, 23);
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setText("Excluir");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(130, 197, 138, 23);
+        excluir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        excluir.setText("Excluir");
+        excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(excluir);
+<<<<<<< HEAD
+        excluir.setBounds(130, 197, 138, 23);
+=======
+        excluir.setBounds(130, 197, 140, 23);
+>>>>>>> b4bc5db690ff50da6608d8523cbab2cb5466486e
 
         cadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrar.setText("Cadastrar");
@@ -85,9 +104,43 @@ public class TelaMenu extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(null, "Acesso Permitido 123123 !!!!!\n"+
                                             "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
+<<<<<<< HEAD
                                                 
+=======
+   
+
+        JOptionPane.showMessageDialog(null, "Acesso Permitido 123123 !!!!!\n"+
+                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
+        JOptionPane.showMessageDialog(null, "Acesso eqeqeqqeeq3 !!!!!\n"+
+                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
+  
+        
+>>>>>>> 19d6bef9ebd351d84d6df4aa7ddccae1a112e363
       TD.setVisible(true);
     }//GEN-LAST:event_cadastrarActionPerformed
+                                      
+                                    
+    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
+        // TODO add your handling code here:
+     
+   
+   
+    }//GEN-LAST:event_excluirActionPerformed
+
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        // TODO add your handling code here:
+        Tela
+    }//GEN-LAST:event_editarActionPerformed
+
+    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
+              ExclusãoADM EX = new ExclusãoADM();
+          
+          JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
+                                              "Você irá para a Tela de Exclusão do Cadastro !!!");              
+        
+          EX.setVisible(true);
+      
+    }//GEN-LAST:event_excluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,9 +180,9 @@ public class TelaMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrar;
+    private javax.swing.JButton editar;
+    private javax.swing.JButton excluir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
