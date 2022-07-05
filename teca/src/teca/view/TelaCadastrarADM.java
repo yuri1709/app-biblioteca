@@ -8,6 +8,7 @@ package teca.view;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -90,6 +91,7 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarsenhaActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+        String loginDB = "";
         TelaLogin TLO = new TelaLogin(); 
         
         if ( (cadastrarnome.getText().equals("")) || (cadastrarsenha.getPassword().equals("")) ) {
@@ -101,15 +103,38 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
         
          TLO.setVisible(true);
         }
+        //CONEXAO COM O BANCO
         else{
              
             String url = "jdbc:mysql://localhost/tecadb";
-	    //condicao de cadastro diferente
-            String sql2 = "SELECT * FROM usuario WHERE login='"+cadastrarnome.getText()+"'";  
-            String sql = "INSERT INTO usuario (login,senha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getPassword()+"')";
+	    //VERIFICANDO LOGIN EXISTENTE
+            String sql2 = "SELECT * FROM usuario WHERE login='"+cadastrarnome.getText()+"'";
+              try 
+	   {
+
+	     Connection conexao = DriverManager.getConnection(url, "root","");
+
+	     PreparedStatement pesquisa = conexao.prepareStatement(sql2);	     
+             
+	     ResultSet resultado = pesquisa.executeQuery();
+             
+	     while (resultado.next()) {               
+		  loginDB  = resultado.getString("login");
+                 
+             }
+             
+           } catch(Exception erro){ 
+           
+              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
+           }      
+       if(loginDB.equals(cadastrarnome.getText())){
+            JOptionPane.showMessageDialog(null,"O nome inserido já foi cadastrado"); 
+            
+       }else {
+            String sql = "INSERT INTO usuario (login,senha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getPassword()+"')";       
             
             try 
-	   {
+            {
 
 	     Connection conexao = DriverManager.getConnection(url,"root","");
 
@@ -119,15 +144,16 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
 
 	     JOptionPane.showMessageDialog(null,"Administrador cadastrado com sucesso!");
     
-	   }
+            }
 	  
-	   catch(Exception erro){ 
-           
+            catch(Exception erro){ 
+          
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
                
-           }
+            }
         
          }
+       }
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void cadastrarnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarnomeActionPerformed

@@ -105,7 +105,7 @@ public class EditarADM extends javax.swing.JFrame {
         }else{
             
            String url = "jdbc:mysql://localhost/tecadb";
-	   String sql = "UPDATE usuario SET login='"+editarnome.getText()+"',WHERE senha='"+antigasenha.getText()+"',senha='"+antigasenha.getText()+"'";
+	   String sql = "UPDATE usuario SET login='"+editarnome.getText()+"'WHERE senha='"+antigasenha.getText()+"',senha='"+antigasenha.getText()+"'";
         
          
             try 
