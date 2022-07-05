@@ -5,6 +5,8 @@
  */
 package teca.view;
 
+import teca.model.Usuario;
+
 /**
  *
  * @author 36127512021.2
@@ -17,7 +19,8 @@ public class MenuLogin extends javax.swing.JFrame {
     public MenuLogin() {
         initComponents();
         //Nome do usuario logado
-        user_.setText("");
+        Usuario user = new Usuario();
+        user_.setText(user.getLogin());
     }
 
     /**

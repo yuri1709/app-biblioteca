@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import teca.model.Usuario;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -76,11 +77,14 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogarActionPerformed
+       //istanciando a classe Usuario
+       Usuario user = new Usuario();
+       
        String loginDB = "";
        String senhaDB = "";
        String url = "jdbc:mysql://localhost/tecadb";
        String sql = "SELECT * FROM usuario WHERE login='"+Login.getText()+"'";  
-     
+       
        try 
 	   {
 
@@ -102,9 +106,13 @@ public class TelaLogin extends javax.swing.JFrame {
            }      
        
        if ( (Login.getText().equals(loginDB)) || (Senha.getPassword().equals(senhaDB)) ){
-                                      
+
+           //pegar o nome do usuario logado
+            user.setLogin(loginDB);            
             JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
-                                                "Você irá para a Tela de Cadastro de Dados de Empregados !!!");
+                                                "Você irá para a Tela de Cadastro de Dados de Empregados !!!"); 
+             new MenuLogin().setVisible(true);
+            
                                                                                     
         }else{                                   
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 

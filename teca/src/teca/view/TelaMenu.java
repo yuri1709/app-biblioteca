@@ -85,15 +85,7 @@ public class TelaMenu extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(null, "Acesso Permitido 123123 !!!!!\n"+
                                             "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
-        
-        JOptionPane.showMessageDialog(null, "Acesso Permitido 123123 !!!!!\n"+
-                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
-        JOptionPane.showMessageDialog(null, "Acesso eqeqeqqeeq3 !!!!!\n"+
-                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
-        
-        
-        
-        
+                                                
       TD.setVisible(true);
     }//GEN-LAST:event_cadastrarActionPerformed
 
