@@ -10,5 +10,22 @@ package teca.model;
  * @author 36127512021.2
  */
 public class Usuario {
-    String user;
+    String login;
+    String senha;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }
