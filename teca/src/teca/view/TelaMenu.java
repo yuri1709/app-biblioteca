@@ -83,8 +83,11 @@ public class TelaMenu extends javax.swing.JFrame {
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         TelaCadastrarADM TD = new TelaCadastrarADM();
         
-        JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
-                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");              
+        JOptionPane.showMessageDialog(null, "Acesso Permitido 123123 !!!!!\n"+
+                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
+        
+        JOptionPane.showMessageDialog(null, "Acesso Permitido 123123 !!!!!\n"+
+                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
         
       TD.setVisible(true);
     }//GEN-LAST:event_cadastrarActionPerformed

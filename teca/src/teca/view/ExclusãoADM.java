@@ -92,7 +92,7 @@ public class ExclusãoADM extends javax.swing.JFrame {
 	     PreparedStatement atualizar = conexao.prepareStatement(sql);
 
 	     atualizar.executeUpdate();
-
+             //criar uma condição pra quando o usuário não existir.   
 	     JOptionPane.showMessageDialog(null,"O usuário "+EXCLUIRnome.getText()+" foi excluído com sucesso!");
     
 	   }
