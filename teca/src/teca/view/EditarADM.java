@@ -175,4 +175,8 @@ public class EditarADM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
+
+    void setVisivle(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
