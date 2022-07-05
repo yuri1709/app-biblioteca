@@ -76,7 +76,11 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(excluir);
+<<<<<<< HEAD
+        excluir.setBounds(130, 197, 138, 23);
+=======
         excluir.setBounds(130, 197, 140, 23);
+>>>>>>> b4bc5db690ff50da6608d8523cbab2cb5466486e
 
         cadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrar.setText("Cadastrar");
@@ -123,6 +127,16 @@ public class TelaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Tela
     }//GEN-LAST:event_editarActionPerformed
+
+    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
+              ExclusãoADM EX = new ExclusãoADM();
+          
+          JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
+                                              "Você irá para a Tela de Exclusão do Cadastro !!!");              
+        
+          EX.setVisible(true);
+      
+    }//GEN-LAST:event_excluirActionPerformed
 
     /**
      * @param args the command line arguments
