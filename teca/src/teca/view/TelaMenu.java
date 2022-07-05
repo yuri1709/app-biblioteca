@@ -32,7 +32,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        excluir = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,10 +58,15 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().add(jButton2);
         jButton2.setBounds(130, 156, 138, 23);
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setText("Excluir");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(130, 197, 138, 23);
+        excluir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        excluir.setText("Excluir");
+        excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(excluir);
+        excluir.setBounds(130, 197, 138, 23);
 
         cadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrar.setText("Cadastrar");
@@ -96,6 +101,16 @@ public class TelaMenu extends javax.swing.JFrame {
         
       TD.setVisible(true);
     }//GEN-LAST:event_cadastrarActionPerformed
+
+    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
+              ExclusãoADM EX = new ExclusãoADM();
+          
+          JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
+                                              "Você irá para a Tela de Exclusão do Cadastro !!!");              
+        
+          EX.setVisible(true);
+      
+    }//GEN-LAST:event_excluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,9 +150,9 @@ public class TelaMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrar;
+    private javax.swing.JButton excluir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

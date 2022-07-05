@@ -45,7 +45,7 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel1.setText("Tela - Cadastrar");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(90, 30, 150, 30);
+        jLabel1.setBounds(110, 40, 150, 30);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Nome:");
