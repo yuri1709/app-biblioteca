@@ -36,7 +36,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        editar = new javax.swing.JButton();
         excluir = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
 
@@ -58,15 +58,15 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(130, 115, 138, 23);
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setText("Editar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        editar.setText("Editar");
+        editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                editarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(130, 156, 138, 23);
+        getContentPane().add(editar);
+        editar.setBounds(130, 156, 138, 23);
 
         excluir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         excluir.setText("Excluir");
@@ -114,14 +114,15 @@ public class TelaMenu extends javax.swing.JFrame {
                                     
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         // TODO add your handling code here:
-    
-    
+     
+   
    
     }//GEN-LAST:event_excluirActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        Tela
+    }//GEN-LAST:event_editarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,9 +162,9 @@ public class TelaMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrar;
+    private javax.swing.JButton editar;
     private javax.swing.JButton excluir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
