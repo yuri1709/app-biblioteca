@@ -18,9 +18,19 @@ public class MySql {
     String nomeBanco = "tecadb";
     String url = "jdbc:mysql://localhost/"+nomeBanco;   
     String sql;
+    public void inserir(
+        String tabela, 
+        String primary_key, 
+        Integer primary_key_value,  
+        String colum1,
+        String colum2,            
+        Integer colum3,
+        Integer colum4) {
+            
+        
+    }
     
-    
-    public void excluir(String tabela, String primary_key, Integer primary_key_value){
+    public void excluir(String tabela, String primary_key, Integer primary_key_value) {
         sql = "DELETE FROM "+tabela+" WHERE "+primary_key+" = "+primary_key_value;
         try 
         {
@@ -32,8 +42,9 @@ public class MySql {
 
           JOptionPane.showMessageDialog(null,"Deletado com sucesso!");    
         }	  
-        catch(Exception erro) { 
+        catch(Exception erro) { //antes de cair no erro, o comando sql é executado antes do try. Pois os comandos de banco são assícronos.
            JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
         }
     }
+    
 }
