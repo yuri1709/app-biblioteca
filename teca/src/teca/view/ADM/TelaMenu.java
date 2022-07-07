@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teca.view;
+package teca.view.ADM;
 
+import teca.view.ADM.EditarADM;
+import teca.view.ADM.ExclusãoADM;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -3,13 +3,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package teca.model;
-
 /**
  *
- * @author Gamer
+ * @author Yuri Conder
  */
 public class Livro {
-    public String helloWorld(){
-        return "Hello World!";
+    String autor,
+           titulo;
+    int codISBN;    
+    int nEdicao;
+
+    public String getAutor() {
+        return autor;
     }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getCodISBN() {
+        return codISBN;
+    }
+
+    public void setCodISBN(int codISBN) {
+        this.codISBN = codISBN;
+    }
+   
+    public int getnEdicao() {
+        return nEdicao;
+    }
+
+    public void setnEdicao(int nEdicao) {
+        this.nEdicao = nEdicao;
+    }
+    
 }
