@@ -6,6 +6,7 @@ package teca.view.Livro;
 
 import teca.model.Livro;
 import teca.service.MySql;
+import teca.view.ADM.TelaCadastrarADM;
 
 /**
  *
@@ -45,12 +46,15 @@ public class Menu extends javax.swing.JFrame {
         tituloField = new javax.swing.JTextField();
         edicaoField = new javax.swing.JTextField();
         codISBN_Field = new javax.swing.JTextField();
+        generoField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         autorField = new javax.swing.JTextField();
         pesquisarLivroField = new javax.swing.JTextField();
         voltarButton = new javax.swing.JButton();
         emprestaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(60000, 60000));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
@@ -66,7 +70,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(excluirButton);
-        excluirButton.setBounds(370, 280, 100, 30);
+        excluirButton.setBounds(390, 290, 100, 30);
 
         cadastraButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastraButton.setText("Cadastrar");
@@ -76,10 +80,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastraButton);
-        cadastraButton.setBounds(370, 130, 100, 30);
+        cadastraButton.setBounds(390, 140, 100, 30);
 
         PesquisarLivroButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         PesquisarLivroButton.setText("Pesquisar");
+        PesquisarLivroButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         PesquisarLivroButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PesquisarLivroButtonActionPerformed(evt);
@@ -96,7 +101,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editaButton);
-        editaButton.setBounds(370, 230, 100, 30);
+        editaButton.setBounds(390, 240, 100, 30);
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setLayout(null);
@@ -104,7 +109,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Código ISBN:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 170, 110, 30);
+        jLabel2.setBounds(20, 210, 110, 30);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Título:");
@@ -114,17 +119,17 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Disponibilidade:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 210, 120, 30);
+        jLabel4.setBounds(20, 250, 120, 30);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("Autor:");
+        jLabel5.setText("Gênero:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(20, 90, 50, 30);
+        jLabel5.setBounds(20, 130, 70, 30);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("n Edição:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 130, 80, 30);
+        jLabel6.setBounds(20, 170, 80, 30);
 
         disponiField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +137,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(disponiField);
-        disponiField.setBounds(140, 210, 50, 30);
+        disponiField.setBounds(140, 250, 50, 30);
 
         tituloField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +153,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(edicaoField);
-        edicaoField.setBounds(90, 130, 150, 30);
+        edicaoField.setBounds(90, 170, 150, 30);
 
         codISBN_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +161,20 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(codISBN_Field);
-        codISBN_Field.setBounds(120, 170, 150, 30);
+        codISBN_Field.setBounds(120, 210, 150, 30);
+
+        generoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generoFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(generoField);
+        generoField.setBounds(90, 130, 150, 30);
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setText("Autor:");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(20, 90, 50, 30);
 
         autorField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +185,7 @@ public class Menu extends javax.swing.JFrame {
         autorField.setBounds(70, 90, 150, 30);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 90, 340, 270);
+        jPanel1.setBounds(20, 90, 340, 320);
 
         pesquisarLivroField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +197,7 @@ public class Menu extends javax.swing.JFrame {
 
         voltarButton.setText("voltar");
         getContentPane().add(voltarButton);
-        voltarButton.setBounds(410, 0, 73, 23);
+        voltarButton.setBounds(450, 10, 73, 23);
 
         emprestaButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         emprestaButton.setText("Emprestar");
@@ -189,18 +207,27 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(emprestaButton);
-        emprestaButton.setBounds(370, 180, 100, 30);
+        emprestaButton.setBounds(390, 190, 100, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-        SQL.excluir("livro","codISBN",LVR.getCodISBN());
+        SQL.excluir("livros","codISBN",LVR.getCodISBN());
     }//GEN-LAST:event_excluirButtonActionPerformed
 
     private void cadastraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraButtonActionPerformed
-        // TODO add your handling code here:
+       LVR.setTitulo(tituloField.getText());
+       LVR.setAutor(autorField.getText());
+       LVR.setGenero(generoField.getText());
+       LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
+       LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
+       LVR.setDisponibilidade(Integer.parseInt(disponiField.getText()));
+        
+       SQL.inserirLivro("livro", LVR.getCodISBN(), LVR.getTitulo(), LVR.getGenero(), LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade());       
+       //TelaCadastrarADM TC = new TelaCadastrarADM();
+       //TC.setVisible(true);
     }//GEN-LAST:event_cadastraButtonActionPerformed
 
     private void PesquisarLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarLivroButtonActionPerformed
@@ -231,13 +258,17 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_codISBN_FieldActionPerformed
 
-    private void autorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorFieldActionPerformed
+    private void generoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_autorFieldActionPerformed
+    }//GEN-LAST:event_generoFieldActionPerformed
 
     private void emprestaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestaButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emprestaButtonActionPerformed
+
+    private void autorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_autorFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,12 +315,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton editaButton;
     private javax.swing.JButton emprestaButton;
     private javax.swing.JButton excluirButton;
+    private javax.swing.JTextField generoField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField pesquisarLivroField;
     private javax.swing.JTextField tituloField;

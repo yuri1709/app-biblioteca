@@ -9,9 +9,27 @@ package teca.model;
  */
 public class Livro {
     String autor,
-           titulo;
+           titulo,
+           genero;
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
     int codISBN;    
     int nEdicao;
+    int disponibilidade;
+
+    public int getDisponibilidade() {
+        return disponibilidade;
+    }
+
+    public void setDisponibilidade(int disponibilidade) {
+        this.disponibilidade = disponibilidade;
+    }
 
     public String getAutor() {
         return autor;

@@ -18,16 +18,35 @@ public class MySql {
     String nomeBanco = "tecadb";
     String url = "jdbc:mysql://localhost/"+nomeBanco;   
     String sql;
-    public void inserir(
+    public void inserirLivro(
         String tabela, 
-        String primary_key, 
+        //String primary_key, 
         Integer primary_key_value,  
-        String colum1,
-        String colum2,            
-        Integer colum3,
-        Integer colum4) {
+        String titulo,
+        String genero,
+        String autor,       
+        Integer nEdicao,
+        Integer disponibilidade) {
+                  sql = "INSERT INTO "+tabela+" (codISBN, titulo, genero, autor, nEdicao, disponibilidade) VALUES ('"+primary_key_value+"', '"+titulo+"', '"+genero+"', '"+autor+"', '"+nEdicao+"', '"+disponibilidade+"')";  
+                  try 
+            {
+
+	     Connection conexao = DriverManager.getConnection(url,"root","");
+
+	     PreparedStatement atualizar = conexao.prepareStatement(sql);
+
+	     atualizar.executeUpdate();
+
+	     JOptionPane.showMessageDialog(null,"Livro cadastrado com sucesso!");
+    
+            }
+	  
+            catch(Exception erro){ 
+          
+              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
+               
+            }
             
-        
     }
     
     public void excluir(String tabela, String primary_key, Integer primary_key_value) {
