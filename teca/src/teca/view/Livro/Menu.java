@@ -214,7 +214,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-        SQL.excluir("livros","codISBN",LVR.getCodISBN());
+        SQL.excluir("livro","codISBN",LVR.getCodISBN());
     }//GEN-LAST:event_excluirButtonActionPerformed
 
     private void cadastraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraButtonActionPerformed
