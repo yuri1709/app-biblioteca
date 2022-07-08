@@ -14,7 +14,7 @@ import teca.view.ADM.TelaCadastrarADM;
  */
 public class Menu extends javax.swing.JFrame {
      MySql SQL = new MySql();
-     Livro LVR = new Livro();
+     
     /**
      * Creates new form Menu
      */
@@ -213,11 +213,13 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
+        Livro LVR = new Livro();
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
         SQL.excluir("livro","codISBN",LVR.getCodISBN());
     }//GEN-LAST:event_excluirButtonActionPerformed
 
     private void cadastraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraButtonActionPerformed
+       Livro LVR = new Livro();
        LVR.setTitulo(tituloField.getText());
        LVR.setAutor(autorField.getText());
        LVR.setGenero(generoField.getText());
@@ -231,7 +233,17 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastraButtonActionPerformed
 
     private void PesquisarLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarLivroButtonActionPerformed
-        // TODO add your handling code here:
+        //Eu não sei como, esse new não zerou os atributos da classe livro, obs: os atributos estao recebendo o valor no método SQL.selecionarLivro
+        Livro LVR = new Livro();         
+        SQL.selecionarLivro(pesquisarLivroField.getText());                         
+        tituloField.setText(LVR.getTitulo());
+        autorField.setText(LVR.getAutor());
+        generoField.setText(LVR.getGenero());
+        edicaoField.setText(Integer.toString(LVR.getnEdicao()));
+        codISBN_Field.setText(Integer.toString(LVR.getCodISBN()));              
+        disponiField.setText(Integer.toString(LVR.getDisponibilidade()));
+        
+       
     }//GEN-LAST:event_PesquisarLivroButtonActionPerformed
 
     private void editaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaButtonActionPerformed

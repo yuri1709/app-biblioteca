@@ -8,20 +8,21 @@ package teca.model;
  * @author Yuri Conder
  */
 public class Livro {
-    String autor,
+   static String autor,
            titulo,
            genero;
-
+    static int codISBN;    
+    static int nEdicao;
+    static int disponibilidade;
+   
     public String getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+  public void setGenero(String genero) {
         this.genero = genero;
     }
-    int codISBN;    
-    int nEdicao;
-    int disponibilidade;
+  
 
     public int getDisponibilidade() {
         return disponibilidade;
