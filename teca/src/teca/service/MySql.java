@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import teca.model.Livro;
 
@@ -20,6 +21,12 @@ public class MySql {
     String nomeBanco = "tecadb";
     String url = "jdbc:mysql://localhost/"+nomeBanco;   
     String sql;
+    
+    private int registroLivro(int number){ //gera um número de registro do livro
+        Integer registro;
+        Random gerador = new Random();
+        return gerador.nextInt(number);
+    }
     private void DB_DeleteAndInsert(String msgTry, String msgCatch) { 
             try 
             {
@@ -43,14 +50,17 @@ public class MySql {
     
     public void inserirLivro(
         String tabela, 
-        //String primary_key, 
-        Integer primary_key_value,  
+        //String primary_key,         
+        Integer CDD,
+        Integer codISBN,  
         String titulo,
         String genero,
         String autor,       
         Integer nEdicao,
-        Integer disponibilidade) {
-                  sql = "INSERT INTO "+tabela+" (codISBN, titulo, genero, autor, nEdicao, disponibilidade) VALUES ('"+primary_key_value+"', '"+titulo+"', '"+genero+"', '"+autor+"', '"+nEdicao+"', '"+disponibilidade+"')";  
+        Integer disponibilidade)
+    {        
+        
+                  sql = "INSERT INTO "+tabela+" (registro, CDD, codISBN, titulo, genero, autor, nEdicao, disponibilidade) VALUES ('"+registroLivro(1000)+"','"+CDD+"','"+codISBN+"', '"+titulo+"', '"+genero+"', '"+autor+"', '"+nEdicao+"', '"+disponibilidade+"')";  
                   DB_DeleteAndInsert("Livro cadastrado com sucesso! =)", "Erro na conexão com o banco de Dados");           
     }
     

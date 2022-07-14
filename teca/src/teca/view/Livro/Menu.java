@@ -31,8 +31,9 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        excluirButton = new javax.swing.JButton();
+        excluiButton = new javax.swing.JButton();
         cadastraButton = new javax.swing.JButton();
         PesquisarLivroButton = new javax.swing.JButton();
         editaButton = new javax.swing.JButton();
@@ -52,9 +53,11 @@ public class Menu extends javax.swing.JFrame {
         pesquisarLivroField = new javax.swing.JTextField();
         voltarButton = new javax.swing.JButton();
         emprestaButton = new javax.swing.JButton();
+        localizarButton = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(60000, 60000));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
@@ -62,15 +65,15 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(160, 0, 130, 50);
 
-        excluirButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        excluirButton.setText("Excluir");
-        excluirButton.addActionListener(new java.awt.event.ActionListener() {
+        excluiButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        excluiButton.setText("Excluir");
+        excluiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirButtonActionPerformed(evt);
+                excluiButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(excluirButton);
-        excluirButton.setBounds(390, 290, 100, 30);
+        getContentPane().add(excluiButton);
+        excluiButton.setBounds(390, 310, 100, 30);
 
         cadastraButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastraButton.setText("Cadastrar");
@@ -80,7 +83,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastraButton);
-        cadastraButton.setBounds(390, 140, 100, 30);
+        cadastraButton.setBounds(390, 160, 100, 30);
 
         PesquisarLivroButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         PesquisarLivroButton.setText("Pesquisar");
@@ -101,7 +104,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editaButton);
-        editaButton.setBounds(390, 240, 100, 30);
+        editaButton.setBounds(390, 260, 100, 30);
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setLayout(null);
@@ -207,16 +210,33 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(emprestaButton);
-        emprestaButton.setBounds(390, 190, 100, 30);
+        emprestaButton.setBounds(390, 210, 100, 30);
+
+        localizarButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        localizarButton.setText("Localizar");
+        localizarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                localizarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(localizarButton);
+        localizarButton.setBounds(390, 110, 100, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
+    private void excluiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluiButtonActionPerformed
         Livro LVR = new Livro();
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
         SQL.excluir("livro","codISBN",LVR.getCodISBN());
-    }//GEN-LAST:event_excluirButtonActionPerformed
+        
+        tituloField.setText("");
+        autorField.setText("");
+        generoField.setText("");
+        edicaoField.setText("");
+        codISBN_Field.setText("");              
+        disponiField.setText("");
+    }//GEN-LAST:event_excluiButtonActionPerformed
 
     private void cadastraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraButtonActionPerformed
        Livro LVR = new Livro();
@@ -227,7 +247,7 @@ public class Menu extends javax.swing.JFrame {
        LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
        LVR.setDisponibilidade(Integer.parseInt(disponiField.getText()));
         
-       SQL.inserirLivro("livro", LVR.getCodISBN(), LVR.getTitulo(), LVR.getGenero(), LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade());       
+       SQL.inserirLivro("livro", 0, LVR.getCodISBN(), LVR.getTitulo(), LVR.getGenero(), LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade());       
        //TelaCadastrarADM TC = new TelaCadastrarADM();
        //TC.setVisible(true);
     }//GEN-LAST:event_cadastraButtonActionPerformed
@@ -282,6 +302,10 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_autorFieldActionPerformed
 
+    private void localizarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localizarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_localizarButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -326,8 +350,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField edicaoField;
     private javax.swing.JButton editaButton;
     private javax.swing.JButton emprestaButton;
-    private javax.swing.JButton excluirButton;
+    private javax.swing.JButton excluiButton;
     private javax.swing.JTextField generoField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -336,6 +361,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton localizarButton;
     private javax.swing.JTextField pesquisarLivroField;
     private javax.swing.JTextField tituloField;
     private javax.swing.JButton voltarButton;
