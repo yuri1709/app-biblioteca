@@ -230,6 +230,7 @@ Cdd CDD = new Cdd();
         edicaoField.setText("");
         codISBN_Field.setText("");              
         cddField.setText("");
+        quantidadeField.setText("");
     }//GEN-LAST:event_limparButtonActionPerformed
 
     private void quantidadeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeFieldActionPerformed
