@@ -240,10 +240,10 @@ Cdd CDD = new Cdd();
     private void generoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoFieldActionPerformed
       
     // TODO add your handling code here:
-        //select no dd
-        SQL.selecionarCDD(generoField.getText());
-        generoField.setText(CDD.getClasse());      
-        cddField.setText(Float.toString(CDD.getCdd()));
+        
+        SQL.selecionarCDD(generoField.getText());//chamada para buscar o cdd corrrespondente ao valor digitado no campo genero
+        generoField.setText(CDD.getClasse());      //auto completa com dados da classe cdd do banc oque o usuario quer escrever 
+        cddField.setText(Float.toString(CDD.getCdd()));//escreve o número do cdd no campo de texto   
     }//GEN-LAST:event_generoFieldActionPerformed
 
     /**
