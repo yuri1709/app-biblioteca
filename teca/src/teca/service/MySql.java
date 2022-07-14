@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import teca.model.Cdd;
 import teca.model.Livro;
 
 /**
@@ -27,6 +28,7 @@ public class MySql {
         Random gerador = new Random();
         return gerador.nextInt(number);
     }
+    //funciona apenas nos métodos delete e insert
     private void DB_DeleteAndInsert(String msgTry, String msgCatch) { 
             try 
             {
@@ -64,6 +66,11 @@ public class MySql {
                   DB_DeleteAndInsert("Livro cadastrado com sucesso! =)", "Erro na conexão com o banco de Dados");           
     }
     
+    public void inserir_cdd_livro(String tabela, Float cdd, String classe) {
+        sql = "INSERT INTO "+tabela+" (CDD, classe) VALUES ('"+cdd+"','"+classe+"')";
+        DB_DeleteAndInsert("Cdd cadastrado:"+cdd, "Erro na conexão com o banco de Dados");  
+    }
+    
     public void selecionarLivro(String tituloLivro){
         Livro LVR = new Livro();
         String tituloDB;
@@ -95,6 +102,29 @@ public class MySql {
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
            }              
+    }
+    
+    public void selecionarCDD(String generoLivro){
+        Cdd CDD = new Cdd();
+        sql = "SELECT * FROM CDD WHERE classe LIKE '%" + generoLivro +"%' ";
+         try 
+	   {
+
+	     Connection conexao = DriverManager.getConnection(url, "root","");
+
+	     PreparedStatement pesquisa = conexao.prepareStatement(sql);	     
+             
+	     ResultSet resultado = pesquisa.executeQuery();
+             
+	     while (resultado.next()) {               
+                 CDD.setCdd(Float.parseFloat(resultado.getString("CDD")));
+                 CDD.setClasse(resultado.getString("classe"));
+             }
+            JOptionPane.showMessageDialog(null,"CDD pegado com sucesso!");         
+           } catch(Exception erro){ 
+           
+              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
+           }                 
     }
     
     public void excluir(String tabela, String primary_key, Integer primary_key_value) {

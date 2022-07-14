@@ -4,17 +4,23 @@
  */
 package teca.view.Livro;
 
+import java.text.DecimalFormat;
+import teca.model.Cdd;
+import teca.model.Livro;
+import teca.service.MySql;
+
 /**
  *
  * @author Gamer
  */
 public class LivroCadastrar extends javax.swing.JFrame {
-
+MySql SQL = new MySql();
     /**
      * Creates new form LivroCadastrar
      */
     public LivroCadastrar() {
         initComponents();
+        
     }
 
     /**
@@ -32,18 +38,20 @@ public class LivroCadastrar extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        quantidadeField = new javax.swing.JTextField();
+        cddField = new javax.swing.JTextField();
         tituloField = new javax.swing.JTextField();
         edicaoField = new javax.swing.JTextField();
         codISBN_Field = new javax.swing.JTextField();
         generoField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         autorField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cadastrarButton = new javax.swing.JButton();
+        limparButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        quantidadeField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -51,7 +59,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Informe a localização do livro na biblioteca");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 290, 320, 50);
+        jLabel1.setBounds(20, 300, 320, 50);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Código ISBN:");
@@ -61,12 +69,12 @@ public class LivroCadastrar extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Estante:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 340, 110, 30);
+        jLabel3.setBounds(30, 350, 110, 30);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setText("Quantidade");
+        jLabel4.setText("CDD:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 260, 120, 30);
+        jLabel4.setBounds(240, 260, 50, 30);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Gênero:");
@@ -78,13 +86,13 @@ public class LivroCadastrar extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(30, 180, 80, 30);
 
-        quantidadeField.addActionListener(new java.awt.event.ActionListener() {
+        cddField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quantidadeFieldActionPerformed(evt);
+                cddFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(quantidadeField);
-        quantidadeField.setBounds(120, 260, 80, 30);
+        getContentPane().add(cddField);
+        cddField.setBounds(280, 260, 60, 30);
 
         tituloField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +100,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tituloField);
-        tituloField.setBounds(80, 50, 260, 30);
+        tituloField.setBounds(80, 60, 260, 30);
 
         edicaoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,23 +139,23 @@ public class LivroCadastrar extends javax.swing.JFrame {
         getContentPane().add(autorField);
         autorField.setBounds(80, 100, 260, 30);
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cadastrarButton.setText("Cadastrar");
+        cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cadastrarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(70, 470, 250, 40);
+        getContentPane().add(cadastrarButton);
+        cadastrarButton.setBounds(60, 470, 250, 40);
 
-        jButton2.setText("Limpar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        limparButton.setText("Limpar");
+        limparButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                limparButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(70, 420, 250, 40);
+        getContentPane().add(limparButton);
+        limparButton.setBounds(60, 420, 250, 40);
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel8.setText("Cadastro Livro");
@@ -157,19 +165,32 @@ public class LivroCadastrar extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setText("Título:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(30, 50, 50, 30);
+        jLabel9.setBounds(30, 60, 50, 30);
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setText("Pratileira: ");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(190, 340, 110, 30);
+        jLabel10.setBounds(190, 350, 110, 30);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel11.setText("Quantidade");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(30, 260, 120, 30);
+
+        quantidadeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quantidadeFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(quantidadeField);
+        quantidadeField.setBounds(120, 260, 60, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void quantidadeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeFieldActionPerformed
+    private void cddFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cddFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_quantidadeFieldActionPerformed
+    }//GEN-LAST:event_cddFieldActionPerformed
 
     private void tituloFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloFieldActionPerformed
         // TODO add your handling code here:
@@ -183,21 +204,42 @@ public class LivroCadastrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_codISBN_FieldActionPerformed
 
-    private void generoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_generoFieldActionPerformed
-
     private void autorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_autorFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
+        Livro LVR = new Livro();                                        
+        LVR.setTitulo(tituloField.getText()); 
+        LVR.setAutor(autorField.getText());
+        //genero
+        
+        SQL.inserirLivro("livro", 0, LVR.getCodISBN(), LVR.getTitulo(), LVR.getGenero(), LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade()); 
+        //SQL.inserir_cdd_livro("cdd",cddField , classe);
+    }//GEN-LAST:event_cadastrarButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void limparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparButtonActionPerformed
+         tituloField.setText("");
+        autorField.setText("");
+        generoField.setText("");
+        edicaoField.setText("");
+        codISBN_Field.setText("");              
+        cddField.setText("");
+    }//GEN-LAST:event_limparButtonActionPerformed
+
+    private void quantidadeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_quantidadeFieldActionPerformed
+
+    private void generoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoFieldActionPerformed
+        Cdd CDD = new Cdd();
+    // TODO add your handling code here:
+        //select no dd
+        SQL.selecionarCDD(generoField.getText());
+        generoField.setText(CDD.getClasse());
+        DecimalFormat df = new DecimalFormat();
+        cddField.setText(Float.toString(CDD.getCdd()));
+    }//GEN-LAST:event_generoFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,13 +278,14 @@ public class LivroCadastrar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField autorField;
+    private javax.swing.JButton cadastrarButton;
+    private javax.swing.JTextField cddField;
     private javax.swing.JTextField codISBN_Field;
     private javax.swing.JTextField edicaoField;
     private javax.swing.JTextField generoField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -251,6 +294,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton limparButton;
     private javax.swing.JTextField quantidadeField;
     private javax.swing.JTextField tituloField;
     // End of variables declaration//GEN-END:variables

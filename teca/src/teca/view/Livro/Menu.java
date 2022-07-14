@@ -73,17 +73,18 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(excluiButton);
-        excluiButton.setBounds(390, 310, 100, 30);
+        excluiButton.setBounds(390, 240, 100, 30);
 
         cadastraButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        cadastraButton.setText("Cadastrar");
+        cadastraButton.setText("Novo Livro");
+        cadastraButton.setToolTipText("");
         cadastraButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastraButtonActionPerformed(evt);
             }
         });
         getContentPane().add(cadastraButton);
-        cadastraButton.setBounds(390, 160, 100, 30);
+        cadastraButton.setBounds(390, 340, 100, 30);
 
         PesquisarLivroButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         PesquisarLivroButton.setText("Pesquisar");
@@ -104,7 +105,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editaButton);
-        editaButton.setBounds(390, 260, 100, 30);
+        editaButton.setBounds(390, 200, 100, 30);
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setLayout(null);
@@ -210,7 +211,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(emprestaButton);
-        emprestaButton.setBounds(390, 210, 100, 30);
+        emprestaButton.setBounds(390, 160, 100, 30);
 
         localizarButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         localizarButton.setText("Localizar");
@@ -220,7 +221,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(localizarButton);
-        localizarButton.setBounds(390, 110, 100, 30);
+        localizarButton.setBounds(390, 120, 100, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,17 +240,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_excluiButtonActionPerformed
 
     private void cadastraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraButtonActionPerformed
-       Livro LVR = new Livro();
-       LVR.setTitulo(tituloField.getText());
-       LVR.setAutor(autorField.getText());
-       LVR.setGenero(generoField.getText());
-       LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
-       LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-       LVR.setDisponibilidade(Integer.parseInt(disponiField.getText()));
-        
-       SQL.inserirLivro("livro", 0, LVR.getCodISBN(), LVR.getTitulo(), LVR.getGenero(), LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade());       
-       //TelaCadastrarADM TC = new TelaCadastrarADM();
-       //TC.setVisible(true);
+       LivroCadastrar CL = new LivroCadastrar();      
+       CL.setVisible(true);
     }//GEN-LAST:event_cadastraButtonActionPerformed
 
     private void PesquisarLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarLivroButtonActionPerformed
