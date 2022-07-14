@@ -214,8 +214,11 @@ Cdd CDD = new Cdd();
         
         LVR.setTitulo(tituloField.getText()); 
         LVR.setAutor(autorField.getText());
-        //genero
-        
+        LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
+        LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
+        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));
+       
+               
         SQL.inserirLivro("livro",CDD.getCdd(), LVR.getCodISBN(), LVR.getTitulo(), CDD.getClasse(), LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade()); 
         //SQL.inserir_cdd_livro("cdd",cddField , classe);
     }//GEN-LAST:event_cadastrarButtonActionPerformed

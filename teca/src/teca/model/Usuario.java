@@ -10,7 +10,7 @@ package teca.model;
  * @author 36127512021.2
  */
 public class Usuario {
-    private String login;
+    static private String login;
     private String senha;
 
     public String getLogin() {
