@@ -53,7 +53,7 @@ public class MySql {
     public void inserirLivro(
         String tabela, 
         //String primary_key,         
-        Integer CDD,
+        Float CDD,
         Integer codISBN,  
         String titulo,
         String genero,

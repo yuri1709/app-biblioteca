@@ -15,6 +15,7 @@ import teca.service.MySql;
  */
 public class LivroCadastrar extends javax.swing.JFrame {
 MySql SQL = new MySql();
+Cdd CDD = new Cdd();
     /**
      * Creates new form LivroCadastrar
      */
@@ -209,12 +210,13 @@ MySql SQL = new MySql();
     }//GEN-LAST:event_autorFieldActionPerformed
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
-        Livro LVR = new Livro();                                        
+        Livro LVR = new Livro(); 
+        
         LVR.setTitulo(tituloField.getText()); 
         LVR.setAutor(autorField.getText());
         //genero
         
-        SQL.inserirLivro("livro", 0, LVR.getCodISBN(), LVR.getTitulo(), LVR.getGenero(), LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade()); 
+        SQL.inserirLivro("livro",CDD.getCdd(), LVR.getCodISBN(), LVR.getTitulo(), CDD.getClasse(), LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade()); 
         //SQL.inserir_cdd_livro("cdd",cddField , classe);
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
@@ -232,7 +234,7 @@ MySql SQL = new MySql();
     }//GEN-LAST:event_quantidadeFieldActionPerformed
 
     private void generoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoFieldActionPerformed
-        Cdd CDD = new Cdd();
+      
     // TODO add your handling code here:
         //select no dd
         SQL.selecionarCDD(generoField.getText());
