@@ -12,14 +12,14 @@ import teca.model.Usuario;
  * @author 36127512021.2
  */
 public class MenuLogin extends javax.swing.JFrame {
-
+    Usuario USR = new Usuario();
     /**
      * Creates new form MenuLogin
      */
     public MenuLogin() {
         initComponents();
         //Nome do usuario logado        
-        //user_.setText();
+        user_.setText(USR.getLogin());
     }
 
     /**

@@ -11,7 +11,7 @@ package teca.model;
  */
 public class Usuario {
     static private String login;
-    private String senha;
+    static private String senha;
 
     public String getLogin() {
         return login;

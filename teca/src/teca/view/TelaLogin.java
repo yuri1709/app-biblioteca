@@ -21,8 +21,7 @@ public class TelaLogin extends javax.swing.JFrame {
     /**
      * Creates new form TelaLogin
      */
-    String loginDB = "";
-    String senhaDB = "";
+    
     public TelaLogin() {
         initComponents();
     }
@@ -107,9 +106,8 @@ public class TelaLogin extends javax.swing.JFrame {
 	     ResultSet resultado = pesquisa.executeQuery();
              
 	     while (resultado.next()) {               
-		 loginDB  = resultado.getString("login");
-		 senhaDB = resultado.getString("senha");
-                 
+		 user.setLogin(resultado.getString("login"));
+		 user.setSenha(resultado.getString("senha"));                 
             }
 	  
            } catch(Exception erro){ 
@@ -117,10 +115,10 @@ public class TelaLogin extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
            }      
        
-       if ( (Login.getText().equals(loginDB)) || (Senha.getPassword().equals(senhaDB)) ){
+       if ( (Login.getText().equals(user.getLogin())) || (Senha.getPassword().equals(user.getSenha())) ){
 
            //pegar o nome do usuario logado
-            user.setLogin(loginDB);            
+                        
             JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
                                                 "Você irá para a Tela de Cadastro de Dados de Empregados !!!"); 
              new MenuLogin().setVisible(true);
@@ -128,6 +126,7 @@ public class TelaLogin extends javax.swing.JFrame {
                                                                                     
         }else{                                   
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 
+            user.setLogin("nao logado");
             Login.setText("");
             Senha.setText("");  
             
