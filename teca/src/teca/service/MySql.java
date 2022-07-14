@@ -104,6 +104,21 @@ public class MySql {
            }              
     }
     
+    public void editarLivro(
+    String tabela, 
+        //String primary_key,         
+        Float CDD,
+        Integer codISBN,  
+        String titulo,
+        String genero,
+        String autor,       
+        Integer nEdicao,
+        Integer disponibilidade )         
+    {
+        sql = "UPDATE "+tabela+" SET CDD ='"+CDD+"', codISBN = '"+codISBN+"', titulo = '"+titulo+"', genero = '"+genero+"', autor = '"+autor+"', nEdicao = '"+nEdicao+"', titulo = '"+titulo+"', disponibilidade = '"+disponibilidade+"'";
+        DB_DeleteAndInsert("Livro editdo com sucesso!", "Erro na conexão com o banco de Dados");
+    }
+    
     public void selecionarCDD(String generoLivro){
         Cdd CDD = new Cdd();
         sql = "SELECT * FROM CDD WHERE classe LIKE '%" + generoLivro +"%' ";

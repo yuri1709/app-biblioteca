@@ -109,13 +109,13 @@ public class TelaLogin extends javax.swing.JFrame {
 		 user.setLogin(resultado.getString("login"));
 		 user.setSenha(resultado.getString("senha"));                 
             }
-	  
+	   JOptionPane.showMessageDialog(null,"LOGIN : "+user.getLogin()+ " SENHA:"+user.getSenha());               
            } catch(Exception erro){ 
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
            }      
        
-       if ( (Login.getText().equals(user.getLogin())) || (Senha.getPassword().equals(user.getSenha())) ){
+       if ( (Login.getText().equals(user.getLogin())) && (Senha.getPassword().equals(user.getSenha())) ){
 
            //pegar o nome do usuario logado
                         

@@ -260,6 +260,18 @@ public class Menu extends javax.swing.JFrame {
 
     private void editaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaButtonActionPerformed
         // TODO add your handling code here:
+                 
+        Livro LVR = new Livro();         
+        LVR.setTitulo(tituloField.getText()); 
+        LVR.setAutor(autorField.getText());
+        LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
+        LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
+        LVR.setDisponibilidade(Integer.parseInt(disponiField.getText()));                                      
+         
+        SQL.selecionarCDD(generoField.getText());
+        SQL.        
+                
+      SQL.editarLivro("livro",registro,cdd,LVR.getTitulo(), , LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade());
     }//GEN-LAST:event_editaButtonActionPerformed
 
     private void pesquisarLivroFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarLivroFieldActionPerformed
