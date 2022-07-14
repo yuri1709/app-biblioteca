@@ -236,8 +236,7 @@ MySql SQL = new MySql();
     // TODO add your handling code here:
         //select no dd
         SQL.selecionarCDD(generoField.getText());
-        generoField.setText(CDD.getClasse());
-        DecimalFormat df = new DecimalFormat();
+        generoField.setText(CDD.getClasse());      
         cddField.setText(Float.toString(CDD.getCdd()));
     }//GEN-LAST:event_generoFieldActionPerformed
 
