@@ -4,6 +4,7 @@
  */
 package teca.view.Livro;
 
+import teca.model.Cdd;
 import teca.model.Livro;
 import teca.service.MySql;
 import teca.view.ADM.TelaCadastrarADM;
@@ -14,7 +15,7 @@ import teca.view.ADM.TelaCadastrarADM;
  */
 public class Menu extends javax.swing.JFrame {
      MySql SQL = new MySql();
-     
+     Cdd CDD = new Cdd();
     /**
      * Creates new form Menu
      */
@@ -266,12 +267,13 @@ public class Menu extends javax.swing.JFrame {
         LVR.setAutor(autorField.getText());
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-        LVR.setDisponibilidade(Integer.parseInt(disponiField.getText()));                                      
-         
-        SQL.selecionarCDD(generoField.getText());
-        SQL.        
-                
-      SQL.editarLivro("livro",registro,cdd,LVR.getTitulo(), , LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade());
+        LVR.setDisponibilidade(Integer.parseInt(disponiField.getText())); 
+        LVR.setGenero(generoField.getText());        
+        
+        //verifica o cdd correspodente ao genero digitado no campo generoField
+               
+        //sql = "UPDATE "+tabela+" SET CDD ='"+CDD+"', codISBN = '"+codISBN+"', titulo = '"+titulo+"', genero = '"+genero+"', autor = '"+autor+"', nEdicao = '"+nEdicao+"', titulo = '"+titulo+"', disponibilidade = '"+disponibilidade+"'";         
+        SQL.editarLivro("livro",pesquisarLivroField.getText(), CDD.getCdd() , LVR.getCodISBN(), LVR.getTitulo(), LVR.getGenero() , LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade());
     }//GEN-LAST:event_editaButtonActionPerformed
 
     private void pesquisarLivroFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarLivroFieldActionPerformed
@@ -296,6 +298,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void generoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoFieldActionPerformed
         // TODO add your handling code here:
+        SQL.selecionarCDD(generoField.getText());//chamada para buscar o cdd corrrespondente ao valor digitado no campo genero
+        generoField.setText(CDD.getClasse());      //auto completa com dados da classe cdd do banc oque o usuario quer escrever 
     }//GEN-LAST:event_generoFieldActionPerformed
 
     private void emprestaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestaButtonActionPerformed

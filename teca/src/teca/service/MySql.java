@@ -106,6 +106,7 @@ public class MySql {
     
     public void editarLivro(
     String tabela, 
+        String tituloDoLivro,
         //String primary_key,         
         Float CDD,
         Integer codISBN,  
@@ -115,7 +116,7 @@ public class MySql {
         Integer nEdicao,
         Integer disponibilidade )         
     {
-        sql = "UPDATE "+tabela+" SET CDD ='"+CDD+"', codISBN = '"+codISBN+"', titulo = '"+titulo+"', genero = '"+genero+"', autor = '"+autor+"', nEdicao = '"+nEdicao+"', titulo = '"+titulo+"', disponibilidade = '"+disponibilidade+"'";
+        sql = "UPDATE "+tabela+" SET CDD ='"+CDD+"', codISBN = '"+codISBN+"', titulo = '"+titulo+"', genero = '"+genero+"', autor = '"+autor+"', nEdicao = '"+nEdicao+"', titulo = '"+titulo+"', disponibilidade = '"+disponibilidade+"'WHERE titulo='"+tituloDoLivro+"'";
         DB_DeleteAndInsert("Livro editdo com sucesso!", "Erro na conexão com o banco de Dados");
     }
     
