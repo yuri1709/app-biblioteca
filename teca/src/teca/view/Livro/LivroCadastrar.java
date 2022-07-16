@@ -5,6 +5,7 @@
 package teca.view.Livro;
 
 import java.text.DecimalFormat;
+import teca.controller.LivroDAO;
 import teca.model.Cdd;
 import teca.model.Livro;
 import teca.service.MySql;
@@ -16,6 +17,7 @@ import teca.service.MySql;
 public class LivroCadastrar extends javax.swing.JFrame {
 MySql SQL = new MySql();
 Cdd CDD = new Cdd();
+
     /**
      * Creates new form LivroCadastrar
      */
@@ -211,16 +213,16 @@ Cdd CDD = new Cdd();
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         Livro LVR = new Livro(); 
-        
+        LivroDAO LDAO = new LivroDAO();
+
         LVR.setTitulo(tituloField.getText()); 
         LVR.setAutor(autorField.getText());
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));
+        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));           
+        
+        LDAO.inserirLivro(LVR);     
        
-               
-        SQL.inserirLivro("livro",CDD.getCdd(), LVR.getCodISBN(), LVR.getTitulo(), CDD.getClasse(), LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade()); 
-        //SQL.inserir_cdd_livro("cdd",cddField , classe);
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
     private void limparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparButtonActionPerformed
@@ -243,6 +245,7 @@ Cdd CDD = new Cdd();
         
         SQL.selecionarCDD(generoField.getText());//chamada para buscar o cdd corrrespondente ao valor digitado no campo genero
         generoField.setText(CDD.getClasse());      //auto completa com dados da classe cdd do banc oque o usuario quer escrever 
+        
         cddField.setText(Float.toString(CDD.getCdd()));//escreve o número do cdd no campo de texto   
     }//GEN-LAST:event_generoFieldActionPerformed
 

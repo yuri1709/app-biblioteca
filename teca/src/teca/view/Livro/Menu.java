@@ -4,6 +4,7 @@
  */
 package teca.view.Livro;
 
+import teca.controller.LivroDAO;
 import teca.model.Cdd;
 import teca.model.Livro;
 import teca.service.MySql;
@@ -14,6 +15,7 @@ import teca.view.ADM.TelaCadastrarADM;
  * @author Gamer
  */
 public class Menu extends javax.swing.JFrame {
+     Livro LVR = new Livro();    
      MySql SQL = new MySql();
      Cdd CDD = new Cdd();
     /**
@@ -150,7 +152,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tituloField);
-        tituloField.setBounds(70, 40, 150, 30);
+        tituloField.setBounds(70, 40, 230, 30);
 
         edicaoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +176,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(generoField);
-        generoField.setBounds(90, 130, 150, 30);
+        generoField.setBounds(90, 130, 210, 30);
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Autor:");
@@ -187,7 +189,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(autorField);
-        autorField.setBounds(70, 90, 150, 30);
+        autorField.setBounds(70, 90, 230, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 90, 340, 320);
@@ -242,7 +244,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void cadastraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraButtonActionPerformed
        LivroCadastrar CL = new LivroCadastrar();      
-       CL.setVisible(true);
+       CL.setVisible(true);      
     }//GEN-LAST:event_cadastraButtonActionPerformed
 
     private void PesquisarLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarLivroButtonActionPerformed
@@ -255,14 +257,15 @@ public class Menu extends javax.swing.JFrame {
         edicaoField.setText(Integer.toString(LVR.getnEdicao()));
         codISBN_Field.setText(Integer.toString(LVR.getCodISBN()));              
         disponiField.setText(Integer.toString(LVR.getDisponibilidade()));
-        
+        //adiciona o nome do livro pesquisado no campo de texto de pesquisa
+        pesquisarLivroField.setText(LVR.getTitulo());
        
     }//GEN-LAST:event_PesquisarLivroButtonActionPerformed
 
     private void editaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaButtonActionPerformed
         // TODO add your handling code here:
                  
-        Livro LVR = new Livro();         
+              
         LVR.setTitulo(tituloField.getText()); 
         LVR.setAutor(autorField.getText());
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
@@ -270,7 +273,6 @@ public class Menu extends javax.swing.JFrame {
         LVR.setDisponibilidade(Integer.parseInt(disponiField.getText())); 
         LVR.setGenero(generoField.getText());        
         
-        //verifica o cdd correspodente ao genero digitado no campo generoField
                
         //sql = "UPDATE "+tabela+" SET CDD ='"+CDD+"', codISBN = '"+codISBN+"', titulo = '"+titulo+"', genero = '"+genero+"', autor = '"+autor+"', nEdicao = '"+nEdicao+"', titulo = '"+titulo+"', disponibilidade = '"+disponibilidade+"'";         
         SQL.editarLivro("livro",pesquisarLivroField.getText(), CDD.getCdd() , LVR.getCodISBN(), LVR.getTitulo(), LVR.getGenero() , LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade());
@@ -278,6 +280,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void pesquisarLivroFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarLivroFieldActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_pesquisarLivroFieldActionPerformed
 
     private void disponiFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponiFieldActionPerformed

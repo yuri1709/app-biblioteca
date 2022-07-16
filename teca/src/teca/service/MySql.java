@@ -23,6 +23,9 @@ public class MySql {
     String url = "jdbc:mysql://localhost/"+nomeBanco;   
     String sql;
     
+    Livro LVR = new Livro();
+    
+    //RETIRAR DA CLASSE
     private int registroLivro(int number){ //gera um número de registro do livro
         Integer registro;
         Random gerador = new Random();
@@ -71,15 +74,14 @@ public class MySql {
         DB_DeleteAndInsert("Cdd cadastrado:"+cdd, "Erro na conexão com o banco de Dados");  
     }
     
-    public void selecionarLivro(String tituloLivro){
-        Livro LVR = new Livro();
+    public void selecionarLivro(String tituloLivro){        
         String tituloDB;
         Integer codISBN_DB;
         String generoDB;
         String autorDB;
         Integer nEdicaoDB;
         Integer disponibilidadeDB;
-        sql = "SELECT * FROM livro WHERE titulo = '"+tituloLivro+"'";
+        sql = "SELECT * FROM livro WHERE titulo LIKE '%"+tituloLivro+"%'";
            try 
 	   {
 
@@ -97,7 +99,7 @@ public class MySql {
                  LVR.setnEdicao(Integer.parseInt(resultado.getString("nEdicao")));                
                  LVR.setDisponibilidade(Integer.parseInt(resultado.getString("disponibilidade")));                
              }
-             JOptionPane.showMessageDialog(null, LVR.getDisponibilidade());
+             
            } catch(Exception erro){ 
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
@@ -146,6 +148,13 @@ public class MySql {
     public void excluir(String tabela, String primary_key, Integer primary_key_value) {
         sql = "DELETE FROM "+tabela+" WHERE "+primary_key+" = "+primary_key_value;
         DB_DeleteAndInsert("Livro deletado com sucesso!", "Erro na conexão com o banco de Dados");
+        LVR.setTitulo("");
+        LVR.setCodISBN(0);
+        LVR.setGenero("");                                   
+        LVR.setAutor("");                 
+        LVR.setnEdicao(0);                
+        LVR.setDisponibilidade(0);        
+        
     }
     
 }
