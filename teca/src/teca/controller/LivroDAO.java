@@ -67,16 +67,14 @@ public class LivroDAO {
 	     while (resultado.next()) {                                
                  LVR.setRegistro(Integer.parseInt(resultado.getString("registro")));
              }
-             
-            JOptionPane.showMessageDialog(null,"REGISTRO :"+ LVR.getRegistro());         
-            
+                                     
            } catch(Exception erro){ 
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
            }                 
         
         sql = "DELETE FROM livro WHERE registro = "+LVR.getRegistro();
-        DB_DeleteAndInsert("Livro deletado com sucesso!", "Erro na conexão com o banco de Dados");
+        DB_DeleteAndInsert("Livro de REGISTRO: "+LVR.getRegistro()+" deletado com sucesso!", "Erro na conexão com o banco de Dados");
         LVR.setTitulo("");
         LVR.setCodISBN(0);
         LVR.setGenero("");                                   

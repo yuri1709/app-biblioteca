@@ -25,13 +25,15 @@ public class MySql {
     
     Livro LVR = new Livro();
     
-    //RETIRAR DA CLASSE
+    //RETIRAR DA CLASSE ========================================================
     private int registroLivro(int number){ //gera um número de registro do livro
         Integer registro;
         Random gerador = new Random();
         return gerador.nextInt(number);
     }
-    //funciona apenas nos métodos delete e insert
+    //===========================================================================
+   
+//funciona apenas nos métodos delete e insert
     private void DB_DeleteAndInsert(String msgTry, String msgCatch) { 
             try 
             {
@@ -52,7 +54,7 @@ public class MySql {
                
             }
     }        
-    
+    //RETIRAR DA CLASE ==========================================
     public void inserirLivro(
         String tabela, 
         //String primary_key,         
@@ -68,11 +70,8 @@ public class MySql {
                   sql = "INSERT INTO "+tabela+" (registro, CDD, codISBN, titulo, genero, autor, nEdicao, disponibilidade) VALUES ('"+registroLivro(1000)+"','"+CDD+"','"+codISBN+"', '"+titulo+"', '"+genero+"', '"+autor+"', '"+nEdicao+"', '"+disponibilidade+"')";  
                   DB_DeleteAndInsert("Livro cadastrado com sucesso! =)", "Erro na conexão com o banco de Dados");           
     }
+    //RETIRAR DA CLASSE=====================================================
     
-    public void inserir_cdd_livro(String tabela, Float cdd, String classe) {
-        sql = "INSERT INTO "+tabela+" (CDD, classe) VALUES ('"+cdd+"','"+classe+"')";
-        DB_DeleteAndInsert("Cdd cadastrado:"+cdd, "Erro na conexão com o banco de Dados");  
-    }
     
     public void selecionarLivro(String tituloLivro){        
         String tituloDB;

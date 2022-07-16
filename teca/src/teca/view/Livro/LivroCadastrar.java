@@ -219,7 +219,7 @@ Cdd CDD = new Cdd();
         LVR.setAutor(autorField.getText());
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));                  
+        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));                         
         LDAO.inserirLivro(LVR);     
        
     }//GEN-LAST:event_cadastrarButtonActionPerformed
