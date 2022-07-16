@@ -7,6 +7,7 @@ package teca.controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import teca.model.Cdd;
 import teca.model.Livro;
@@ -20,7 +21,8 @@ public class LivroDAO {
     //Configuração GERAL
     String nomeBanco = "tecadb";
     String url = "jdbc:mysql://localhost/"+nomeBanco;   
-    String sql;
+    String sql, sql2;
+    
     RegistroLivro RDM = new RegistroLivro();
     Cdd CDD = new Cdd();
     
@@ -50,6 +52,39 @@ public class LivroDAO {
         DB_DeleteAndInsert("Livro cadastrado com sucesso! =)", "Erro na conexão com o banco de Dados");    
     }
     
+    
+    public void excluir(Livro LVR) {
+        sql2 = "SELECT * FROM livro WHERE titulo = '"+LVR.getTitulo()+"'";
+        try 
+	   {
+
+	     Connection conexao = DriverManager.getConnection(url, "root","");
+
+	     PreparedStatement pesquisa = conexao.prepareStatement(sql2);	     
+             
+	     ResultSet resultado = pesquisa.executeQuery();
+             
+	     while (resultado.next()) {                                
+                 LVR.setRegistro(Integer.parseInt(resultado.getString("registro")));
+             }
+             
+            JOptionPane.showMessageDialog(null,"REGISTRO :"+ LVR.getRegistro());         
+            
+           } catch(Exception erro){ 
+           
+              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
+           }                 
+        
+        sql = "DELETE FROM livro WHERE registro = "+LVR.getRegistro();
+        DB_DeleteAndInsert("Livro deletado com sucesso!", "Erro na conexão com o banco de Dados");
+        LVR.setTitulo("");
+        LVR.setCodISBN(0);
+        LVR.setGenero("");                                   
+        LVR.setAutor("");                 
+        LVR.setnEdicao(0);                
+        LVR.setDisponibilidade(0);        
+        
+    }
     
     
 }

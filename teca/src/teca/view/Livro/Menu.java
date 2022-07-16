@@ -15,9 +15,11 @@ import teca.view.ADM.TelaCadastrarADM;
  * @author Gamer
  */
 public class Menu extends javax.swing.JFrame {
-     Livro LVR = new Livro();    
-     MySql SQL = new MySql();
-     Cdd CDD = new Cdd();
+      Livro LVR = new Livro(); 
+      LivroDAO LDAO = new LivroDAO(); 
+      
+      MySql SQL = new MySql();
+      Cdd CDD = new Cdd();
     /**
      * Creates new form Menu
      */
@@ -230,10 +232,11 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void excluiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluiButtonActionPerformed
-        Livro LVR = new Livro();
-        LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-        SQL.excluir("livro","codISBN",LVR.getCodISBN());
+        //Livro LVR = new Livro();
+        //LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
+        //SQL.excluir("livro","codISBN",LVR.getCodISBN());
         
+        LDAO.excluir(LVR);
         tituloField.setText("");
         autorField.setText("");
         generoField.setText("");

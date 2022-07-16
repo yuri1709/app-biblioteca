@@ -11,9 +11,9 @@ import java.util.Random;
  * @author Gamer
  */
 public class RegistroLivro {
-    public int registroLivro(int number){ //gera um número de registro do livro
-        Integer registro;
+    public int registroLivro(int number){ //gera um número de registro do livro        
         Random gerador = new Random();
         return gerador.nextInt(number);
-    }
+    }       
 }
+

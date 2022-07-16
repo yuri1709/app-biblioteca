@@ -219,8 +219,7 @@ Cdd CDD = new Cdd();
         LVR.setAutor(autorField.getText());
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));           
-        
+        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));                  
         LDAO.inserirLivro(LVR);     
        
     }//GEN-LAST:event_cadastrarButtonActionPerformed
@@ -245,7 +244,6 @@ Cdd CDD = new Cdd();
         
         SQL.selecionarCDD(generoField.getText());//chamada para buscar o cdd corrrespondente ao valor digitado no campo genero
         generoField.setText(CDD.getClasse());      //auto completa com dados da classe cdd do banc oque o usuario quer escrever 
-        
         cddField.setText(Float.toString(CDD.getCdd()));//escreve o número do cdd no campo de texto   
     }//GEN-LAST:event_generoFieldActionPerformed
 

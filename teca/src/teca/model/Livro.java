@@ -14,7 +14,15 @@ public class Livro {
     static int codISBN;    
     static int nEdicao;
     static int disponibilidade;
-   
+    static int registro;
+
+    public int getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(int registro) {
+        Livro.registro = registro;
+    }
     public String getGenero() {
         return genero;
     }
