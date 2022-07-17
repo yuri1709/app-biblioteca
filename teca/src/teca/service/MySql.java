@@ -73,13 +73,7 @@ public class MySql {
     //RETIRAR DA CLASSE=====================================================
     
     
-    public void selecionarLivro(String tituloLivro){        
-        String tituloDB;
-        Integer codISBN_DB;
-        String generoDB;
-        String autorDB;
-        Integer nEdicaoDB;
-        Integer disponibilidadeDB;
+    public void selecionarLivro(String tituloLivro){                
         sql = "SELECT * FROM livro WHERE titulo LIKE '%"+tituloLivro+"%'";
            try 
 	   {
@@ -120,7 +114,7 @@ public class MySql {
         sql = "UPDATE "+tabela+" SET CDD ='"+CDD+"', codISBN = '"+codISBN+"', titulo = '"+titulo+"', genero = '"+genero+"', autor = '"+autor+"', nEdicao = '"+nEdicao+"', titulo = '"+titulo+"', disponibilidade = '"+disponibilidade+"'WHERE titulo='"+tituloDoLivro+"'";
         DB_DeleteAndInsert("Livro editdo com sucesso!", "Erro na conexão com o banco de Dados");
     }
-    
+    //Vou deixar isso aqui
     public void selecionarCDD(String generoLivro){
         Cdd CDD = new Cdd();
         sql = "SELECT * FROM CDD WHERE classe LIKE '%" + generoLivro +"%' ";
@@ -144,16 +138,8 @@ public class MySql {
            }                 
     }
     
-    public void excluir(String tabela, String primary_key, Integer primary_key_value) {
-        sql = "DELETE FROM "+tabela+" WHERE "+primary_key+" = "+primary_key_value;
-        DB_DeleteAndInsert("Livro deletado com sucesso!", "Erro na conexão com o banco de Dados");
-        LVR.setTitulo("");
-        LVR.setCodISBN(0);
-        LVR.setGenero("");                                   
-        LVR.setAutor("");                 
-        LVR.setnEdicao(0);                
-        LVR.setDisponibilidade(0);        
+      
         
     }
     
-}
+

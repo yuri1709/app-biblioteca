@@ -15,9 +15,10 @@ import teca.service.MySql;
  * @author Gamer
  */
 public class LivroCadastrar extends javax.swing.JFrame {
-MySql SQL = new MySql();
-Cdd CDD = new Cdd();
-
+ MySql SQL = new MySql();
+ Cdd CDD = new Cdd();
+ Livro LVR = new Livro(); 
+ LivroDAO LDAO = new LivroDAO();
     /**
      * Creates new form LivroCadastrar
      */
@@ -212,9 +213,7 @@ Cdd CDD = new Cdd();
     }//GEN-LAST:event_autorFieldActionPerformed
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
-        Livro LVR = new Livro(); 
-        LivroDAO LDAO = new LivroDAO();
-
+        
         LVR.setTitulo(tituloField.getText()); 
         LVR.setAutor(autorField.getText());
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
@@ -245,6 +244,8 @@ Cdd CDD = new Cdd();
         SQL.selecionarCDD(generoField.getText());//chamada para buscar o cdd corrrespondente ao valor digitado no campo genero
         generoField.setText(CDD.getClasse());      //auto completa com dados da classe cdd do banc oque o usuario quer escrever 
         cddField.setText(Float.toString(CDD.getCdd()));//escreve o número do cdd no campo de texto   
+        
+       
     }//GEN-LAST:event_generoFieldActionPerformed
 
     /**
