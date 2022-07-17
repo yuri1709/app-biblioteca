@@ -9,16 +9,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import teca.controller.ClienteDAO;
+import teca.model.Cliente;
 
 /**
  *
  * @author 36127512021.2
  */
 public class Excluir extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Excluir
-     */
+    ClienteDAO CLDAO = new ClienteDAO();
+    Cliente CL = new Cliente();    
+   
     public Excluir() {
         initComponents();
     }
@@ -84,33 +85,11 @@ public class Excluir extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
                                                 "PREENCHA TODOS ELES !!!!");
             
-            excluircpf.setText("");
-                    
-           setVisible(true);
-           
+            excluircpf.setText("");                    
+            setVisible(true);           
         }else{
-            
-            String url = "jdbc:mysql://localhost/tecadb";
-            String sql = "DELETE FROM cliente WHERE cpf='"+excluircpf.getText()+"'";
-            
-             try 
-	   {
-
-	     Connection conexao = DriverManager.getConnection(url,"root","");
-
-	     PreparedStatement atualizar = conexao.prepareStatement(sql);
-
-	     atualizar.executeUpdate();
-             //criar uma condição pra quando o usuário não existir.   
-	     JOptionPane.showMessageDialog(null,"O usuário "+excluircpf.getText()+" foi excluído com sucesso!");
-    
-	   }
-	  
-            catch(Exception erro) { 
-           
-             JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
-               
-           }               
+            CL.setCpf(excluircpf.getText());            
+            CLDAO.excluir(CL);            
         }
     }//GEN-LAST:event_excluirActionPerformed
 

@@ -82,7 +82,7 @@ public class ClienteDAO {
                  CL.setMatricula(Integer.parseInt(resultado.getString("matricula")));
                  System.out.println("Matricula do banco =" +CL.getMatricula());
                  
-                if (novaMatricula != null) { //se for diferente de zero quer dizer que eu gerei uma nova matricula no painel editar, caso não irá permanecer a mesma matricula.
+                if (novaMatricula != null) { //se for diferente de null quer dizer que eu gerei uma nova matricula no painel editar, caso não:irá permanecer a mesma matricula do banco.
                     CL.setMatricula(novaMatricula);
                 } 
                 System.out.println("Matricula do cliente:"+ CL.getMatricula());
@@ -115,6 +115,31 @@ public class ClienteDAO {
                
            }     
     }
+    
+    public void excluir (Cliente CL) {        
+        String url = "jdbc:mysql://localhost/tecadb";
+            String sql = "DELETE FROM clientes WHERE cpf='"+CL.getCpf()+"'";
+            
+             try 
+	   {
+
+	     Connection conexao = DriverManager.getConnection(url,"root","");
+
+	     PreparedStatement atualizar = conexao.prepareStatement(sql);
+
+	     atualizar.executeUpdate();
+             //criar uma condição pra quando o usuário não existir.   
+	     JOptionPane.showMessageDialog(null,"O usuário "+CL.getCpf()+" foi excluído com sucesso!");
+    
+	   }
+	  
+            catch(Exception erro) { 
+           
+             JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
+               
+           }               
+    }
+    
     
     public int gerarNovaMatricula (Cliente CL) {
         Random RDM = new Random();
