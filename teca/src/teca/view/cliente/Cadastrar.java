@@ -5,13 +5,10 @@
  */
 package teca.view.cliente;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.util.Random;
 import javax.swing.JOptionPane;
-import teca.controller.clienteDAO;
+import teca.controller.ClienteDAO;
 import teca.model.Cliente;
 
 /**
@@ -19,7 +16,7 @@ import teca.model.Cliente;
  * @author 36127512021.2
  */
 public class Cadastrar extends javax.swing.JFrame {
-    clienteDAO CLDAO = new clienteDAO();
+    ClienteDAO CLDAO = new ClienteDAO();
     Cliente CL = new Cliente();
     public Cadastrar() {
         initComponents();
@@ -140,7 +137,7 @@ public class Cadastrar extends javax.swing.JFrame {
             CL.setCpf(cadastrarcpf.getText());
             CL.setMatricula(RDM.nextInt(5555));           
             CLDAO.inserir(CL);
-            System.out.println(CL.getCpf());
+            
         }                                         
                                             
     }//GEN-LAST:event_cadastrarActionPerformed

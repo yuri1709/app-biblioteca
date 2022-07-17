@@ -8,14 +8,18 @@ package teca.view.cliente;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.Random;
 import javax.swing.JOptionPane;
+import teca.controller.ClienteDAO;
+import teca.model.Cliente;
 
 /**
  *
  * @author 36127512021.2
  */
 public class Editar extends javax.swing.JFrame {
-
+    ClienteDAO CLDAO = new ClienteDAO();
+    Cliente CL = new Cliente();
     /**
      * Creates new form Editar
      */
@@ -37,13 +41,13 @@ public class Editar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         editarcpf = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        editarendereço = new javax.swing.JTextField();
+        editarendereco = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         editarnome = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        editarmatricula = new javax.swing.JTextField();
         editar = new javax.swing.JButton();
         voltar = new javax.swing.JButton();
+        gerarNovaMatriculaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 400));
@@ -67,8 +71,14 @@ public class Editar extends javax.swing.JFrame {
         jLabel3.setText("Endereço:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(40, 130, 60, 20);
-        getContentPane().add(editarendereço);
-        editarendereço.setBounds(110, 130, 190, 20);
+
+        editarendereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarenderecoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(editarendereco);
+        editarendereco.setBounds(110, 130, 190, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Nome:");
@@ -87,8 +97,6 @@ public class Editar extends javax.swing.JFrame {
         jLabel5.setText("Matrícula:");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(40, 210, 60, 20);
-        getContentPane().add(editarmatricula);
-        editarmatricula.setBounds(110, 210, 190, 20);
 
         editar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         editar.setText("Editar");
@@ -110,6 +118,17 @@ public class Editar extends javax.swing.JFrame {
         getContentPane().add(voltar);
         voltar.setBounds(200, 260, 80, 23);
 
+        gerarNovaMatriculaButton.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        gerarNovaMatriculaButton.setForeground(new java.awt.Color(255, 0, 0));
+        gerarNovaMatriculaButton.setText("Gerar nova matrícula");
+        gerarNovaMatriculaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gerarNovaMatriculaButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(gerarNovaMatriculaButton);
+        gerarNovaMatriculaButton.setBounds(110, 210, 190, 21);
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -119,47 +138,43 @@ public class Editar extends javax.swing.JFrame {
     }//GEN-LAST:event_editarnomeActionPerformed
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
-         if ( (editarnome.getText().equals("")) || (editarendereço.getText().equals("")) || (editarcpf.getText().equals("")) || (editarmatricula.getText().equals("")) ) {
+         if ( (editarnome.getText().equals("")) || (editarendereco.getText().equals("")) || (editarcpf.getText().equals("")) ) {
          
           JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
                                                 "PREENCHA TODOS ELES !!!!");
             
            editarnome.setText("");
-           editarendereço.setText("");
+           editarendereco.setText("");
            editarcpf.setText("");
-           editarmatricula.setText("");
+           
           
             setVisible(true);
         
         }else{
-         
-         String url = "jdbc:mysql://localhost/tecadb";
-	 String sql = "UPDATE cliente SET nome='"+editarnome.getText()+"',endereco='"+editarendereço.getText()+"',matricula='"+editarmatricula.getText()+"' WHERE cpf= '"+editarcpf.getText()+"' ";
-     
-         try 
-           {
-
-	     Connection conexao = DriverManager.getConnection(url, "root","");
-
-	     PreparedStatement atualizar = conexao.prepareStatement(sql);
-
-	     atualizar.executeUpdate();
-
-	     JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
-    
-	   }
-	  
-	   catch(Exception erro) { 
-           
-              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
-               
-           }
-     }
+            CL.setNome(editarnome.getText());
+            CL.setEndereco(editarendereco.getText());
+            CL.setCpf(editarcpf.getText());
+            CLDAO.editar(CL);
+        }
     }//GEN-LAST:event_editarActionPerformed
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
          dispose();
     }//GEN-LAST:event_voltarActionPerformed
+
+    private void editarenderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarenderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarenderecoActionPerformed
+
+    private void gerarNovaMatriculaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarNovaMatriculaButtonActionPerformed
+        // TODO add your handling code here:
+        //NOTA: AO GERAR UMA NOVA MATRICULA, SE A MATRICULA ANTIGA ESTIVER ATRELADA AO EMPRESTIMO DE UM LIVRO NAO HAVERA COMO MUDAR! SO EXCLUINDO A MATRICULA DA TABELA EMPRESTIMO.
+        if ( !((editarnome.getText().equals("")) || (editarendereco.getText().equals("")) || (editarcpf.getText().equals(""))) ) {
+            CLDAO.gerarNovaMatricula(CL);
+        } else {
+            JOptionPane.showMessageDialog(null,"Não é possível gerar uma nova matrícula com os campos CPF, NOME E ENDEREÇO INVÁLIDOS!");
+        }
+    }//GEN-LAST:event_gerarNovaMatriculaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,9 +214,9 @@ public class Editar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editar;
     private javax.swing.JTextField editarcpf;
-    private javax.swing.JTextField editarendereço;
-    private javax.swing.JTextField editarmatricula;
+    private javax.swing.JTextField editarendereco;
     private javax.swing.JTextField editarnome;
+    private javax.swing.JButton gerarNovaMatriculaButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
