@@ -66,6 +66,31 @@ public class ClienteDAO {
        }  
     } 
     
+    public void selecionar(Cliente CL){        
+	   String sql = "SELECT * FROM clientes WHERE cpf='"+CL.getCpf()+"'";
+           
+           try 
+	   {
+
+	     Connection conexao = DriverManager.getConnection(url,"root","");
+
+	     PreparedStatement pesquisa = conexao.prepareStatement(sql);	     
+             
+	     ResultSet resultado = pesquisa.executeQuery();
+             
+             while (resultado.next()) {                 
+                 CL.setNome(resultado.getString("nome"));
+		 CL.setEndereco(resultado.getString("endereco"));  
+                 CL.setCpf(resultado.getString("cpf"));
+                 CL.setMatricula(Integer.parseInt(resultado.getString("matricula")));   
+             }  
+                
+           } catch(Exception erro) { 
+           
+              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
+         }
+    }
+    
     public void editar (Cliente CL) {            
         String url = "jdbc:mysql://localhost/tecadb";	
         sql_get_registro = "SELECT * FROM clientes WHERE cpf = '"+CL.getCpf()+"'";

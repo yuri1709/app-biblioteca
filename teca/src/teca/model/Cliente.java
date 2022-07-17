@@ -1,5 +1,7 @@
 package teca.model;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Gamer
@@ -42,5 +44,22 @@ public class Cliente {
     public void setMatricula(Integer matricula) {
         this.matricula = matricula;
     }        
-           
+       
+    public void exibirCliente() {
+         JOptionPane.showMessageDialog(null,"Dados encontrados com sucesso!\n"+
+                                                                       "------------------------------\n"+
+                                                                       "Nome  : "+nome+"\n"+
+                                                                       "Endereço  "+endereco+"\n"+
+                                                                       "CPF  "+cpf+"\n"+
+                                                                       "Matrícula  "+matricula+"\n"+
+                                                                       "------------------------------");          
+    }  
+    
+    public void limparCache() {
+        nome = "";
+        endereco = "";
+        cpf = "";
+        matricula = null;
+    }
+    
 }

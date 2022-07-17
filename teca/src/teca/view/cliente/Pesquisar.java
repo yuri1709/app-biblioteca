@@ -5,21 +5,19 @@
  */
 package teca.view.cliente;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import javax.swing.JOptionPane;
+import teca.controller.ClienteDAO;
+import teca.model.Cliente;
 
 /**
  *
  * @author 36127512021.2
  */
 public class Pesquisar extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Pesquisar
-     */
+    ClienteDAO CLDAO = new ClienteDAO();
+    Cliente CL = new Cliente();
+    
     public Pesquisar() {
         initComponents();
     }
@@ -91,12 +89,7 @@ public class Pesquisar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
-        
-        String nomeDB= "";
-        String endereçoDB= "";
-        String cpfDB= "";
-        String matriculaDB= "";
-        
+                
         if ( (pesquisarcpf.getText().equals("")) ) {
              
              JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
@@ -104,42 +97,14 @@ public class Pesquisar extends javax.swing.JFrame {
              
              pesquisarcpf.setText("");
            
-           }else{
-             
-           String url = "jdbc:mysql://localhost/tecadb";
-	   String sql = "SELECT * FROM cliente WHERE cpf='"+pesquisarcpf.getText()+"' ";
-           
-           try 
-	   {
-
-	     Connection conexao = DriverManager.getConnection(url,"root","");
-
-	     PreparedStatement pesquisa = conexao.prepareStatement(sql);	     
-             
-	     ResultSet resultado = pesquisa.executeQuery();
-             
-             while (resultado.next()) {
-                 
-                 nomeDB = resultado.getString("nome");
-		 endereçoDB  = resultado.getString("endereco");  
-                 cpfDB  = resultado.getString("cpf");
-                 matriculaDB  = resultado.getString("matricula");   
-             }  
-             JOptionPane.showMessageDialog(null,"Dados encontrados com sucesso!\n"+
-                                                                       "------------------------------\n"+
-                                                                       "Nome  : "+nomeDB+"\n"+
-                                                                       "Endereço  "+endereçoDB+"\n"+
-                                                                       "CPF  "+cpfDB+"\n"+
-                                                                       "Matrícula  "+matriculaDB+"\n"+
-                                                                       "------------------------------");          
-             }            
-           catch(Exception erro) { 
-           
-              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
-         }
-        }
+        }else{
+            CL.setCpf(pesquisarcpf.getText());
+            CLDAO.selecionar(CL);
+            CL.exibirCliente();
+            CL.limparCache();
+            
     }//GEN-LAST:event_pesquisarActionPerformed
-
+  }
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
               dispose();
     }//GEN-LAST:event_voltarActionPerformed
