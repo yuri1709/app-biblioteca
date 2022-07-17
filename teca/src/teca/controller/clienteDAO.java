@@ -20,7 +20,7 @@ public class ClienteDAO {
     String sql2;
     String sql_get_registro;
     String CPFDB = "";
-   
+    Integer novaMatricula;
     public void inserir(Cliente CL) {
          
 	    //VERIFICANDO LOGIN EXISTENTE
@@ -66,10 +66,9 @@ public class ClienteDAO {
        }  
     } 
     
-    public void editar (Cliente CL){
-        String url = "jdbc:mysql://localhost/tecadb";
-	
-        sql_get_registro = "SELECT * FROM clientes WHERE CPF = '"+CL.getCpf()+"'";
+    public void editar (Cliente CL) {            
+        String url = "jdbc:mysql://localhost/tecadb";	
+        sql_get_registro = "SELECT * FROM clientes WHERE cpf = '"+CL.getCpf()+"'";
         try 
 	   {
 
@@ -81,8 +80,14 @@ public class ClienteDAO {
              
 	     while (resultado.next()) {                                
                  CL.setMatricula(Integer.parseInt(resultado.getString("matricula")));
+                 System.out.println("Matricula do banco =" +CL.getMatricula());
+                 
+                if (novaMatricula != null) { //se for diferente de zero quer dizer que eu gerei uma nova matricula no painel editar, caso não irá permanecer a mesma matricula.
+                    CL.setMatricula(novaMatricula);
+                } 
+                System.out.println("Matricula do cliente:"+ CL.getMatricula());
              }
-                                     
+                                                               
            } catch(Exception erro){ 
            
               JOptionPane.showMessageDialog(null,"CPF NÃO ENCONTRADO : "+erro);               
@@ -111,14 +116,13 @@ public class ClienteDAO {
            }     
     }
     
-    public void gerarNovaMatricula (Cliente CL) {
+    public int gerarNovaMatricula (Cliente CL) {
         Random RDM = new Random();
-        Integer novaMatricula = RDM.nextInt(5555);
-        CL.setMatricula(novaMatricula);
-         
-	     JOptionPane.showMessageDialog(null,"Matrícula gerada com sucesso!\n"
+        novaMatricula = RDM.nextInt(5555);
+          JOptionPane.showMessageDialog(null,"Matrícula gerada com sucesso!\n"
                      + "sua nova matrícula é "+ novaMatricula
-                    );    	  
+                    );    	
+       return  novaMatricula;
     }
     
   
