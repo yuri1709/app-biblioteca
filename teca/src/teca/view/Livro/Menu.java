@@ -16,13 +16,10 @@ import teca.view.ADM.TelaCadastrarADM;
  */
 public class Menu extends javax.swing.JFrame {
       Livro LVR = new Livro(); 
-      LivroDAO LDAO = new LivroDAO(); 
-      
+      LivroDAO LDAO = new LivroDAO();       
       MySql SQL = new MySql();
       Cdd CDD = new Cdd();
-    /**
-     * Creates new form Menu
-     */
+    
     public Menu() {
         initComponents();      
     }
@@ -253,7 +250,7 @@ public class Menu extends javax.swing.JFrame {
     private void PesquisarLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarLivroButtonActionPerformed
         //Eu não sei como, esse new não zerou os atributos da classe livro, obs: os atributos estao recebendo o valor no método SQL.selecionarLivro
         Livro LVR = new Livro();                
-        LDAO.selecionarLivro(LVR, pesquisarLivroField.getText());
+        LDAO.selecionar(LVR, pesquisarLivroField.getText());
         tituloField.setText(LVR.getTitulo());
         autorField.setText(LVR.getAutor());
         generoField.setText(LVR.getGenero());
@@ -266,20 +263,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_PesquisarLivroButtonActionPerformed
 
     private void editaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaButtonActionPerformed
-        // TODO add your handling code here:
-                 
-              
+        // TODO add your handling code here:                            
         LVR.setTitulo(tituloField.getText());        
         LVR.setAutor(autorField.getText());
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
         LVR.setDisponibilidade(Integer.parseInt(disponiField.getText())); 
         LVR.setGenero(generoField.getText());        
-        
-               
-        //sql = "UPDATE "+tabela+" SET CDD ='"+CDD+"', codISBN = '"+codISBN+"', titulo = '"+titulo+"', genero = '"+genero+"', autor = '"+autor+"', nEdicao = '"+nEdicao+"', titulo = '"+titulo+"', disponibilidade = '"+disponibilidade+"'";         
-        //SQL.editarLivro("livro",pesquisarLivroField.getText(), CDD.getCdd() , LVR.getCodISBN(), LVR.getTitulo(), LVR.getGenero() , LVR.getAutor(), LVR.getnEdicao(), LVR.getDisponibilidade());
-        //O CDD É PEGO NO CAMPO DE PREENCHIMENTO DE GENERO, 
+        //editar o livro, o segundo parâmetro serve para passar o título antigo
         LDAO.editar(LVR, pesquisarLivroField.getText());
     }//GEN-LAST:event_editaButtonActionPerformed
 

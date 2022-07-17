@@ -219,7 +219,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
         LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));                         
-        LDAO.inserirLivro(LVR);     
+        LDAO.inserir(LVR);     
        
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
