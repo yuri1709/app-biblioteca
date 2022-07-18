@@ -24,15 +24,17 @@ public class LivroEmprestar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel8 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         cpfField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         pesquisarButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(440, 440));
@@ -44,38 +46,10 @@ public class LivroEmprestar extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(130, 0, 190, 50);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("CPF:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 100, 50, 40);
-
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Informar o livro que será emprestado");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 160, 240, 40);
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Título:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 327, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 120, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 190, 380, 160);
+        jLabel4.setBounds(20, 180, 211, 40);
         getContentPane().add(cpfField);
         cpfField.setBounds(50, 110, 150, 30);
 
@@ -90,7 +64,7 @@ public class LivroEmprestar extends javax.swing.JFrame {
 
         jButton2.setText("Emprestar");
         getContentPane().add(jButton2);
-        jButton2.setBounds(160, 360, 100, 30);
+        jButton2.setBounds(170, 430, 100, 30);
 
         pesquisarButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gamer\\Desktop\\app-biblioteca\\teca\\src\\images\\lupa.png")); // NOI18N
         pesquisarButton.setToolTipText("");
@@ -103,7 +77,43 @@ public class LivroEmprestar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(pesquisarButton);
-        pesquisarButton.setBounds(240, 160, 30, 30);
+        pesquisarButton.setBounds(230, 180, 30, 30);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel3.setText("Autor");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(130, 40, 50, 40);
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel7.setText("Título");
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(130, 0, 50, 40);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel1);
+        jPanel1.setBounds(0, 0, 120, 120);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(20, 230, 380, 200);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setText("CPF:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(20, 100, 50, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,12 +162,14 @@ public class LivroEmprestar extends javax.swing.JFrame {
     private javax.swing.JTextField cpfField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton pesquisarButton;
     // End of variables declaration//GEN-END:variables
 }
