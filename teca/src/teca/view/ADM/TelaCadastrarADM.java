@@ -3,24 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teca.view.ADM;
+package teca.view.adm;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import teca.view.TelaLogin;
+import teca.controller.UsuarioDAO;
+import teca.model.Usuario;
+import teca.service.CriptografiaSH256;
 
 /**
  *
  * @author 36127512021.2
  */
 public class TelaCadastrarADM extends javax.swing.JFrame {
+UsuarioDAO USERDAO = new UsuarioDAO();
+Usuario USER = new Usuario();
+CriptografiaSH256 SH256 = new CriptografiaSH256();
 
-    /**
-     * Creates new form TelaCadastrarADM
-     */
     public TelaCadastrarADM() {
         initComponents();
     }
@@ -40,24 +38,28 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
         cadastrarsenha = new javax.swing.JPasswordField();
         cadastrarnome = new javax.swing.JTextField();
         cadastrar = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(400, 400));
+        setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        jLabel1.setText("Tela - Cadastrar");
+        jLabel1.setText("Cadastrar - Administrador");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(110, 40, 150, 30);
+        jLabel1.setBounds(100, 50, 240, 30);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("Nome:");
+        jLabel2.setText("Usuário");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 95, 50, 50);
+        jLabel2.setBounds(70, 120, 50, 50);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Senha:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 160, 50, 20);
+        jLabel3.setBounds(70, 200, 50, 30);
 
         cadastrarsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +67,7 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrarsenha);
-        cadastrarsenha.setBounds(100, 160, 200, 20);
+        cadastrarsenha.setBounds(140, 200, 200, 30);
 
         cadastrarnome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +75,7 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrarnome);
-        cadastrarnome.setBounds(100, 110, 200, 20);
+        cadastrarnome.setBounds(140, 130, 200, 30);
 
         cadastrar.setText("Cadastrar");
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,9 +84,19 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(130, 220, 80, 23);
+        cadastrar.setBounds(100, 270, 90, 30);
+
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar);
+        voltar.setBounds(210, 270, 90, 30);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarsenhaActionPerformed
@@ -92,74 +104,34 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarsenhaActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        String loginDB = "";
-        TelaLogin TLO = new TelaLogin(); 
+         String loginDB = "";
         
-        if ( (cadastrarnome.getText().equals("")) || (cadastrarsenha.getPassword().equals("")) ) {
+        if ( (cadastrarnome.getText().equals("")) || (cadastrarsenha.getText().equals("")) ) {
              
              JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
                                                  "PREENCHA TODOS ELES !!!!");
+        System.out.println("SENHA:" + cadastrarsenha.getText());
         cadastrarnome.setText("");
         cadastrarsenha.setText("");
         
-         TLO.setVisible(true);
-        }
-        //CONEXAO COM O BANCO
-        else{
-             
-            String url = "jdbc:mysql://localhost/tecadb";
-	    //VERIFICANDO LOGIN EXISTENTE
-            String sql2 = "SELECT * FROM usuario WHERE login='"+cadastrarnome.getText()+"'";
-              try 
-	   {
-
-	     Connection conexao = DriverManager.getConnection(url, "root","");
-
-	     PreparedStatement pesquisa = conexao.prepareStatement(sql2);	     
-             
-	     ResultSet resultado = pesquisa.executeQuery();
-             
-	     while (resultado.next()) {               
-		  loginDB  = resultado.getString("login");
-                 
-             }
-             
-           } catch(Exception erro){ 
-           
-              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
-           }      
-       if(loginDB.equals(cadastrarnome.getText())){
-            JOptionPane.showMessageDialog(null,"O nome inserido já foi cadastrado"); 
-            
-       }else {
-            String sql = "INSERT INTO usuario (login,senha) values ('"+cadastrarnome.getText()+"','"+cadastrarsenha.getPassword()+"')";       
-            
-            try 
-            {
-
-	     Connection conexao = DriverManager.getConnection(url,"root","");
-
-	     PreparedStatement atualizar = conexao.prepareStatement(sql);
-
-	     atualizar.executeUpdate();
-
-	     JOptionPane.showMessageDialog(null,"Administrador cadastrado com sucesso!");
-    
-            }
-	  
-            catch(Exception erro){ 
-          
-              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
-               
-            }
         
-         }
+         setVisible(true);
+        }
+        else{
+            USER.setLogin(cadastrarnome.getText());
+            USER.setSenha(SH256.getSHA256(cadastrarsenha.getText()));            
+            System.out.println("SENHA SH256 ="+USER.getSenha());
        }
+
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void cadastrarnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarnomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cadastrarnomeActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,5 +175,6 @@ public class TelaCadastrarADM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

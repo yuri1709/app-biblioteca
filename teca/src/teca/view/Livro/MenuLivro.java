@@ -8,7 +8,7 @@ import teca.controller.LivroDAO;
 import teca.model.Cdd;
 import teca.model.Livro;
 import teca.service.MySql;
-import teca.view.ADM.TelaCadastrarADM;
+//import teca.view.ADM.TelaCadastrarADM;
 
 /**
  *
@@ -202,6 +202,11 @@ public class MenuLivro extends javax.swing.JFrame {
         pesquisarLivroField.setBounds(120, 50, 240, 30);
 
         voltarButton.setText("voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(voltarButton);
         voltarButton.setBounds(450, 10, 73, 23);
 
@@ -314,6 +319,10 @@ public class MenuLivro extends javax.swing.JFrame {
     private void localizarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localizarButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_localizarButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
     /**
      * @param args the command line arguments

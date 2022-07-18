@@ -12,7 +12,15 @@ package teca.model;
 public class Usuario {
     static private String login;
     static private String senha;
+    static private Integer id_usuario;
 
+    public static Integer getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(Integer id_usuario) {
+        Usuario.id_usuario = id_usuario;
+    }
     public String getLogin() {
         return login;
     }

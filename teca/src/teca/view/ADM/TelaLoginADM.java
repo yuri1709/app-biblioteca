@@ -1,5 +1,6 @@
-package teca.view;
+package teca.view.adm;
 
+import teca.view.adm.TelaMenu;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,12 +18,13 @@ import teca.model.Usuario;
  *
  * @author 36127512021.2
  */
-public class TelaLogin extends javax.swing.JFrame {
+public class TelaLoginADM extends javax.swing.JFrame {
     /**
      * Creates new form TelaLogin
      */
-    
-    public TelaLogin() {
+    String loginDB = "";
+    String senhaDB = "";
+    public TelaLoginADM() {
         initComponents();
     }
 
@@ -41,24 +43,28 @@ public class TelaLogin extends javax.swing.JFrame {
         Login = new javax.swing.JTextField();
         Senha = new javax.swing.JPasswordField();
         Logar = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
+        cadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 400));
+        setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel1.setText("Login - Administrador");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(100, 20, 190, 40);
+        jLabel1.setBounds(100, 40, 190, 40);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("Nome:");
+        jLabel2.setText("Usuário:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 84, 60, 30);
+        jLabel2.setBounds(50, 120, 60, 50);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Senha:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 144, 50, 30);
+        jLabel3.setBounds(50, 180, 50, 50);
 
         Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +72,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Login);
-        Login.setBounds(100, 90, 200, 20);
+        Login.setBounds(130, 130, 200, 30);
 
         Senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +80,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Senha);
-        Senha.setBounds(100, 150, 200, 20);
+        Senha.setBounds(130, 190, 200, 30);
 
         Logar.setText("Logar");
         Logar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,19 +89,39 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Logar);
-        Logar.setBounds(130, 210, 100, 23);
+        Logar.setBounds(160, 250, 100, 30);
+
+        voltar.setText("Recuperar a senha");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar);
+        voltar.setBounds(200, 300, 140, 30);
+
+        cadastrar.setText("Cadastar");
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastrar);
+        cadastrar.setBounds(70, 300, 110, 30);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogarActionPerformed
        //istanciando a classe Usuario
-       Usuario user = new Usuario();
        
+       TelaMenu TL = new TelaMenu();
        
        String url = "jdbc:mysql://localhost/tecadb";
        String sql = "SELECT * FROM usuario WHERE login='"+Login.getText()+"'";  
        
+     
        try 
 	   {
 
@@ -106,27 +132,34 @@ public class TelaLogin extends javax.swing.JFrame {
 	     ResultSet resultado = pesquisa.executeQuery();
              
 	     while (resultado.next()) {               
-		 user.setLogin(resultado.getString("login"));
-		 user.setSenha(resultado.getString("senha"));                 
+		 loginDB  = resultado.getString("login");
+		 senhaDB = resultado.getString("senha");
+                 
             }
-	   JOptionPane.showMessageDialog(null,"LOGIN : "+user.getLogin()+ " SENHA:"+user.getSenha());               
+	  
            } catch(Exception erro){ 
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
            }      
+       System.out.println(Senha.getPassword());
        
-       if ( (Login.getText().equals(user.getLogin())) && (Senha.getPassword().equals(user.getSenha())) ){
+       System.out.println(senhaDB);
+       //String pass.getPassword = Senha.getText() ;
+       System.out.println(Senha.Pass());
+       
+       
+       if ( (Login.getText().equals(loginDB)) && (Senha.getPassword().equals(senhaDB)) ){
 
            //pegar o nome do usuario logado
-                        
-            JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
-                                                "Você irá para a Tela de Cadastro de Dados de Empregados !!!"); 
-             new MenuLogin().setVisible(true);
             
+           
+            JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
+                                                "Você irá para a Tela de Menu de Dados de Administrador !!!"); 
+            
+              TL.setVisible(true);
                                                                                     
         }else{                                   
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 
-            user.setLogin("nao logado");
             Login.setText("");
             Senha.setText("");  
             
@@ -141,6 +174,19 @@ public class TelaLogin extends javax.swing.JFrame {
     private void SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SenhaActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        EditarADM ED = new EditarADM();
+        
+        ED.setVisible(true);
+    }//GEN-LAST:event_voltarActionPerformed
+
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+        TelaCadastrarADM TCA = new TelaCadastrarADM();
+        
+        TCA.setVisible(true);
+        
+    }//GEN-LAST:event_cadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,20 +205,21 @@ public class TelaLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLoginADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLoginADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLoginADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLoginADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaLogin().setVisible(true);
+                new TelaLoginADM().setVisible(true);
             }
         });
     }
@@ -181,8 +228,10 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton Logar;
     private javax.swing.JTextField Login;
     private javax.swing.JPasswordField Senha;
+    private javax.swing.JButton cadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }
