@@ -21,6 +21,7 @@ public class ClienteDAO {
     String sql_get_registro;
     String CPFDB = "";
     Integer novaMatricula;
+    
     public void inserir(Cliente CL) {
          
 	    //VERIFICANDO LOGIN EXISTENTE
@@ -175,8 +176,6 @@ public class ClienteDAO {
        return  novaMatricula;
     }
     
-  
-
     
 }
 

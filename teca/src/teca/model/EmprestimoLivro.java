@@ -9,9 +9,10 @@ package teca.model;
  * @author Gamer
  */
 public class EmprestimoLivro {
+    static int emprestimo_id;
     static int registro;
     static int matricula;
-    static int emprestimo;
+   
 
     public int getRegistro() {
         return registro;
@@ -29,11 +30,11 @@ public class EmprestimoLivro {
         this.matricula = matricula;
     }
 
-    public int getEmprestimo() {
-        return emprestimo;
+    public int getEmprestimo_id() {
+        return emprestimo_id;
     }
 
-    public void setEmprestimo(int emprestimo) {
-        this.emprestimo = emprestimo;
+    public void setEmprestimo_id(int emprestimo) {
+        this.emprestimo_id = emprestimo;
     }
 }
