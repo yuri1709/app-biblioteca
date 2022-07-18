@@ -142,9 +142,7 @@ public class TelaLoginADM extends javax.swing.JFrame {
                                                                                     
         }else{                                   
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 
-             
-            
-           
+                                    
         }
     }//GEN-LAST:event_LogarActionPerformed
 
