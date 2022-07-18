@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
-import teca.controller.ClienteDAO;
+import teca.controller.clienteDAO;
 import teca.model.Cliente;
 
 /**
@@ -17,7 +17,7 @@ import teca.model.Cliente;
  * @author 36127512021.2
  */
 public class Excluir extends javax.swing.JFrame {
-    ClienteDAO CLDAO = new ClienteDAO();
+    clienteDAO CLDAO = new clienteDAO();
     Cliente CL = new Cliente();    
    
     public Excluir() {

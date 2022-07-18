@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Random;
 import javax.swing.JOptionPane;
-import teca.controller.ClienteDAO;
+import teca.controller.clienteDAO;
 import teca.model.Cliente;
 
 /**
@@ -18,7 +18,7 @@ import teca.model.Cliente;
  * @author 36127512021.2
  */
 public class Editar extends javax.swing.JFrame {
-    ClienteDAO CLDAO = new ClienteDAO();
+    clienteDAO CLDAO = new clienteDAO();
     Cliente CL = new Cliente();
     /**
      * Creates new form Editar
@@ -127,7 +127,7 @@ public class Editar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(gerarNovaMatriculaButton);
-        gerarNovaMatriculaButton.setBounds(110, 210, 190, 21);
+        gerarNovaMatriculaButton.setBounds(110, 210, 190, 23);
 
         pack();
         setLocationRelativeTo(null);

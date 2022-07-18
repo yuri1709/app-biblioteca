@@ -15,7 +15,7 @@ import teca.model.Cliente;
  *
  * @author Gamer
  */
-public class ClienteDAO {
+public class clienteDAO {
     String url = "jdbc:mysql://localhost/tecadb";
     String sql2;
     String sql_get_registro;
