@@ -1,15 +1,13 @@
-package teca.view.adm;
+package teca.view;
 
-//import teca.view.adm.TelaMenu;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
+import teca.view.ADM.TelaCadastrarADM;
 import javax.swing.JOptionPane;
 import teca.controller.UsuarioDAO;
 import teca.model.Usuario;
 import teca.service.CriptografiaSH256;
-import teca.view.MenuLogin;
+import teca.view.MenuLoginGeral;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -138,7 +136,7 @@ public class TelaLoginADM extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
                                                 "Você irá para a Tela de Menu de Dados de Administrador !!!"); 
                         
-              new MenuLogin().setVisible(true);//preciso desse new MenuLogin().setVisible(true) para transferir o nome do login para a próxima tela.
+              new MenuLoginGeral().setVisible(true);//preciso desse new MenuLogin().setVisible(true) para transferir o nome do login para a próxima tela.
                                                                                     
         }else{                                   
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 
@@ -161,9 +159,10 @@ public class TelaLoginADM extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        //TelaCadastrarADM TCA = new TelaCadastrarADM();
-        
+        //TelaCadastrarADM TCA = new TelaCadastrarADM();       
         //TCA.setVisible(true);
+        new TelaCadastrarADM().setVisible(true); /*não sei porque não consigo instanciar este Jframe quando está locaizando no mesmo package 
+        do  JFrame TelaLoginADM(Este aqui no caso!)*/
         
     }//GEN-LAST:event_cadastrarActionPerformed
 
