@@ -71,7 +71,7 @@ public class UsuarioDAO {
             JOptionPane.showMessageDialog(null,"O nome inserido já foi cadastrado"); 
             
        }else {
-            String sql = "INSERT INTO usuario (login,senha) values ('"+USER.getLogin()+"', "+USER.getSenha()+"'))";       
+            String sql = "INSERT INTO usuario (login,senha) values ('"+USER.getLogin()+"', '"+USER.getSenha()+"')";       
             System.out.println(USER.getSenha());
             try 
             {

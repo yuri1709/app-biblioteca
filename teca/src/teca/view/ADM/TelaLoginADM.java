@@ -1,12 +1,14 @@
 package teca.view.adm;
 
-import teca.view.adm.TelaMenu;
+//import teca.view.adm.TelaMenu;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import teca.controller.UsuarioDAO;
 import teca.model.Usuario;
+import teca.service.CriptografiaSH256;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,9 +21,10 @@ import teca.model.Usuario;
  * @author 36127512021.2
  */
 public class TelaLoginADM extends javax.swing.JFrame {
-    /**
-     * Creates new form TelaLogin
-     */
+    UsuarioDAO USERDAO = new UsuarioDAO();
+    Usuario USER = new Usuario();
+    CriptografiaSH256 SH256 = new CriptografiaSH256();
+    
     String loginDB = "";
     String senhaDB = "";
     public TelaLoginADM() {
@@ -116,39 +119,18 @@ public class TelaLoginADM extends javax.swing.JFrame {
     private void LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogarActionPerformed
        //istanciando a classe Usuario
        
-       TelaMenu TL = new TelaMenu();
-       
-       String url = "jdbc:mysql://localhost/tecadb";
-       String sql = "SELECT * FROM usuario WHERE login='"+Login.getText()+"'";  
+       //TelaMenu TL = new TelaMenu();
+      
+      //Pegando dados inseridos do campo login e senha
+      USER.setLogin(Login.getText());
+      USER.setSenha(Senha.getText());
+      USERDAO.selecionar(USER);
        
      
-       try 
-	   {
-
-	     Connection conexao = DriverManager.getConnection(url, "root","");
-
-	     PreparedStatement pesquisa = conexao.prepareStatement(sql);	     
-             
-	     ResultSet resultado = pesquisa.executeQuery();
-             
-	     while (resultado.next()) {               
-		 loginDB  = resultado.getString("login");
-		 senhaDB = resultado.getString("senha");
-                 
-            }
-	  
-           } catch(Exception erro){ 
-           
-              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
-           }      
-       System.out.println(Senha.getPassword());
-       
-       System.out.println(senhaDB);
-       //String pass.getPassword = Senha.getText() ;
-       System.out.println(Senha.Pass());
        
        
-       if ( (Login.getText().equals(loginDB)) && (Senha.getPassword().equals(senhaDB)) ){
+       
+       if ( (Login.getText().equals(USER.getLogin())) && (SH256.getSHA256(Senha.getText()).equals(USER.getSenha()) ) ){
 
            //pegar o nome do usuario logado
             
@@ -156,12 +138,11 @@ public class TelaLoginADM extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
                                                 "Você irá para a Tela de Menu de Dados de Administrador !!!"); 
             
-              TL.setVisible(true);
+              //TL.setVisible(true);
                                                                                     
         }else{                                   
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 
-            Login.setText("");
-            Senha.setText("");  
+             
             
            
         }
@@ -176,15 +157,15 @@ public class TelaLoginADM extends javax.swing.JFrame {
     }//GEN-LAST:event_SenhaActionPerformed
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
-        EditarADM ED = new EditarADM();
+       //EditarADM ED = new EditarADM();
         
-        ED.setVisible(true);
+       // ED.setVisible(true);
     }//GEN-LAST:event_voltarActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        TelaCadastrarADM TCA = new TelaCadastrarADM();
+        //TelaCadastrarADM TCA = new TelaCadastrarADM();
         
-        TCA.setVisible(true);
+        //TCA.setVisible(true);
         
     }//GEN-LAST:event_cadastrarActionPerformed
 

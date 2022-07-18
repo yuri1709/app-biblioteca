@@ -120,7 +120,7 @@ CriptografiaSH256 SH256 = new CriptografiaSH256();
         else{
             USER.setLogin(cadastrarnome.getText());
             USER.setSenha(SH256.getSHA256(cadastrarsenha.getText()));            
-            System.out.println("SENHA SH256 ="+USER.getSenha());
+            USERDAO.inserir(USER);
        }
 
     }//GEN-LAST:event_cadastrarActionPerformed
