@@ -93,4 +93,31 @@ public class UsuarioDAO {
             }                          
          }
     }
+    
+    public void editar(Usuario USER, String loginAntigo) {
+          String url = "jdbc:mysql://localhost/tecadb";
+	  String sql = "UPDATE usuario SET login='"+USER.getLogin()+"',senha='"+USER.getSenha()+"' WHERE login= '"+loginAntigo+"' ";
+           
+         
+            try 
+           {
+
+	     Connection conexao = DriverManager.getConnection(url, "root","");
+
+	     PreparedStatement atualizar = conexao.prepareStatement(sql);
+
+	     atualizar.executeUpdate();
+
+	     JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
+    
+	   }
+	  
+	   catch(Exception erro) { 
+           
+              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
+               
+           }        
+    }
+    
+    
 }
