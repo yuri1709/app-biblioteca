@@ -56,6 +56,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         quantidadeField = new javax.swing.JTextField();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -189,6 +190,15 @@ public class LivroCadastrar extends javax.swing.JFrame {
         getContentPane().add(quantidadeField);
         quantidadeField.setBounds(120, 260, 60, 30);
 
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar);
+        voltar.setBounds(310, 0, 80, 23);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -248,6 +258,10 @@ public class LivroCadastrar extends javax.swing.JFrame {
        
     }//GEN-LAST:event_generoFieldActionPerformed
 
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_voltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -304,5 +318,6 @@ public class LivroCadastrar extends javax.swing.JFrame {
     private javax.swing.JButton limparButton;
     private javax.swing.JTextField quantidadeField;
     private javax.swing.JTextField tituloField;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }
