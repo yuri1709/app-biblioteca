@@ -35,7 +35,7 @@ public class UsuarioDAO {
                   USER.setLogin(resultado.getString("login"));
                   USER.setSenha(resultado.getString("senha"));                 
              }
-            JOptionPane.showMessageDialog(null,"LOGIN : "+USER.getLogin()+ " SENHA:"+USER.getSenha());               
+             
             } catch(Exception erro){ 
 
                JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
@@ -117,6 +117,31 @@ public class UsuarioDAO {
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
                
            }        
+    }
+    
+    public void excluir (Usuario USER) {
+        
+          
+            String url = "jdbc:mysql://localhost/tecadb";
+            String sql = "DELETE FROM usuario WHERE login='"+USER.getLogin()+"'";
+            try 
+	   {
+
+	     Connection conexao = DriverManager.getConnection(url,"root","");
+
+	     PreparedStatement atualizar = conexao.prepareStatement(sql);
+
+	     atualizar.executeUpdate();
+             //criar uma condição pra quando o usuário não existir.   
+	     JOptionPane.showMessageDialog(null,"O usuário "+USER.getLogin()+" foi excluído com sucesso!");
+    
+	   }
+	  
+            catch(Exception erro) { 
+           
+             JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
+               
+           }                                  
     }
     
     

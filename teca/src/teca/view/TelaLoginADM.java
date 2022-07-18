@@ -1,7 +1,7 @@
 package teca.view;
 
 
-import teca.view.ADM.TelaCadastrarADM;
+import teca.view.ADM.CadastrarADM;
 import javax.swing.JOptionPane;
 import teca.controller.UsuarioDAO;
 import teca.model.Usuario;
@@ -161,7 +161,7 @@ public class TelaLoginADM extends javax.swing.JFrame {
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         //TelaCadastrarADM TCA = new TelaCadastrarADM();       
         //TCA.setVisible(true);
-        new TelaCadastrarADM().setVisible(true); /*não sei porque não consigo instanciar este Jframe quando está locaizando no mesmo package 
+        new CadastrarADM().setVisible(true); /*não sei porque não consigo instanciar este Jframe quando está locaizando no mesmo package 
         do  JFrame TelaLoginADM(Este aqui no caso!)*/
         
     }//GEN-LAST:event_cadastrarActionPerformed

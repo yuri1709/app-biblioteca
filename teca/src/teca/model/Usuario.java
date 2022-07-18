@@ -5,6 +5,8 @@
  */
 package teca.model;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 36127512021.2
@@ -35,5 +37,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    
+    public void exibir() {
+        JOptionPane.showMessageDialog(null,"Informações do usuário \n"+
+                                                                       "------------------------------\n"+
+                                                                       "ID : "+id_usuario+"\n"+
+                                                                       "LOGIN  : "+login+"\n"+
+                                                                       "------------------------------");
     }
 }
