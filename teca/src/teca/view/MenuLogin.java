@@ -12,14 +12,15 @@ import teca.model.Usuario;
  * @author 36127512021.2
  */
 public class MenuLogin extends javax.swing.JFrame {
-    Usuario USR = new Usuario();
+    Usuario USER = new Usuario();
     /**
      * Creates new form MenuLogin
      */
     public MenuLogin() {
         initComponents();
-        //Nome do usuario logado        
-        user_.setText(USR.getLogin());
+        //Nome do usuario logado  
+        System.out.println(USER.getLogin());
+        user_.setText(USER.getLogin());
     }
 
     /**
@@ -42,6 +43,7 @@ public class MenuLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 300));
         getContentPane().setLayout(null);
 
         Op3.setText("3");

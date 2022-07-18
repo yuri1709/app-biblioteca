@@ -10,11 +10,11 @@ package teca.model;
  * @author 36127512021.2
  */
 public class Usuario {
-    static private String login;
+    static public String login;
     static private String senha;
     static private Integer id_usuario;
 
-    public static Integer getId_usuario() {
+    public Integer getId_usuario() {
         return id_usuario;
     }
 

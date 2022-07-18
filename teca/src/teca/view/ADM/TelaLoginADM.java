@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import teca.controller.UsuarioDAO;
 import teca.model.Usuario;
 import teca.service.CriptografiaSH256;
+import teca.view.MenuLogin;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -117,9 +118,8 @@ public class TelaLoginADM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogarActionPerformed
-       //istanciando a classe Usuario
        
-       //TelaMenu TL = new TelaMenu();
+      //MenuLogin ML = new MenuLogin();
       
       //Pegando dados inseridos do campo login e senha
       USER.setLogin(Login.getText());
@@ -133,12 +133,12 @@ public class TelaLoginADM extends javax.swing.JFrame {
        if ( (Login.getText().equals(USER.getLogin())) && (SH256.getSHA256(Senha.getText()).equals(USER.getSenha()) ) ){
 
            //pegar o nome do usuario logado
-            
+            USER.setLogin(Login.getText()); 
            
             JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
                                                 "Você irá para a Tela de Menu de Dados de Administrador !!!"); 
-            
-              //TL.setVisible(true);
+                        
+              new MenuLogin().setVisible(true);//preciso desse new MenuLogin().setVisible(true) para transferir o nome do login para a próxima tela.
                                                                                     
         }else{                                   
             JOptionPane.showMessageDialog(null, "Acesso Negado"); 
