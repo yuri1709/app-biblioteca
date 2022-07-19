@@ -53,11 +53,11 @@ public class LivroEmprestar extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         disponibilidadeField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        generoLabel = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
-        jLabel12 = new javax.swing.JLabel();
+        autorLabel = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
-        jLabel17 = new javax.swing.JLabel();
+        tituloLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -155,28 +155,25 @@ public class LivroEmprestar extends javax.swing.JFrame {
         jPanel2.add(disponibilidadeField);
         disponibilidadeField.setBounds(100, 160, 60, 30);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText(" ");
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(60, 110, 230, 30);
+        generoLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jPanel2.add(generoLabel);
+        generoLabel.setBounds(60, 110, 230, 30);
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator6);
         jSeparator6.setBounds(60, 80, 220, 30);
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel12.setText(" ");
-        jPanel2.add(jLabel12);
-        jLabel12.setBounds(60, 60, 230, 30);
+        autorLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jPanel2.add(autorLabel);
+        autorLabel.setBounds(60, 60, 230, 30);
 
         jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator7);
         jSeparator7.setBounds(60, 30, 220, 30);
 
-        jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel17.setText(" ");
-        jPanel2.add(jLabel17);
-        jLabel17.setBounds(60, 10, 230, 30);
+        tituloLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jPanel2.add(tituloLabel);
+        tituloLabel.setBounds(60, 10, 230, 30);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(10, 220, 410, 200);
@@ -195,6 +192,12 @@ public class LivroEmprestar extends javax.swing.JFrame {
        String tituloDoLivro = JOptionPane.showInputDialog("PROCURAR LIVRO :"); 
        LDAO.selecionar(LVR, tituloDoLivro);//Chamando select * pra pegar todas as informações do livro.(LivroDAO) agora o a classe Livro têm todos atributos preenchidos de acordo com o id.
        
+       //Preencher os campos com os dados do livro pesquisado
+       tituloLabel.setText(LVR.getTitulo());
+       autorLabel.setText(LVR.getAutor());
+       generoLabel.setText(LVR.getGenero());
+       disponibilidadeField.setText(String.valueOf(LVR.getDisponibilidade()));
+       
        System.out.print("TITULO:" +LVR.getRegistro());
     }//GEN-LAST:event_pesquisarButtonActionPerformed
 
@@ -206,6 +209,7 @@ public class LivroEmprestar extends javax.swing.JFrame {
         // TODO add your handling code here:
         CL.setCpf(cpfField.getText());
         CLDAO.selecionar(CL);
+        CL.exibirCliente();
         
        
         
@@ -214,8 +218,8 @@ public class LivroEmprestar extends javax.swing.JFrame {
     private void emprestarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarButtonActionPerformed
         //o empresta é o adicionar no banco de emprestimoLivro
         
-        EL.setMatricula(CL.getMatricula());
-        //EL.setRegistro();
+        EL.setMatricula(CL.getMatricula());//Pega a matricula do model Cliente
+        EL.setRegistro(LVR.getRegistro());//Pega o registro do model Livro
         ELDAO.inserir(EL);
         
         
@@ -259,14 +263,13 @@ public class LivroEmprestar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel autor;
     private javax.swing.JLabel autor1;
+    private javax.swing.JLabel autorLabel;
     private javax.swing.JButton checkin;
     private javax.swing.JTextField cpfField;
     private javax.swing.JLabel disponibilidade;
     private javax.swing.JTextField disponibilidadeField;
     private javax.swing.JButton emprestarButton;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel generoLabel;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -278,5 +281,6 @@ public class LivroEmprestar extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JButton pesquisarButton;
     private javax.swing.JLabel titulo;
+    private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
 }
