@@ -21,14 +21,21 @@ public class LivroDAO {
     //Configuração GERAL
     String nomeBanco = "tecadb";
     String url = "jdbc:mysql://localhost/"+nomeBanco;   
-    String sql, sql_get_registro;
+    String sql,sql2, sql_get_registro;
     RegistroLivro RDM = new RegistroLivro();
     Cdd CDD = new Cdd();
     
     
     
-    public void selecionar(Livro LVR, String livroPesquisado){                
+    public void selecionar(Livro LVR, String livroPesquisado, Boolean selecionarTodos){                
+       Integer total = 0;
+        
+        if (selecionarTodos){ 
         sql = "SELECT * FROM livro WHERE titulo LIKE '%"+livroPesquisado+"%'";
+        } else {
+            //IRÁ SELECIONAR APENAS OS LIVROS DISPONIVEIS
+            sql = "SELECT * FROM livro WHERE titulo LIKE '%"+livroPesquisado+"%' AND emprestado = 'D'"; 
+        }
            try 
 	   {
 	     Connection conexao = DriverManager.getConnection(url, "root","");
@@ -44,19 +51,66 @@ public class LivroDAO {
                  LVR.setGenero(resultado.getString("genero"));                                   
                  LVR.setAutor(resultado.getString("autor"));                 
                  LVR.setnEdicao(Integer.parseInt(resultado.getString("nEdicao")));                
-                 LVR.setDisponibilidade(Integer.parseInt(resultado.getString("disponibilidade")));                
+                 //pegando o número de livros disponiveis:
+                 total++;
              }
-             
+              
+               LVR.setDisponibilidade(total);//armazenando a quatidade de livros na tabela
            } catch(Exception erro){ 
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
            }              
     }
        
-    public void inserir(Livro LVR) {
+    public void inserir(Livro LVR, Integer qtde) {
+    qtde--;
+    Integer registro = null, novoRegistro = null;
+    //VERIFICA SE HÁ LIVROS COM O MESMO REGISTRO     
+    for( int i =0; i <= qtde; i++ ) {
+        registro = RDM.registroLivro(1000);
         
-        sql = "INSERT INTO livro (registro, CDD, codISBN, titulo, genero, autor, nEdicao, disponibilidade) VALUES ('"+RDM.registroLivro(1000)+"','"+CDD.getCdd()+"','"+LVR.getCodISBN()+"', '"+LVR.getTitulo()+"', '"+CDD.getClasse()+"', '"+LVR.getAutor()+"', '"+LVR.getnEdicao()+"', '"+LVR.getDisponibilidade()+"')";  
-        DB_DeleteAndInsert("Livro cadastrado com sucesso! =)", "Erro na conexão com o banco de Dados");    
+        while (registro == novoRegistro) {        
+            sql = "SELECT * FROM livro WHERE registro ='"+registro+"'";    
+            try 
+                {
+                  Connection conexao = DriverManager.getConnection(url, "root","");
+
+                  PreparedStatement pesquisa = conexao.prepareStatement(sql);	     
+
+                  ResultSet resultado = pesquisa.executeQuery();
+
+                  while (resultado.next()) {                                
+                      registro = Integer.parseInt(resultado.getString("registro"));                 
+                  }
+                  //ao dar select e já existir um registro do livro, ele gerará um novo registro.
+                  novoRegistro = RDM.registroLivro(1000);
+                  
+                } catch(Exception erro){ 
+
+                   JOptionPane.showMessageDialog(null,"registro valido : "+erro);               
+                }   
+        }
+        //INSERE O LIVRO NO BANCO DE DADOS
+        sql2 = "INSERT INTO livro (registro, CDD, codISBN, titulo, genero, autor, nEdicao, disponibilidade, emprestado) VALUES ('"+registro+"','"+CDD.getCdd()+"','"+LVR.getCodISBN()+"', '"+LVR.getTitulo()+"', '"+CDD.getClasse()+"', '"+LVR.getAutor()+"', '"+LVR.getnEdicao()+"', '"+LVR.getDisponibilidade()+"', 'D')";      
+         try 
+            {             
+	     Connection conexao = DriverManager.getConnection(url,"root","");
+
+	     PreparedStatement atualizar = conexao.prepareStatement(sql2);
+
+	     atualizar.executeUpdate();                                                   
+            }
+	  
+            catch(Exception erro){ 
+               //gerar uma nova matricula                                            
+          
+               JOptionPane.showMessageDialog(null,"ERRO :"+erro);
+               
+            }
+
+                               
+    }                
+       JOptionPane.showMessageDialog(null, "O sistema foi atualizado com sucesso");  
     }
     
     public void editar(Livro LVR, String tituloAntigo) {
@@ -79,7 +133,7 @@ public class LivroDAO {
            }   
         
         sql = "UPDATE livro SET CDD ='"+CDD.getCdd()+"', codISBN = '"+LVR.getCodISBN()+"', titulo = '"+LVR.getTitulo()+"', genero = '"+CDD.getClasse()+"', autor = '"+LVR.getAutor()+"', nEdicao = '"+LVR.getnEdicao()+"', titulo = '"+LVR.getTitulo()+"', disponibilidade = '"+LVR.getDisponibilidade()+"'WHERE registro='"+LVR.getRegistro()+"'";
-        DB_DeleteAndInsert("Livro editdo com sucesso!", "Erro na conexão com o banco de Dados");
+        DB_DeleteAndInsert("Livro editdo com sucesso!", "Erro na conexão com o banco de Dados",true);
     }
     
     public void excluir(Livro LVR) {
@@ -103,7 +157,7 @@ public class LivroDAO {
            }                 
         
         sql = "DELETE FROM livro WHERE registro = "+LVR.getRegistro();
-        DB_DeleteAndInsert("Livro de REGISTRO: "+LVR.getRegistro()+" deletado com sucesso!", "Erro na conexão com o banco de Dados");
+        DB_DeleteAndInsert("Livro de REGISTRO: "+LVR.getRegistro()+" deletado com sucesso!", "Erro na conexão com o banco de Dados",true);
         LVR.setTitulo("");
         LVR.setCodISBN(0);
         LVR.setGenero("");                                   
@@ -113,7 +167,16 @@ public class LivroDAO {
         
     }
     
-    private void DB_DeleteAndInsert(String msgTry, String msgCatch) { 
+    //Métodos especificos
+                      
+    public void adicionarEmprestimo(Livro LVR) {
+         System.out.print("valor do emprestimo: "+LVR.getEmprestado());
+         sql = "UPDATE livro SET emprestado ='"+LVR.getEmprestado()+"'WHERE registro ="+LVR.getRegistro();
+         DB_DeleteAndInsert("Valor do campo emprestimo alterado!", "Erro na conexão com o banco de Dados",true);
+    }
+    
+    
+    private void DB_DeleteAndInsert(String msgTry, String msgCatch, Boolean toogle) { 
             try 
             {             
 	     Connection conexao = DriverManager.getConnection(url,"root","");
@@ -121,13 +184,13 @@ public class LivroDAO {
 	     PreparedStatement atualizar = conexao.prepareStatement(sql);
 
 	     atualizar.executeUpdate();
-
-	     JOptionPane.showMessageDialog(null,msgTry);
-                        
+             if (toogle){
+                JOptionPane.showMessageDialog(null,msgTry);
+             }           
             }
 	  
             catch(Exception erro){ 
-          
+                
               JOptionPane.showMessageDialog(null,msgCatch+" :"+erro);
                
             }

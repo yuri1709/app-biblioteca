@@ -9,6 +9,7 @@ import teca.controller.LivroDAO;
 import teca.model.Cdd;
 import teca.model.Livro;
 import teca.service.MySql;
+import teca.service.RegistroLivro;
 
 /**
  *
@@ -19,6 +20,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
  Cdd CDD = new Cdd();
  Livro LVR = new Livro(); 
  LivroDAO LDAO = new LivroDAO();
+   
     /**
      * Creates new form LivroCadastrar
      */
@@ -228,13 +230,13 @@ public class LivroCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_autorFieldActionPerformed
 
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
-        
+        RegistroLivro RDM = new RegistroLivro(); 
         LVR.setTitulo(tituloField.getText()); 
         LVR.setAutor(autorField.getText());
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));                         
-        LDAO.inserir(LVR);     
+        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));         
+        LDAO.inserir(LVR,LVR.getDisponibilidade());     
        
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 

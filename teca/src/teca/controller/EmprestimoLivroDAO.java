@@ -8,13 +8,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import teca.model.EmprestimoLivro;
+import teca.model.Livro;
+import teca.service.RegistroLivro;
 
 public class EmprestimoLivroDAO {
        String url = "jdbc:mysql://localhost/tecadb";
-       String sql;
+       String sql, sql2;
        
        public void inserir(EmprestimoLivro EML) {
-           String sql = "INSERT INTO emp (emprestimo_id, matricula, registro) values ('"+EML.getEmprestimo_id()+"', '"+EML.getMatricula()+"','"+EML.getRegistro()+"')"; 
+                           
+        sql = "INSERT INTO emp (emprestimo_id, matricula, registro) values ('"+EML.getEmprestimo_id()+"', '"+EML.getMatricula()+"','"+EML.getRegistro()+"')"; 
         try
           {
                Connection conexao = DriverManager.getConnection(url,"root","");
@@ -23,8 +26,13 @@ public class EmprestimoLivroDAO {
                JOptionPane.showMessageDialog(null,"Emprestimo realizado!");
           }
 
-          catch(Exception erro){ 
+          catch(Exception erro){                
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
           }      
        }
+              
+       
+       /*public void verQtdeLivros () {
+           sql = "SELECT * FROM livros WHERE "
+       }*/
 }

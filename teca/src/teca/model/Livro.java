@@ -15,6 +15,10 @@ public class Livro {
     static int nEdicao;
     static int disponibilidade;
     static int registro;
+    static String emprestado;
+
+   
+   
 
     public int getRegistro() {
         return registro;
@@ -72,4 +76,12 @@ public class Livro {
         this.nEdicao = nEdicao;
     }
     
+     public String getEmprestado() {
+        return emprestado;
+    }
+     
+     public void setEmprestado(String emprestado) {
+        Livro.emprestado = emprestado;
+    } 
+
 }

@@ -189,16 +189,17 @@ public class LivroEmprestar extends javax.swing.JFrame {
 
     private void pesquisarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarButtonActionPerformed
         // TODO add your handling code here:
+       Boolean mostrarTodosLivros = false;
        String tituloDoLivro = JOptionPane.showInputDialog("PROCURAR LIVRO :"); 
-       LDAO.selecionar(LVR, tituloDoLivro);//Chamando select * pra pegar todas as informações do livro.(LivroDAO) agora o a classe Livro têm todos atributos preenchidos de acordo com o id.
+       LVR.setDisponibilidade(0);
+       LDAO.selecionar(LVR, tituloDoLivro, mostrarTodosLivros );//Chamando select * pra pegar todas as informações do livro.(LivroDAO) agora o a classe Livro têm todos atributos preenchidos de acordo com o id.
        
        //Preencher os campos com os dados do livro pesquisado
        tituloLabel.setText(LVR.getTitulo());
        autorLabel.setText(LVR.getAutor());
        generoLabel.setText(LVR.getGenero());
        disponibilidadeField.setText(String.valueOf(LVR.getDisponibilidade()));
-       
-       System.out.print("TITULO:" +LVR.getRegistro());
+              
     }//GEN-LAST:event_pesquisarButtonActionPerformed
 
     private void disponibilidadeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponibilidadeFieldActionPerformed
@@ -220,8 +221,14 @@ public class LivroEmprestar extends javax.swing.JFrame {
         
         EL.setMatricula(CL.getMatricula());//Pega a matricula do model Cliente
         EL.setRegistro(LVR.getRegistro());//Pega o registro do model Livro
-        ELDAO.inserir(EL);
         
+        if(LVR.getDisponibilidade() > 0) {
+            ELDAO.inserir(EL);
+            LVR.setEmprestado("E"); 
+            LDAO.adicionarEmprestimo(LVR);
+        } else {
+            JOptionPane.showMessageDialog(null, "Todas as unidades já se esgotaram");
+        }
         
     }//GEN-LAST:event_emprestarButtonActionPerformed
 
