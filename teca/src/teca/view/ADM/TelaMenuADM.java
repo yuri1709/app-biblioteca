@@ -42,6 +42,7 @@ public class TelaMenuADM extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(400, 400));
         setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
@@ -95,18 +96,14 @@ public class TelaMenuADM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pesquisar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisar12ActionPerformed
-          Pesquisar PE = new Pesquisar();
-        
-        JOptionPane.showMessageDialog(null, "Acesso Permitido  !!!!!\n"+
-                                            "Você irá para a Tela de Pesquisa de Dados !!!");                                                    
+        Pesquisar PE = new Pesquisar();
+                                                                  
         PE.setVisible(true);
     }//GEN-LAST:event_pesquisar12ActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        CadastrarADM TD = new CadastrarADM();
-        
-        JOptionPane.showMessageDialog(null, "Acesso Permitido  !!!!!\n"+
-                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");                                                    
+       CadastrarADM TD = new CadastrarADM();
+                                                                 
       TD.setVisible(true);
     }//GEN-LAST:event_cadastrarActionPerformed
                                      
@@ -114,9 +111,7 @@ public class TelaMenuADM extends javax.swing.JFrame {
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         EditarADM ED = new EditarADM();
-        
-        JOptionPane.showMessageDialog(null, "Acesso Permitido  !!!!!\n"+
-                                            "Você irá para a Tela de Edição !!!");                                                    
+                                                                 
         ED.setVisible(true);
        
     }//GEN-LAST:event_editarActionPerformed
@@ -124,8 +119,7 @@ public class TelaMenuADM extends javax.swing.JFrame {
     private void excluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluir1ActionPerformed
              
       ExclusaoADM EXD = new ExclusaoADM();
-        JOptionPane.showMessageDialog(null, "Acesso Permitido  !!!!!\n"+
-                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
+          
         EXD.setVisible(true);  
     }//GEN-LAST:event_excluir1ActionPerformed
 

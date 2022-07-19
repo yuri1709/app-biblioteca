@@ -59,6 +59,8 @@ public class LivroCadastrar extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         quantidadeField = new javax.swing.JTextField();
         voltar = new javax.swing.JButton();
+        pratileiraField = new javax.swing.JTextField();
+        estanteField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
@@ -80,7 +82,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Estante:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 350, 110, 30);
+        jLabel3.setBounds(30, 350, 60, 30);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("CDD:");
@@ -181,7 +183,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setText("Pratileira: ");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(190, 350, 110, 30);
+        jLabel10.setBounds(190, 350, 80, 30);
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setText("Quantidade");
@@ -204,6 +206,16 @@ public class LivroCadastrar extends javax.swing.JFrame {
         });
         getContentPane().add(voltar);
         voltar.setBounds(310, 0, 80, 23);
+
+        pratileiraField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pratileiraFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(pratileiraField);
+        pratileiraField.setBounds(260, 350, 60, 40);
+        getContentPane().add(estanteField);
+        estanteField.setBounds(90, 350, 50, 40);
 
         pack();
         setLocationRelativeTo(null);
@@ -235,7 +247,9 @@ public class LivroCadastrar extends javax.swing.JFrame {
         LVR.setAutor(autorField.getText());
         LVR.setnEdicao(Integer.parseInt(edicaoField.getText()));
         LVR.setCodISBN(Integer.parseInt(codISBN_Field.getText()));
-        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));         
+        LVR.setDisponibilidade(Integer.parseInt(quantidadeField.getText()));
+        LVR.setPrateleira(pratileiraField.getText());
+        LVR.setEstante(estanteField.getText());
         LDAO.inserir(LVR,LVR.getDisponibilidade());     
        
     }//GEN-LAST:event_cadastrarButtonActionPerformed
@@ -268,6 +282,10 @@ public class LivroCadastrar extends javax.swing.JFrame {
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
         dispose();
     }//GEN-LAST:event_voltarActionPerformed
+
+    private void pratileiraFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pratileiraFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pratileiraFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,6 +328,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
     private javax.swing.JTextField cddField;
     private javax.swing.JTextField codISBN_Field;
     private javax.swing.JTextField edicaoField;
+    private javax.swing.JTextField estanteField;
     private javax.swing.JTextField generoField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -323,6 +342,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton limparButton;
+    private javax.swing.JTextField pratileiraField;
     private javax.swing.JTextField quantidadeField;
     private javax.swing.JTextField tituloField;
     private javax.swing.JButton voltar;

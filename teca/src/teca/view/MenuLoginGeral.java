@@ -46,7 +46,9 @@ public class MenuLoginGeral extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(400, 300));
+        setMinimumSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(400, 400));
+        setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
         Op3.setText("3");
@@ -137,7 +139,7 @@ public class MenuLoginGeral extends javax.swing.JFrame {
 
     private void Sair_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sair_ActionPerformed
         // TODO add your handling c
-        
+        System.exit(0);
     }//GEN-LAST:event_Sair_ActionPerformed
 
     /**

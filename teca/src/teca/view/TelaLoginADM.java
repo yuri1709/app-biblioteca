@@ -56,7 +56,7 @@ public class TelaLoginADM extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel1.setText("Login - Administrador");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(100, 40, 190, 40);
+        jLabel1.setBounds(110, 40, 190, 40);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Usuário:");
@@ -91,7 +91,7 @@ public class TelaLoginADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Logar);
-        Logar.setBounds(160, 250, 100, 30);
+        Logar.setBounds(150, 250, 100, 30);
 
         voltar.setText("Recuperar a senha");
         voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +100,7 @@ public class TelaLoginADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(voltar);
-        voltar.setBounds(200, 300, 140, 30);
+        voltar.setBounds(200, 310, 140, 30);
 
         cadastrar.setText("Cadastar");
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +109,7 @@ public class TelaLoginADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(70, 300, 110, 30);
+        cadastrar.setBounds(50, 310, 110, 30);
 
         pack();
         setLocationRelativeTo(null);

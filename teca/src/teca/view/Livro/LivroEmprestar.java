@@ -101,7 +101,6 @@ public class LivroEmprestar extends javax.swing.JFrame {
         getContentPane().add(emprestarButton);
         emprestarButton.setBounds(170, 440, 100, 30);
 
-        pesquisarButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gamer\\Desktop\\app-biblioteca\\teca\\src\\images\\lupa.png")); // NOI18N
         pesquisarButton.setToolTipText("");
         pesquisarButton.setMaximumSize(new java.awt.Dimension(150, 150));
         pesquisarButton.setMinimumSize(new java.awt.Dimension(150, 150));

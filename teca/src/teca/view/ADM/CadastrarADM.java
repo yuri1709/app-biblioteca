@@ -38,6 +38,7 @@ CriptografiaSH256 SH256 = new CriptografiaSH256();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(400, 400));
         setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 

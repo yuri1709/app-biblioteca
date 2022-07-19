@@ -45,6 +45,8 @@ public class LivroDAO {
 	     ResultSet resultado = pesquisa.executeQuery();
              
 	     while (resultado.next()) {  
+                 LVR.setPrateleira(resultado.getString("prateleira"));
+                 LVR.setEstante(resultado.getString("estante"));
                  LVR.setRegistro(resultado.getInt("registro"));
 		 LVR.setTitulo(resultado.getString("titulo"));
                  LVR.setCodISBN(Integer.parseInt(resultado.getString("codISBN")));
@@ -91,7 +93,7 @@ public class LivroDAO {
                 }   
         }
         //INSERE O LIVRO NO BANCO DE DADOS
-        sql2 = "INSERT INTO livro (registro, CDD, codISBN, titulo, genero, autor, nEdicao, disponibilidade, emprestado) VALUES ('"+registro+"','"+CDD.getCdd()+"','"+LVR.getCodISBN()+"', '"+LVR.getTitulo()+"', '"+CDD.getClasse()+"', '"+LVR.getAutor()+"', '"+LVR.getnEdicao()+"', '"+LVR.getDisponibilidade()+"', 'D')";      
+        sql2 = "INSERT INTO livro (registro, CDD, codISBN, titulo, genero, autor, nEdicao, disponibilidade, emprestado,estante, prateleira) VALUES ('"+registro+"','"+CDD.getCdd()+"','"+LVR.getCodISBN()+"', '"+LVR.getTitulo()+"', '"+CDD.getClasse()+"', '"+LVR.getAutor()+"', '"+LVR.getnEdicao()+"', '"+LVR.getDisponibilidade()+"', 'D', '"+LVR.getEstante()+"', '"+LVR.getPrateleira()+"')";      
          try 
             {             
 	     Connection conexao = DriverManager.getConnection(url,"root","");
@@ -132,7 +134,7 @@ public class LivroDAO {
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
            }   
         
-        sql = "UPDATE livro SET CDD ='"+CDD.getCdd()+"', codISBN = '"+LVR.getCodISBN()+"', titulo = '"+LVR.getTitulo()+"', genero = '"+CDD.getClasse()+"', autor = '"+LVR.getAutor()+"', nEdicao = '"+LVR.getnEdicao()+"', titulo = '"+LVR.getTitulo()+"', disponibilidade = '"+LVR.getDisponibilidade()+"'WHERE registro='"+LVR.getRegistro()+"'";
+        sql = "UPDATE livro SET CDD ='"+CDD.getCdd()+"', codISBN = '"+LVR.getCodISBN()+"', titulo = '"+LVR.getTitulo()+"', genero = '"+CDD.getClasse()+"', autor = '"+LVR.getAutor()+"', nEdicao = '"+LVR.getnEdicao()+"', titulo = '"+LVR.getTitulo()+"', disponibilidade = '"+LVR.getDisponibilidade()+"', estante = '"+LVR.getEstante()+"', prateleira = '"+LVR.getPrateleira()+"'WHERE registro='"+LVR.getRegistro()+"'";
         DB_DeleteAndInsert("Livro editdo com sucesso!", "Erro na conexão com o banco de Dados",true);
     }
     

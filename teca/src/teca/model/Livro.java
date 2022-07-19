@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package teca.model;
+
+import javax.swing.JOptionPane;
+import static teca.model.Cliente.nome;
+
 /**
  *
  * @author Yuri Conder
@@ -16,6 +20,24 @@ public class Livro {
     static int disponibilidade;
     static int registro;
     static String emprestado;
+    static String prateleira;
+    static String estante; 
+
+    public  String getPrateleira() {
+        return prateleira;
+    }
+
+    public  void setPrateleira(String prateleira) {
+        Livro.prateleira = prateleira;
+    }
+
+    public  String getEstante() {
+        return estante;
+    }
+
+    public void setEstante(String estante) {
+        Livro.estante = estante;
+    }
 
    
    
@@ -83,5 +105,14 @@ public class Livro {
      public void setEmprestado(String emprestado) {
         Livro.emprestado = emprestado;
     } 
+     
+     public void exibirLocal () {
+          JOptionPane.showMessageDialog(null,"Dados encontrados com sucesso!\n"+
+                                                                       "------------------------------\n"+
+                                                                       "O livro  : "+titulo+"\n"+
+                                                                       "Prateleira:  "+prateleira+"\n"+
+                                                                       "Estante  "+estante+"\n"+                                                                       
+                                                                       "------------------------------");        
+     }
 
 }

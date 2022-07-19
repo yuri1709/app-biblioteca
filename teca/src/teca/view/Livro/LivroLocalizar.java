@@ -3,24 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teca.view.adm;
+package teca.view.Livro;
 
 import javax.swing.JOptionPane;
-import teca.controller.UsuarioDAO;
-import teca.model.Usuario;
-
+import teca.controller.LivroDAO;
+import teca.model.Cliente;
+import teca.model.Livro;
 
 /**
  *
  * @author 36127512021.2
  */
-public class ExclusaoADM extends javax.swing.JFrame {
-    UsuarioDAO USERDAO = new UsuarioDAO();
-    Usuario USER = new Usuario();
+public class LivroLocalizar extends javax.swing.JFrame {
+
     /**
-     * Creates new form ExclusãoADM
+     * Creates new form LivroLocalizar
      */
-    public ExclusaoADM() {
+    public LivroLocalizar() {
         initComponents();
     }
 
@@ -35,8 +34,8 @@ public class ExclusaoADM extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        excluircadastro = new javax.swing.JTextField();
-        excluir = new javax.swing.JButton();
+        localizarregistro = new javax.swing.JTextField();
+        localizar = new javax.swing.JButton();
         voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,32 +44,32 @@ public class ExclusaoADM extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        jLabel1.setText("Excluir - Cadastro ADM");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        jLabel1.setText("Localizar - Livro");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 60, 220, 40);
+        jLabel1.setBounds(130, 40, 160, 24);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("Digite o  Usuário:");
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Localizar");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 160, 110, 30);
+        jLabel2.setBounds(20, 120, 80, 30);
 
-        excluircadastro.addActionListener(new java.awt.event.ActionListener() {
+        localizarregistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluircadastroActionPerformed(evt);
+                localizarregistroActionPerformed(evt);
             }
         });
-        getContentPane().add(excluircadastro);
-        excluircadastro.setBounds(140, 160, 210, 30);
+        getContentPane().add(localizarregistro);
+        localizarregistro.setBounds(110, 120, 260, 30);
 
-        excluir.setText("Excluir");
-        excluir.addActionListener(new java.awt.event.ActionListener() {
+        localizar.setText("Localizar");
+        localizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirActionPerformed(evt);
+                localizarActionPerformed(evt);
             }
         });
-        getContentPane().add(excluir);
-        excluir.setBounds(100, 240, 80, 30);
+        getContentPane().add(localizar);
+        localizar.setBounds(100, 200, 90, 30);
 
         voltar.setText("Voltar");
         voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,35 +78,43 @@ public class ExclusaoADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(voltar);
-        voltar.setBounds(200, 240, 90, 30);
+        voltar.setBounds(210, 200, 90, 30);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
-        if ( (excluircadastro.getText().equals(""))  ) {  
-            
-             JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
-                                                "PREENCHA TODOS ELES !!!!");
-        
-        excluircadastro.setText("");
-                    
-           setVisible(true);
-           
-        }else{
-          USER.setLogin(excluircadastro.getText());
-          USERDAO.excluir(USER);          
-        }
-    }//GEN-LAST:event_excluirActionPerformed
-
-    private void excluircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluircadastroActionPerformed
+    private void localizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_excluircadastroActionPerformed
+        Cliente CL = new Cliente();
+        LivroDAO LVRDAO = new LivroDAO();
+        Livro LVR = new Livro();
+         if ( (localizarregistro.getText().equals("")) ) {
+             
+             JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
+                                                 "PREENCHA TODOS ELES !!!!");
+             
+             localizarregistro.setText("");
+             
+             setVisible(true);
+             
+         } else {
+            LVR.setTitulo((localizarregistro.getText()));
+            
+            LVRDAO.selecionar(LVR,LVR.getTitulo(), true);
+            LVR.exibirLocal();
+            
+         }
+    }//GEN-LAST:event_localizarActionPerformed
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_voltarActionPerformed
+
+    private void localizarregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localizarregistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_localizarregistroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,30 +133,29 @@ public class ExclusaoADM extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ExclusaoADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LivroLocalizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ExclusaoADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LivroLocalizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ExclusaoADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LivroLocalizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ExclusaoADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LivroLocalizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ExclusaoADM().setVisible(true);
+                new LivroLocalizar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton excluir;
-    private javax.swing.JTextField excluircadastro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton localizar;
+    private javax.swing.JTextField localizarregistro;
     private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }
