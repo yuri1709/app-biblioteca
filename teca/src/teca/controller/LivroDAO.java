@@ -37,7 +37,8 @@ public class LivroDAO {
              
 	     ResultSet resultado = pesquisa.executeQuery();
              
-	     while (resultado.next()) {               
+	     while (resultado.next()) {  
+                 LVR.setRegistro(resultado.getInt("registro"));
 		 LVR.setTitulo(resultado.getString("titulo"));
                  LVR.setCodISBN(Integer.parseInt(resultado.getString("codISBN")));
                  LVR.setGenero(resultado.getString("genero"));                                   
