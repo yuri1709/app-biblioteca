@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teca.view.ADM;
+package teca.view.adm;
 
 import javax.swing.JOptionPane;
 import teca.controller.UsuarioDAO;

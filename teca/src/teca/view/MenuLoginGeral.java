@@ -6,6 +6,9 @@
 package teca.view;
 
 import teca.model.Usuario;
+import teca.view.Livro.MenuLivro;
+import teca.view.adm.TelaMenuADM;
+import teca.view.cliente.MenuDoCliente;
 
 /**
  *
@@ -110,20 +113,30 @@ public class MenuLoginGeral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void Op3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op3ActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:    
+        MenuDoCliente TMC = new MenuDoCliente();
+        
+        TMC.setVisible(true);
     }//GEN-LAST:event_Op3ActionPerformed
 
     private void Op1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op1ActionPerformed
         // TODO add your handling code here:
+        TelaMenuADM TMA = new TelaMenuADM();
+        
+        TMA.setVisible(true);
+        
        
     }//GEN-LAST:event_Op1ActionPerformed
 
     private void Op2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op2ActionPerformed
         // TODO add your handling code here:
+        MenuLivro TML = new MenuLivro();
+        
+        TML.setVisible(true);
     }//GEN-LAST:event_Op2ActionPerformed
 
     private void Sair_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sair_ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling c
         
     }//GEN-LAST:event_Sair_ActionPerformed
 

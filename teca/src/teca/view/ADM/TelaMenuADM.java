@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teca.view.ADM;
+package teca.view.adm;
 
 
 import javax.swing.JOptionPane;
-//import teca.view.ADM.CadastrarADM;
+import teca.view.adm.CadastrarADM;
+import teca.view.adm.EditarADM;
+import teca.view.adm.ExclusaoADM;
 
 
 /**
@@ -33,7 +35,7 @@ public class TelaMenuADM extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        pensquisar = new javax.swing.JButton();
+        pesquisar12 = new javax.swing.JButton();
         editar = new javax.swing.JButton();
         excluir1 = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
@@ -48,15 +50,15 @@ public class TelaMenuADM extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(130, 60, 132, 24);
 
-        pensquisar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        pensquisar.setText("Pesquisar");
-        pensquisar.addActionListener(new java.awt.event.ActionListener() {
+        pesquisar12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        pesquisar12.setText("Pesquisar");
+        pesquisar12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pensquisarActionPerformed(evt);
+                pesquisar12ActionPerformed(evt);
             }
         });
-        getContentPane().add(pensquisar);
-        pensquisar.setBounds(130, 130, 138, 30);
+        getContentPane().add(pesquisar12);
+        pesquisar12.setBounds(130, 130, 138, 30);
 
         editar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         editar.setText("Editar");
@@ -92,13 +94,13 @@ public class TelaMenuADM extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pensquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pensquisarActionPerformed
-         /* Pesquisar PE = new Pesquisar();
+    private void pesquisar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisar12ActionPerformed
+          Pesquisar PE = new Pesquisar();
         
         JOptionPane.showMessageDialog(null, "Acesso Permitido  !!!!!\n"+
                                             "Você irá para a Tela de Pesquisa de Dados !!!");                                                    
-      PE.setVisible(true);*/
-    }//GEN-LAST:event_pensquisarActionPerformed
+        PE.setVisible(true);
+    }//GEN-LAST:event_pesquisar12ActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         CadastrarADM TD = new CadastrarADM();
@@ -109,12 +111,6 @@ public class TelaMenuADM extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarActionPerformed
                                      
                                     
-    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
-        ExclusaoADM EXD = new ExclusaoADM();
-        
-        EXD.setVisible(true);     
-    }                                       
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         EditarADM ED = new EditarADM();
@@ -126,8 +122,11 @@ public class TelaMenuADM extends javax.swing.JFrame {
     }//GEN-LAST:event_editarActionPerformed
 
     private void excluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluir1ActionPerformed
-             //BUGADO, FAVOR DEIXAR VAZIO
-      
+             
+      ExclusaoADM EXD = new ExclusaoADM();
+        JOptionPane.showMessageDialog(null, "Acesso Permitido  !!!!!\n"+
+                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
+        EXD.setVisible(true);  
     }//GEN-LAST:event_excluir1ActionPerformed
 
     /**
@@ -173,6 +172,6 @@ public class TelaMenuADM extends javax.swing.JFrame {
     private javax.swing.JButton editar;
     private javax.swing.JButton excluir1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton pensquisar;
+    private javax.swing.JButton pesquisar12;
     // End of variables declaration//GEN-END:variables
 }

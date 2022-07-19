@@ -59,6 +59,10 @@ public class LivroCadastrar extends javax.swing.JFrame {
         voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImages(null);
+        setMinimumSize(new java.awt.Dimension(410, 550));
+        setPreferredSize(new java.awt.Dimension(410, 550));
+        setSize(new java.awt.Dimension(410, 550));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -200,6 +204,7 @@ public class LivroCadastrar extends javax.swing.JFrame {
         voltar.setBounds(310, 0, 80, 23);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cddFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cddFieldActionPerformed
