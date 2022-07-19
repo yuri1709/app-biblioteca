@@ -6,13 +6,28 @@ package teca.view.Livro;
 
 import java.net.URL;
 import javax.swing.JOptionPane;
+import teca.controller.EmprestimoLivroDAO;
+import teca.controller.LivroDAO;
+import teca.controller.clienteDAO;
+import teca.model.Cdd;
+import teca.model.Cliente;
+import teca.model.EmprestimoLivro;
+import teca.model.Livro;
+import teca.service.MySql;
 
 /**
  *
  * @author Gamer
  */
 public class LivroEmprestar extends javax.swing.JFrame {
-    
+     clienteDAO CLDAO = new clienteDAO();
+     Cliente CL = new Cliente();
+     Livro LVR = new Livro(); 
+     LivroDAO LDAO = new LivroDAO();       
+     EmprestimoLivroDAO ELDAO = new EmprestimoLivroDAO();
+     EmprestimoLivro EL = new EmprestimoLivro();
+     MySql SQL = new MySql();
+     Cdd CDD = new Cdd();
   
     public LivroEmprestar() {
         initComponents();
@@ -26,19 +41,29 @@ public class LivroEmprestar extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cpfField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        checkin = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        emprestarButton = new javax.swing.JButton();
         pesquisarButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        disponibilidade = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        autor = new javax.swing.JLabel();
+        autor1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        disponibilidadeField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel17 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(440, 440));
-        setSize(new java.awt.Dimension(400, 400));
+        setMinimumSize(new java.awt.Dimension(450, 520));
+        setPreferredSize(new java.awt.Dimension(450, 500));
+        setSize(new java.awt.Dimension(450, 500));
         getContentPane().setLayout(null);
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
@@ -53,18 +78,28 @@ public class LivroEmprestar extends javax.swing.JFrame {
         getContentPane().add(cpfField);
         cpfField.setBounds(50, 110, 150, 30);
 
-        jButton1.setText("Check in");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(200, 110, 100, 30);
+        checkin.setText("Check in");
+        checkin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkinActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkin);
+        checkin.setBounds(200, 110, 100, 30);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setText("Informe o cpf do cliente:");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(20, 60, 190, 40);
 
-        jButton2.setText("Emprestar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(170, 440, 100, 30);
+        emprestarButton.setText("Emprestar");
+        emprestarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emprestarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(emprestarButton);
+        emprestarButton.setBounds(170, 440, 100, 30);
 
         pesquisarButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gamer\\Desktop\\app-biblioteca\\teca\\src\\images\\lupa.png")); // NOI18N
         pesquisarButton.setToolTipText("");
@@ -83,32 +118,68 @@ public class LivroEmprestar extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Autor");
+        disponibilidade.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        disponibilidade.setText("Disponibilidade");
+        jPanel2.add(disponibilidade);
+        disponibilidade.setBounds(10, 150, 110, 40);
+
+        titulo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        titulo.setText("Título");
+        jPanel2.add(titulo);
+        titulo.setBounds(10, 0, 50, 40);
+
+        autor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        autor.setText("Gênero");
+        jPanel2.add(autor);
+        autor.setBounds(10, 100, 50, 40);
+
+        autor1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        autor1.setText("Autor");
+        jPanel2.add(autor1);
+        autor1.setBounds(10, 50, 50, 40);
+
+        jSeparator2.setBackground(new java.awt.Color(153, 102, 255));
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel2.add(jSeparator2);
+        jSeparator2.setBounds(330, 0, 30, 200);
+
+        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator5);
+        jSeparator5.setBounds(60, 130, 220, 30);
+
+        disponibilidadeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disponibilidadeFieldActionPerformed(evt);
+            }
+        });
+        jPanel2.add(disponibilidadeField);
+        disponibilidadeField.setBounds(100, 160, 60, 30);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText(" ");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(130, 40, 50, 40);
+        jLabel3.setBounds(60, 110, 230, 30);
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel7.setText("Título");
-        jPanel2.add(jLabel7);
-        jLabel7.setBounds(130, 0, 50, 40);
+        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator6);
+        jSeparator6.setBounds(60, 80, 220, 30);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel12.setText(" ");
+        jPanel2.add(jLabel12);
+        jLabel12.setBounds(60, 60, 230, 30);
 
-        jPanel2.add(jPanel1);
-        jPanel1.setBounds(0, 0, 120, 120);
+        jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator7);
+        jSeparator7.setBounds(60, 30, 220, 30);
+
+        jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel17.setText(" ");
+        jPanel2.add(jLabel17);
+        jLabel17.setBounds(60, 10, 230, 30);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(20, 230, 380, 200);
+        jPanel2.setBounds(10, 220, 410, 200);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("CPF:");
@@ -116,12 +187,39 @@ public class LivroEmprestar extends javax.swing.JFrame {
         jLabel5.setBounds(20, 100, 50, 40);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void pesquisarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarButtonActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showInputDialog("PROCURAR LIVRO :");        
+       String tituloDoLivro = JOptionPane.showInputDialog("PROCURAR LIVRO :"); 
+       LDAO.selecionar(LVR, tituloDoLivro);//Chamando select * pra pegar todas as informações do livro.(LivroDAO) agora o a classe Livro têm todos atributos preenchidos de acordo com o id.
+       
+       System.out.print("TITULO:" +LVR.getRegistro());
     }//GEN-LAST:event_pesquisarButtonActionPerformed
+
+    private void disponibilidadeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponibilidadeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_disponibilidadeFieldActionPerformed
+
+    private void checkinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkinActionPerformed
+        // TODO add your handling code here:
+        CL.setCpf(cpfField.getText());
+        CLDAO.selecionar(CL);
+        
+       
+        
+    }//GEN-LAST:event_checkinActionPerformed
+
+    private void emprestarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarButtonActionPerformed
+        //o empresta é o adicionar no banco de emprestimoLivro
+        
+        EL.setMatricula(CL.getMatricula());
+        //EL.setRegistro();
+        ELDAO.inserir(EL);
+        
+        
+    }//GEN-LAST:event_emprestarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,17 +257,26 @@ public class LivroEmprestar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel autor;
+    private javax.swing.JLabel autor1;
+    private javax.swing.JButton checkin;
     private javax.swing.JTextField cpfField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel disponibilidade;
+    private javax.swing.JTextField disponibilidadeField;
+    private javax.swing.JButton emprestarButton;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JButton pesquisarButton;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
