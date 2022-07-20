@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Jul-2022 às 09:08
+-- Tempo de geração: 20-Jul-2022 às 03:25
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -1196,7 +1196,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`matricula`, `nome`, `endereco`, `cpf`) VALUES
-(1856, 'Bruna', 'Espanha', '123'),
+(1856, 'bruna', 'flamengo', '123'),
 (2921, 'maria', 'Centro', '15498425836');
 
 -- --------------------------------------------------------
@@ -1221,7 +1221,8 @@ INSERT INTO `emp` (`emprestimo_id`, `matricula`, `registro`) VALUES
 (19, 1856, 670),
 (20, 1856, 752),
 (21, 1856, 752),
-(22, 1856, 780);
+(22, 1856, 780),
+(23, 1856, 647);
 
 -- --------------------------------------------------------
 
@@ -1238,23 +1239,25 @@ CREATE TABLE `livro` (
   `autor` varchar(50) NOT NULL,
   `nEdicao` int(11) NOT NULL,
   `disponibilidade` int(11) NOT NULL,
-  `emprestado` enum('D','E') NOT NULL
+  `emprestado` enum('D','E') NOT NULL,
+  `estante` varchar(11) NOT NULL,
+  `prateleira` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `livro`
 --
 
-INSERT INTO `livro` (`registro`, `CDD`, `codISBN`, `titulo`, `genero`, `autor`, `nEdicao`, `disponibilidade`, `emprestado`) VALUES
-(352, 936499, 1, 'TESTE', 'Historia da Italia e territorios adjacentes ate 47', 'aaa', 12, 1, 'D'),
-(525, 7345000000, 12, 'feliz', 'Escultura de 1400', 'aaa', 1, 3, 'D'),
-(592, 924, 212321234, 'maeEuTeAmo', 'Biografia de cientistas', 'fulano012', 12, 1, 'D'),
-(647, 7345000000, 12, 'feliz', 'Escultura de 1400', 'aaa', 1, 3, 'D'),
-(670, 0, 1554586, 'Use a cabeça Java', 'Ciencia da computacao, informacao e obras gerais', 'Sierra e Bates', 1, 3, 'D'),
-(676, 370.157, 45874215, 'Avante zumbis', 'Psicologia da aprendizagem de assuntos especificos', 'nao sei', 1, 1, 'D'),
-(752, 0, 1554586, 'Use a cabeça Java', 'Ciencia da computacao, informacao e obras gerais', 'Sierra e Bates', 1, 3, 'E'),
-(764, 781, 12345678, 'Black Sabbath', 'Rock - Brasil', 'Ozzy Osbornoue', 1, 15, 'E'),
-(780, 7345000000, 12, 'feliz', 'Escultura de 1400', 'aaa', 1, 3, 'E');
+INSERT INTO `livro` (`registro`, `CDD`, `codISBN`, `titulo`, `genero`, `autor`, `nEdicao`, `disponibilidade`, `emprestado`, `estante`, `prateleira`) VALUES
+(19, 0, 123, 'teste123', 'null', 'beltrano', 1, 1, 'D', 'm', '8'),
+(352, 936499, 1, 'TESTE', 'Historia da Italia e territorios adjacentes ate 47', 'aaa', 12, 1, 'D', '', ''),
+(525, 7345000000, 12, 'feliz', 'Escultura de 1400', 'aaa', 1, 3, 'D', '', ''),
+(647, 7345000000, 12, 'feliz', 'Escultura de 1400', 'aaa', 1, 3, 'E', '', ''),
+(670, 0, 1554586, 'Use a cabeça Java', 'Ciencia da computacao, informacao e obras gerais', 'Sierra e Bates', 1, 3, 'D', '', ''),
+(676, 370.157, 45874215, 'Avante zumbis', 'Psicologia da aprendizagem de assuntos especificos', 'nao sei', 1, 1, 'D', '', ''),
+(752, 0, 1554586, 'Use a cabeça Java', 'Ciencia da computacao, informacao e obras gerais', 'Sierra e Bates', 1, 3, 'E', '', ''),
+(764, 781, 12345678, 'Black Sabbath', 'Rock - Brasil', 'Ozzy Osbornoue', 1, 1, 'E', 'A', '2'),
+(780, 7345000000, 12, 'feliz', 'Escultura de 1400', 'aaa', 1, 3, 'E', '', '');
 
 -- --------------------------------------------------------
 
@@ -1321,13 +1324,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `emp`
 --
 ALTER TABLE `emp`
-  MODIFY `emprestimo_id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `emprestimo_id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
