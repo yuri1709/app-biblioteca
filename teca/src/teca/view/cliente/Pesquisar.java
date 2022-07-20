@@ -190,10 +190,12 @@ public class Pesquisar extends javax.swing.JFrame {
             CL.limparCache();
             
             //TABELA
-            id1.setText(); livro1.setText(text);
+            /*
+            id1.setText(text); livro1.setText(text);
             id2.setText(text); livro2.setText(text);
             id3.setText(text); livro3.setText(text);
             id4.setText(text); livro4.setText(text);
+            */
             
             
             

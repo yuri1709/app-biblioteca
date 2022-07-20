@@ -127,7 +127,7 @@ public class Editar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(gerarNovaMatriculaButton);
-        gerarNovaMatriculaButton.setBounds(110, 210, 190, 23);
+        gerarNovaMatriculaButton.setBounds(110, 210, 190, 21);
 
         pack();
         setLocationRelativeTo(null);
