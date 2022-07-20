@@ -67,7 +67,7 @@ public class Pesquisar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(pesquisa);
-        pesquisa.setBounds(90, 250, 90, 30);
+        pesquisa.setBounds(90, 250, 110, 30);
 
         voltar.setText("Voltar");
         voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,11 +95,16 @@ public class Pesquisar extends javax.swing.JFrame {
             
            buscarUsuario.setText("");
            
-        } else {                  
+        } else { 
+            USER.setId_usuario(0);
             USER.setLogin(buscarUsuario.getText());
             USERDAO.selecionar(USER);
             //agora vamos chamar o método exibir da classe model Usuario
-            USER.exibir();
+            if (USER.getId_usuario() == 0) {
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
+            } else {
+                USER.exibir();
+            }
         }
     }//GEN-LAST:event_pesquisaActionPerformed
 

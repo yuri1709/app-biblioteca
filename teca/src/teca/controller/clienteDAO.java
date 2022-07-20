@@ -41,7 +41,7 @@ public class clienteDAO {
                  
              }
              
-           } catch(Exception erro){ 
+           } catch(SQLException erro){ 
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
            }      
@@ -61,7 +61,7 @@ public class clienteDAO {
                JOptionPane.showMessageDialog(null,"Cliente cadastrado com sucesso!");
           }
 
-          catch(Exception erro){ 
+          catch(SQLException erro){ 
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
           }      
        }  
@@ -86,7 +86,7 @@ public class clienteDAO {
                  CL.setMatricula(Integer.parseInt(resultado.getString("matricula")));   
              }  
                 
-           } catch(Exception erro) { 
+           } catch(SQLException erro) { 
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
          }
@@ -97,30 +97,37 @@ public class clienteDAO {
         sql_get_registro = "SELECT * FROM clientes WHERE cpf = '"+CL.getCpf()+"'";
         try 
 	   {
-
+            
 	     Connection conexao = DriverManager.getConnection(url, "root","");
 
 	     PreparedStatement pesquisa = conexao.prepareStatement(sql_get_registro);	     
              
 	     ResultSet resultado = pesquisa.executeQuery();
+             //cccc
+                                       
              
 	     while (resultado.next()) {                                
-                 CL.setMatricula(Integer.parseInt(resultado.getString("matricula")));
+                  
+                 CL.setMatricula(Integer.parseInt(resultado.getString("matricula")));                 
+                 
+                 //CL.setCpf(resultado.getString("cpf"));
+                 System.out.println("CPF RETORNADO: "+ CL.getCpf());
                  System.out.println("Matricula do banco =" +CL.getMatricula());
                  
                 if (novaMatricula != null) { //se for diferente de null quer dizer que eu gerei uma nova matricula no painel editar, caso não:irá permanecer a mesma matricula do banco.
                     CL.setMatricula(novaMatricula);
                 } 
-                System.out.println("Matricula do cliente:"+ CL.getMatricula());
+                System.out.println("Matricula do cliente:"+ CL.getMatricula());                               
              }
+                                 
                                                                
-           } catch(Exception erro){ 
-           
-              JOptionPane.showMessageDialog(null,"CPF NÃO ENCONTRADO : "+erro);               
+           } catch(SQLException erro){ 
+           JOptionPane.showMessageDialog(null,"CPF NÃO ENCONTRADO"+ erro);
+                             
            }                 
         
         
-        String sql = "UPDATE clientes SET nome='"+CL.getNome()+"',endereco='"+CL.getEndereco()+"',matricula='"+CL.getMatricula()+"' WHERE cpf= '"+CL.getCpf()+"' ";
+        String sql = "UPDATE clientes SET nome='"+CL.getNome()+"',endereco='"+CL.getEndereco()+"',matricula='"+CL.getMatricula()+"' WHERE cpf= '"+CL.getCpf()+"'";
         
          try 
            {
@@ -130,9 +137,7 @@ public class clienteDAO {
 	     PreparedStatement atualizar = conexao.prepareStatement(sql);
 
 	     atualizar.executeUpdate();
-
-	     JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
-    
+	        
 	   }
 	  
 	   catch(SQLException erro) { 
@@ -159,7 +164,7 @@ public class clienteDAO {
     
 	   }
 	  
-            catch(Exception erro) { 
+            catch(SQLException erro) { 
            
              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
                

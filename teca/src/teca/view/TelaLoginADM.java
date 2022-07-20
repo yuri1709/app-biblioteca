@@ -7,6 +7,7 @@ import teca.controller.UsuarioDAO;
 import teca.model.Usuario;
 import teca.service.CriptografiaSH256;
 import teca.view.MenuLoginGeral;
+import teca.view.adm.EditarADM;
 
 
 /*
@@ -45,7 +46,7 @@ public class TelaLoginADM extends javax.swing.JFrame {
         Login = new javax.swing.JTextField();
         Senha = new javax.swing.JPasswordField();
         Logar = new javax.swing.JButton();
-        voltar = new javax.swing.JButton();
+        recuperarSenha = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -93,14 +94,14 @@ public class TelaLoginADM extends javax.swing.JFrame {
         getContentPane().add(Logar);
         Logar.setBounds(150, 250, 100, 30);
 
-        voltar.setText("Recuperar a senha");
-        voltar.addActionListener(new java.awt.event.ActionListener() {
+        recuperarSenha.setText("Recuperar a senha");
+        recuperarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarActionPerformed(evt);
+                recuperarSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(voltar);
-        voltar.setBounds(200, 310, 140, 30);
+        getContentPane().add(recuperarSenha);
+        recuperarSenha.setBounds(170, 310, 180, 40);
 
         cadastrar.setText("Cadastar");
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +110,7 @@ public class TelaLoginADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(50, 310, 110, 30);
+        cadastrar.setBounds(50, 310, 110, 40);
 
         pack();
         setLocationRelativeTo(null);
@@ -152,11 +153,11 @@ public class TelaLoginADM extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SenhaActionPerformed
 
-    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
-       //EditarADM ED = new EditarADM();
+    private void recuperarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recuperarSenhaActionPerformed
+       EditarADM ED = new EditarADM();
         
-       // ED.setVisible(true);
-    }//GEN-LAST:event_voltarActionPerformed
+       ED.setVisible(true);
+    }//GEN-LAST:event_recuperarSenhaActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         //TelaCadastrarADM TCA = new TelaCadastrarADM();       
@@ -210,6 +211,6 @@ public class TelaLoginADM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JButton voltar;
+    private javax.swing.JButton recuperarSenha;
     // End of variables declaration//GEN-END:variables
 }

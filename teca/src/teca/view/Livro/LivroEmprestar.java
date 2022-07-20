@@ -59,6 +59,8 @@ public class LivroEmprestar extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         tituloLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        voltarButton = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(450, 520));
@@ -182,6 +184,25 @@ public class LivroEmprestar extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(20, 100, 50, 40);
 
+        voltarButton.setText("voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarButton);
+        voltarButton.setBounds(450, 10, 73, 23);
+
+        voltar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar);
+        voltar.setBounds(340, 20, 90, 30);
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -230,6 +251,16 @@ public class LivroEmprestar extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_emprestarButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        // TODO add your handling code here:
+
+        dispose();
+    }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,5 +319,7 @@ public class LivroEmprestar extends javax.swing.JFrame {
     private javax.swing.JButton pesquisarButton;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel tituloLabel;
+    private javax.swing.JButton voltar;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

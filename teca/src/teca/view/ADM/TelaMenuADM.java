@@ -39,6 +39,7 @@ public class TelaMenuADM extends javax.swing.JFrame {
         editar = new javax.swing.JButton();
         excluir1 = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 400));
@@ -49,7 +50,7 @@ public class TelaMenuADM extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel1.setText("Menu do ADM");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(130, 60, 132, 24);
+        jLabel1.setBounds(130, 30, 132, 24);
 
         pesquisar12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         pesquisar12.setText("Pesquisar");
@@ -59,7 +60,7 @@ public class TelaMenuADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(pesquisar12);
-        pesquisar12.setBounds(130, 130, 138, 30);
+        pesquisar12.setBounds(130, 100, 138, 30);
 
         editar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         editar.setText("Editar");
@@ -69,7 +70,7 @@ public class TelaMenuADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editar);
-        editar.setBounds(130, 180, 138, 30);
+        editar.setBounds(130, 150, 138, 30);
 
         excluir1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         excluir1.setText("Excluir");
@@ -79,7 +80,7 @@ public class TelaMenuADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(excluir1);
-        excluir1.setBounds(130, 230, 140, 30);
+        excluir1.setBounds(130, 200, 140, 30);
 
         cadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrar.setText("Cadastrar");
@@ -89,7 +90,16 @@ public class TelaMenuADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(130, 280, 138, 30);
+        cadastrar.setBounds(130, 250, 138, 30);
+
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar);
+        voltar.setBounds(130, 310, 140, 30);
 
         pack();
         setLocationRelativeTo(null);
@@ -122,6 +132,10 @@ public class TelaMenuADM extends javax.swing.JFrame {
           
         EXD.setVisible(true);  
     }//GEN-LAST:event_excluir1ActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,5 +181,6 @@ public class TelaMenuADM extends javax.swing.JFrame {
     private javax.swing.JButton excluir1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton pesquisar12;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

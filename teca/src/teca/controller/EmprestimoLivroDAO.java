@@ -46,9 +46,9 @@ public class EmprestimoLivroDAO {
              
 	     while (resultado.next()) {    
                  
-                     //String nomes[i] = 1; 
-                 
-                //i++
+                //String nomes[i] = 1; 
+                
+                // i++
              }
              
            } catch(Exception erro){ 

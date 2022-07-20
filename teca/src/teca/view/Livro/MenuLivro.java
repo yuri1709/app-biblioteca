@@ -341,7 +341,8 @@ public class MenuLivro extends javax.swing.JFrame {
 
     private void emprestaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestaButtonActionPerformed
         // TODO add your handling code here:
-        
+        LivroEmprestar LVEMP = new LivroEmprestar();
+        LVEMP.setVisible(true);
     }//GEN-LAST:event_emprestaButtonActionPerformed
 
     private void autorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorFieldActionPerformed

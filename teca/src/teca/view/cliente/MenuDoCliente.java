@@ -5,6 +5,8 @@
  */
 package teca.view.cliente;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 36127512021.2
@@ -32,6 +34,7 @@ public class MenuDoCliente extends javax.swing.JFrame {
         editar = new javax.swing.JButton();
         excluir = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 400));
@@ -42,7 +45,7 @@ public class MenuDoCliente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel1.setText("Menu - Cliente");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(135, 47, 127, 24);
+        jLabel1.setBounds(130, 30, 127, 24);
 
         pesquisar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         pesquisar.setText("Pesquisar");
@@ -52,7 +55,7 @@ public class MenuDoCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(pesquisar);
-        pesquisar.setBounds(140, 120, 110, 30);
+        pesquisar.setBounds(140, 90, 110, 30);
 
         editar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         editar.setText("Editar");
@@ -62,7 +65,7 @@ public class MenuDoCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editar);
-        editar.setBounds(140, 170, 110, 30);
+        editar.setBounds(140, 140, 110, 30);
 
         excluir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         excluir.setText("Excluir");
@@ -72,7 +75,7 @@ public class MenuDoCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(excluir);
-        excluir.setBounds(140, 220, 110, 30);
+        excluir.setBounds(140, 190, 110, 30);
 
         cadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrar.setText("Cadastrar");
@@ -82,7 +85,16 @@ public class MenuDoCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(140, 270, 110, 30);
+        cadastrar.setBounds(140, 240, 110, 30);
+
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar);
+        voltar.setBounds(140, 300, 110, 40);
 
         pack();
         setLocationRelativeTo(null);
@@ -101,9 +113,9 @@ public class MenuDoCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
-        Pesquisar PE = new Pesquisar();
-  
-          PE.setVisible(true);
+        //Pesquisar PE = new Pesquisar();
+        JOptionPane.showMessageDialog(null,"Em manutenção");
+        //PE.setVisible(true);
     }//GEN-LAST:event_pesquisarActionPerformed
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
@@ -111,6 +123,10 @@ public class MenuDoCliente extends javax.swing.JFrame {
         
         ED.setVisible(true);
     }//GEN-LAST:event_editarActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,5 +169,6 @@ public class MenuDoCliente extends javax.swing.JFrame {
     private javax.swing.JButton excluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton pesquisar;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

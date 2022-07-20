@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import teca.model.Usuario;
 
@@ -36,7 +37,7 @@ public class UsuarioDAO {
                   USER.setSenha(resultado.getString("senha"));                 
              }
              
-            } catch(Exception erro){ 
+            } catch(SQLException erro){ 
 
                JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
             }      
@@ -63,7 +64,7 @@ public class UsuarioDAO {
                  
              }
              
-           } catch(Exception erro){ 
+           } catch(SQLException erro){ 
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);               
            }      
@@ -86,7 +87,7 @@ public class UsuarioDAO {
     
             }
 	  
-            catch(Exception erro){ 
+            catch(SQLException  erro){ 
           
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
                
@@ -112,7 +113,7 @@ public class UsuarioDAO {
     
 	   }
 	  
-	   catch(Exception erro) { 
+	   catch(SQLException  erro) { 
            
               JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
                
@@ -137,7 +138,7 @@ public class UsuarioDAO {
     
 	   }
 	  
-            catch(Exception erro) { 
+            catch(SQLException  erro) { 
            
              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
                

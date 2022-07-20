@@ -80,7 +80,7 @@ CriptografiaSH256 SH256 = new CriptografiaSH256();
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(100, 270, 90, 30);
+        cadastrar.setBounds(100, 270, 110, 30);
 
         voltar.setText("Voltar");
         voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,7 @@ CriptografiaSH256 SH256 = new CriptografiaSH256();
             }
         });
         getContentPane().add(voltar);
-        voltar.setBounds(210, 270, 90, 30);
+        voltar.setBounds(220, 270, 90, 30);
 
         pack();
         setLocationRelativeTo(null);
