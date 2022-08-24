@@ -134,8 +134,9 @@ public class TelaLoginADM extends javax.swing.JFrame {
            //pegar o nome do usuario logado
             USER.setLogin(Login.getText()); 
            
-            JOptionPane.showMessageDialog(null, "Acesso Permitido!\n"+
-                                                "Você irá para a Tela de Menu Principal"); 
+            JOptionPane.showMessageDialog(null, "Acesso Permitido!\n\n"+
+                                                "Seja vem vindo(a), "+ USER.getLogin()
+                                                +"\n Você irá para a Tela de Menu Principal"); 
                         
               new MenuLoginGeral().setVisible(true);//preciso desse new MenuLogin().setVisible(true) para transferir o nome do login para a próxima tela.
                                                                                     
