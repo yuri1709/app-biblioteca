@@ -6,20 +6,24 @@
 package teca.view;
 
 import teca.model.Usuario;
+import teca.view.Livro.MenuLivro;
+import teca.view.adm.TelaMenuADM;
+import teca.view.cliente.MenuDoCliente;
 
 /**
  *
  * @author 36127512021.2
  */
-public class MenuLogin extends javax.swing.JFrame {
-
+public class MenuLoginGeral extends javax.swing.JFrame {
+    Usuario USER = new Usuario();
     /**
      * Creates new form MenuLogin
      */
-    public MenuLogin() {
+    public MenuLoginGeral() {
         initComponents();
-        //Nome do usuario logado        
-        user_.setText();
+        //Nome do usuario logado  
+        System.out.println(USER.getLogin());
+        user_.setText(USER.getLogin());
     }
 
     /**
@@ -42,6 +46,9 @@ public class MenuLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(400, 400));
+        setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
         Op3.setText("3");
@@ -108,21 +115,31 @@ public class MenuLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void Op3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op3ActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:    
+        MenuDoCliente TMC = new MenuDoCliente();
+        
+        TMC.setVisible(true);
     }//GEN-LAST:event_Op3ActionPerformed
 
     private void Op1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op1ActionPerformed
         // TODO add your handling code here:
+        TelaMenuADM TMA = new TelaMenuADM();
+        
+        TMA.setVisible(true);
+        
        
     }//GEN-LAST:event_Op1ActionPerformed
 
     private void Op2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op2ActionPerformed
         // TODO add your handling code here:
+        MenuLivro TML = new MenuLivro();
+        
+        TML.setVisible(true);
     }//GEN-LAST:event_Op2ActionPerformed
 
     private void Sair_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sair_ActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling c
+        System.exit(0);
     }//GEN-LAST:event_Sair_ActionPerformed
 
     /**
@@ -142,20 +159,21 @@ public class MenuLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuLoginGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuLoginGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuLoginGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuLoginGeral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuLogin().setVisible(true);
+                new MenuLoginGeral().setVisible(true);
             }
         });
     }

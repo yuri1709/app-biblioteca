@@ -5,6 +5,8 @@
  */
 package teca;
 
+import teca.view.TelaLoginADM;
+
 /**
  *
  * @author 36127512021.2
@@ -18,9 +20,9 @@ public class Teca {
         // TODO code application logic here
        // JFrame telaMenu = new JFrame();;
        // JFrame telaLogin = new JFrame();
-      
-       System.out.println("Hello World");
-       System.out.println("");               
+        TelaLoginADM TLM = new TelaLoginADM();
+        TLM.setVisible(true);
+                   
     }
    
     

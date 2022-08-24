@@ -5,14 +5,24 @@
  */
 package teca.model;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 36127512021.2
  */
 public class Usuario {
-    private String login;
-    private String senha;
+    static public String login;
+    static private String senha;
+    static private Integer id_usuario;
 
+    public Integer getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(Integer id_usuario) {
+        Usuario.id_usuario = id_usuario;
+    }
     public String getLogin() {
         return login;
     }
@@ -27,5 +37,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    
+    public void exibir() {
+        JOptionPane.showMessageDialog(null,"Informações do usuário \n"+
+                                                                       "------------------------------\n"+
+                                                                       "ID : "+id_usuario+"\n"+
+                                                                       "LOGIN  : "+login+"\n"+
+                                                                       "------------------------------");
     }
 }

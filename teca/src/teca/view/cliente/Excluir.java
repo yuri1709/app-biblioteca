@@ -3,23 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teca.view;
+package teca.view.cliente;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import teca.controller.clienteDAO;
+import teca.model.Cliente;
 
 /**
  *
  * @author 36127512021.2
  */
-public class ExclusãoADM extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ExclusãoADM
-     */
-    public ExclusãoADM() {
+public class Excluir extends javax.swing.JFrame {
+    clienteDAO CLDAO = new clienteDAO();
+    Cliente CL = new Cliente();    
+   
+    public Excluir() {
         initComponents();
     }
 
@@ -34,29 +35,27 @@ public class ExclusãoADM extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        EXCLUIRnome = new javax.swing.JTextField();
+        excluircpf = new javax.swing.JTextField();
         excluir = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(400, 400));
+        setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        jLabel1.setText("Excluir - Cadastro ADM");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        jLabel1.setText("Excluir - Cliente");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 30, 220, 40);
+        jLabel1.setBounds(110, 50, 180, 30);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("Nome do Usuario:");
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("CPF:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 120, 110, 20);
-
-        EXCLUIRnome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EXCLUIRnomeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(EXCLUIRnome);
-        EXCLUIRnome.setBounds(140, 120, 210, 20);
+        jLabel2.setBounds(50, 134, 40, 20);
+        getContentPane().add(excluircpf);
+        excluircpf.setBounds(110, 130, 190, 30);
 
         excluir.setText("Excluir");
         excluir.addActionListener(new java.awt.event.ActionListener() {
@@ -65,49 +64,39 @@ public class ExclusãoADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(excluir);
-        excluir.setBounds(140, 190, 73, 23);
+        excluir.setBounds(90, 210, 80, 23);
+
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar);
+        voltar.setBounds(190, 210, 80, 23);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
-        if ( (EXCLUIRnome.getText().equals(""))  ) {  
+        if ( (excluircpf.getText().equals(""))  ) {  
             
-             JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
+            JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
                                                 "PREENCHA TODOS ELES !!!!");
-        
-        EXCLUIRnome.setText("");
-                    
-           setVisible(true);
-           
-        }else{
             
-            String url = "jdbc:mysql://localhost/tecadb";
-            String sql = "DELETE FROM usuario WHERE login='"+EXCLUIRnome.getText()+"'";
-            try 
-	   {
-
-	     Connection conexao = DriverManager.getConnection(url,"root","");
-
-	     PreparedStatement atualizar = conexao.prepareStatement(sql);
-
-	     atualizar.executeUpdate();
-             //criar uma condição pra quando o usuário não existir.   
-	     JOptionPane.showMessageDialog(null,"O usuário "+EXCLUIRnome.getText()+" foi excluído com sucesso!");
-    
-	   }
-	  
-            catch(Exception erro) { 
-           
-             JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
-               
-           }                                  
+            excluircpf.setText("");                    
+            setVisible(true);           
+        }else{
+            CL.setCpf(excluircpf.getText());            
+            CLDAO.excluir(CL);            
         }
     }//GEN-LAST:event_excluirActionPerformed
 
-    private void EXCLUIRnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXCLUIRnomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EXCLUIRnomeActionPerformed
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+                dispose();
+
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,28 +115,29 @@ public class ExclusãoADM extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ExclusãoADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Excluir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ExclusãoADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Excluir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ExclusãoADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Excluir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ExclusãoADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Excluir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ExclusãoADM().setVisible(true);
+                new Excluir().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField EXCLUIRnome;
     private javax.swing.JButton excluir;
+    private javax.swing.JTextField excluircpf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

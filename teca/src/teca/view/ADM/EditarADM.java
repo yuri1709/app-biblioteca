@@ -3,22 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teca.view;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+package teca.view.adm;
 import javax.swing.JOptionPane;
+import teca.controller.UsuarioDAO;
+import teca.model.Usuario;
+import teca.service.CriptografiaSH256;
 
 /**
  *
  * @author 36127512021.2
  */
 public class EditarADM extends javax.swing.JFrame {
-
-    /**
-     * Creates new form EditarADM
-     */
+    UsuarioDAO USERDAO = new UsuarioDAO();
+    Usuario USER = new Usuario();
+    CriptografiaSH256 SH256 = new CriptografiaSH256();
+    
     public EditarADM() {
         initComponents();
     }
@@ -36,11 +35,11 @@ public class EditarADM extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         editarnome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        antigasenha = new javax.swing.JTextField();
         atualizar = new javax.swing.JButton();
         voltar = new javax.swing.JButton();
+        editarsenha = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        editarsenha1 = new javax.swing.JTextField();
+        editarantigonome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 400));
@@ -51,21 +50,19 @@ public class EditarADM extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel1.setText("Editar - Cadastro ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(120, 30, 170, 40);
+        jLabel1.setBounds(110, 40, 210, 40);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Novo Usuário:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 120, 100, 20);
+        jLabel2.setBounds(30, 170, 100, 30);
         getContentPane().add(editarnome);
-        editarnome.setBounds(140, 120, 210, 20);
+        editarnome.setBounds(140, 170, 210, 30);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("Antiga Senha:");
+        jLabel3.setText("Nova Senha:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 160, 100, 20);
-        getContentPane().add(antigasenha);
-        antigasenha.setBounds(140, 160, 210, 20);
+        jLabel3.setBounds(30, 210, 100, 60);
 
         atualizar.setText("Atualizar");
         atualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,60 +71,61 @@ public class EditarADM extends javax.swing.JFrame {
             }
         });
         getContentPane().add(atualizar);
-        atualizar.setBounds(90, 260, 80, 23);
+        atualizar.setBounds(90, 300, 90, 30);
 
         voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
         getContentPane().add(voltar);
-        voltar.setBounds(200, 260, 80, 23);
+        voltar.setBounds(200, 300, 90, 30);
+        getContentPane().add(editarsenha);
+        editarsenha.setBounds(140, 230, 210, 30);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Nova Senha:");
+        jLabel4.setText("Antigo Usuário:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 200, 100, 20);
-        getContentPane().add(editarsenha1);
-        editarsenha1.setBounds(140, 200, 210, 20);
+        jLabel4.setBounds(30, 110, 100, 30);
+
+        editarantigonome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarantigonomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(editarantigonome);
+        editarantigonome.setBounds(140, 110, 210, 30);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
-        if ( (editarnome.getText().equals("")) || (antigasenha.getText().equals("")) ) {
+        if ( (editarnome.getText().equals("")) || (editarsenha.getPassword().equals("")) || (editarantigonome.getText().equals("")) ) {
             
             JOptionPane.showMessageDialog(null, "NÃO PODE HAVER CAMPOS EM BRANCO!!!!\n"+
                                                 "PREENCHA TODOS ELES !!!!");
             
            editarnome.setText("");
-           antigasenha.setText("");
-        
+           editarsenha.setText("");
+          
             setVisible(true);
         
         }else{
-            
-           String url = "jdbc:mysql://localhost/tecadb";
-	   String sql = "UPDATE usuario SET login='"+editarnome.getText()+"',WHERE senha='"+antigasenha.getText()+"',senha='"+antigasenha.getText()+"'";
-        
-         
-            try 
-           {
-
-	     Connection conexao = DriverManager.getConnection(url, "root","");
-
-	     PreparedStatement atualizar = conexao.prepareStatement(sql);
-
-	     atualizar.executeUpdate();
-
-	     JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
-    
-	   }
-	  
-	   catch(Exception erro) { 
-           
-              JOptionPane.showMessageDialog(null,"Erro na Conexão com Banco de Dados : "+erro);
-               
-           }
+             USER.setLogin(editarnome.getText());
+             USER.setSenha(SH256.getSHA256(editarsenha.getText()));
+             USERDAO.editar(USER, editarantigonome.getText());
         }
     }//GEN-LAST:event_atualizarActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_voltarActionPerformed
+
+    private void editarantigonomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarantigonomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarantigonomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,18 +163,14 @@ public class EditarADM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField antigasenha;
     private javax.swing.JButton atualizar;
+    private javax.swing.JTextField editarantigonome;
     private javax.swing.JTextField editarnome;
-    private javax.swing.JTextField editarsenha1;
+    private javax.swing.JPasswordField editarsenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
-
-    void setVisivle(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

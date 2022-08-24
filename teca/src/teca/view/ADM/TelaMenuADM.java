@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teca.view;
+package teca.view.adm;
 
-import java.awt.HeadlessException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
+import teca.view.adm.CadastrarADM;
+import teca.view.adm.EditarADM;
+import teca.view.adm.ExclusaoADM;
+
 
 /**
  *
  * @author 36127512021.2
  */
-public class TelaMenu extends javax.swing.JFrame {
+public class TelaMenuADM extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuAdm
      */
-    public TelaMenu() {
+    public TelaMenuADM() {
         initComponents();
     }
 
@@ -35,28 +35,32 @@ public class TelaMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        pesquisar12 = new javax.swing.JButton();
         editar = new javax.swing.JButton();
-        a = new javax.swing.JButton();
+        excluir1 = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(400, 400));
+        setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel1.setText("Menu do ADM");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(130, 57, 132, 24);
+        jLabel1.setBounds(130, 30, 132, 24);
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setText("Pesquisar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pesquisar12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        pesquisar12.setText("Pesquisar");
+        pesquisar12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                pesquisar12ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(130, 115, 138, 23);
+        getContentPane().add(pesquisar12);
+        pesquisar12.setBounds(130, 100, 138, 30);
 
         editar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         editar.setText("Editar");
@@ -66,17 +70,17 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editar);
-        editar.setBounds(130, 156, 138, 23);
+        editar.setBounds(130, 150, 138, 30);
 
-        a.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        a.setText("Excluir");
-        a.addActionListener(new java.awt.event.ActionListener() {
+        excluir1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        excluir1.setText("Excluir");
+        excluir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aActionPerformed(evt);
+                excluir1ActionPerformed(evt);
             }
         });
-        getContentPane().add(a);
-        a.setBounds(130, 197, 140, 23);
+        getContentPane().add(excluir1);
+        excluir1.setBounds(130, 200, 140, 30);
 
         cadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrar.setText("Cadastrar");
@@ -86,63 +90,52 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(130, 231, 138, 23);
+        cadastrar.setBounds(130, 250, 138, 30);
+
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar);
+        voltar.setBounds(130, 310, 140, 30);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void pesquisar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisar12ActionPerformed
+        Pesquisar PE = new Pesquisar();
+                                                                  
+        PE.setVisible(true);
+    }//GEN-LAST:event_pesquisar12ActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        TelaCadastrarADM TD = new TelaCadastrarADM();
-        
-        JOptionPane.showMessageDialog(null, "Acesso Permitido 123123 !!!!!\n"+
-                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
-<<<<<<< HEAD
-                                                
-=======
-   
-
-        JOptionPane.showMessageDialog(null, "Acesso Permitido 123123 !!!!!\n"+
-                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
-        JOptionPane.showMessageDialog(null, "Acesso eqeqeqqeeq3 !!!!!\n"+
-                                            "Você irá para a Tela de Cadastro de Dados de Empregados !!!");   
-  
-        
->>>>>>> 19d6bef9ebd351d84d6df4aa7ddccae1a112e363
+       CadastrarADM TD = new CadastrarADM();
+                                                                 
       TD.setVisible(true);
     }//GEN-LAST:event_cadastrarActionPerformed
-                                      
+                                     
                                     
-    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
-     
-   
-   
-    }                                       
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
-        // TODO add your handling code here:
-        EditarADM EX = new EditarADM();
-        
-        JOptionPane.showMessageDialog(null, "Acesso permitido!!!\n"+
-                                            "Você irá para a Tela de Edição de cadastro!!!");
-        EX.setVisivle(true);
-                                           
-        
+        EditarADM ED = new EditarADM();
+                                                                 
+        ED.setVisible(true);
+       
     }//GEN-LAST:event_editarActionPerformed
 
-    private void aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aActionPerformed
-              ExclusãoADM EX = new ExclusãoADM();
+    private void excluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluir1ActionPerformed
+             
+      ExclusaoADM EXD = new ExclusaoADM();
           
-          JOptionPane.showMessageDialog(null, "Acesso Permitido !!!!!\n"+
-                                              "Você irá para a Tela de Exclusão do Cadastro !!!");              
-        
-          EX.setVisible(true);
-      
-    }//GEN-LAST:event_aActionPerformed
+        EXD.setVisible(true);  
+    }//GEN-LAST:event_excluir1ActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,30 +154,33 @@ public class TelaMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMenuADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMenuADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMenuADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMenuADM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaMenu().setVisible(true);
+                new TelaMenuADM().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton a;
     private javax.swing.JButton cadastrar;
     private javax.swing.JButton editar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton excluir1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton pesquisar12;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }
