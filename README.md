@@ -1,6 +1,6 @@
 # App-biblioteca
 
-<h3>Documentação</h3>
+<h3 align="center">Documentação</h3>
 
 
 <h4>Funcionalidades:</h4>
